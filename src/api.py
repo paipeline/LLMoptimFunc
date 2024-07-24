@@ -1,11 +1,35 @@
+from gradio_client import Client
+import json
+import numpy as np
+from datetime import datetime
+from textblob import TextBlob
+import re
 import json
 import numpy as np
 from datetime import datetime
 from textblob import TextBlob
 import re
 
+client = Client("https://fingpt-fingpt-forecaster.hf.space/--replicas/me7ol/")
+result = client.predict(
+        "TSLA", # str  in 'Ticker' Textbox component
+        "2024-06-24",   # str  in 'Date' Textbox component
+        1,  # int | float (numeric value between 1 and 4) in 'n_weeks' Slider component
+        True,   # bool  in 'Use Latest Basic Financials' Checkbox component
+        api_name="/predict"
+)
+
+
+
 # Use the API result directly
 data = result
+
+
+
+# # 读取原始JSON文件
+# with open('info.json', 'r') as file:
+#     data = json.load(file)
+    
 
 def calculate_volatility(price_data, window=None):
     closing_prices = [period['closing_price'] for period in price_data]
