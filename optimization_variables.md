@@ -1,10 +1,10 @@
 # Optimization Variables, Constraints, and Functions
 
 ## Variables
-- [ ] **Market Capitalization**: `2296700.17` (from quantitative_data)
-- [ ] **Sentiment Scores**: Various values from sentiment_analysis (e.g., `0.0`, `-0.05`, `0.4`, etc.)
-- [ ] **Returns**: Values from the `return` key in sentiment_analysis (to be simulated or derived)
-- [ ] **Asset Prices**: Historical prices from stock_price_movement (e.g., `176.92`, `176.4`, etc.)
+- [x] **Market Capitalization**: `2296700.17` (from quantitative_data)
+- [x] **Sentiment Scores**: Various values from sentiment_analysis (e.g., `0.0`, `-0.05`, `0.4`, etc.)
+- [x] **Returns**: Values from the `return` key in sentiment_analysis (to be simulated or derived)
+- [x] **Asset Prices**: Historical prices from stock_price_movement (e.g., `176.92`, `176.4`, etc.)
 - [ ] **Position Sizes**: Quantity of assets to trade (to be defined)
 - [ ] **Risk-Free Rate**: A predefined constant (e.g., `0.02`)
 
