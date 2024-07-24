@@ -24,11 +24,11 @@ function sample_strategy(data::DataFrame)
 end
 
 # Execute trade based on the signal and current data
-function execute_trade(signal::String, current_data::DataFrame)
+function execute_trade(signal::String, current_data::DataFrameRow)
     if signal == "buy"
-        return current_data[:sentiment_score]  # Assuming 'return' is the key for returns
+        return current_data.return  # Assuming 'return' is the key for returns
     elseif signal == "sell"
-        return -current_data[:sentiment_score]
+        return -current_data.return
     end
     return 0.0
 end
