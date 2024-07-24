@@ -1,6 +1,8 @@
 using Pkg
 Pkg.add("DataFrames")
 Pkg.add("JSON")
+using Pkg
+Pkg.add("DataFrames")
 using DataFrames
 using JSON
 
@@ -35,7 +37,7 @@ struct Backtester
         self.results = Float64[]  # Initialize results
         for i in 1:size(self.data, 1)  # Start from the first row
             signal = self.strategy(self.data[1:i, :])
-            push!(self.results, execute_trade(self, signal, self.data[i, :]))
+            push!(self.results, self.execute_trade(signal, self.data[i, :]))
         end
         return self.results  # Return results after running
     end
