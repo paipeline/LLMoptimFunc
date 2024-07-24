@@ -26,9 +26,9 @@ end
 # Execute trade based on the signal and current data
 function execute_trade(signal::String, current_data::DataFrameRow)
     if signal == "buy"
-        return current_data.return  # Assuming 'return' is the key for returns
+        return current_data[:return]  # Assuming 'return' is the key for returns
     elseif signal == "sell"
-        return -current_data.return
+        return -current_data[:return]
     end
     return 0.0
 end
@@ -71,7 +71,7 @@ end
  # Main function to execute the backtest
  function main()
      sentiment_analysis, qualitative_data, quantitative_data = load_data("example.json")
-     results = run_backtester(sample_strategy, sentiment_analysis)  # Call the
+     results = run_backtester(sample_strategy, sentiment_analysis)  # Call the run_backtester
      println("Total Backtest Results: ", get_total_results(results))  # Print total result
      println("Backtest completed successfully.")
  end
