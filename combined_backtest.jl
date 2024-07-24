@@ -1,3 +1,4 @@
+#!/usr/bin/env julia
 using Pkg
 Pkg.add("DataFrames")
 Pkg.add("JSON")
