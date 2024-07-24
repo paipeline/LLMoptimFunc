@@ -10,7 +10,6 @@
 
 ## Constraints
 - **Budget Constraint**: Total capital allocated to trades must not exceed available budget.
-- **Leverage Limits**: Total leverage used in trading must not exceed a specified limit.
 - **Liquidity Constraints**: Ensure that trading volumes do not exceed market liquidity.
 - **Regulatory Constraints**: Compliance with regulatory requirements, such as short-selling restrictions.
 

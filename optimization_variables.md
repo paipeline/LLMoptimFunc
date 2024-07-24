@@ -11,7 +11,6 @@
 ## Constraints
 - [x] **Budget Constraint**: Total capital allocated to trades must not exceed available budget.
 - [x] **Maximum Drawdown**: The maximum allowable drawdown from the peak portfolio value.
-- [x] **Leverage Limits**: Total leverage used in trading must not exceed a specified limit.
 - [x] **Liquidity Constraints**: Ensure that trading volumes do not exceed market liquidity.
 - [x] **Regulatory Constraints**: Compliance with regulatory requirements, such as short-selling restrictions.
 
