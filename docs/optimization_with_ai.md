@@ -25,35 +25,26 @@ Incorporating AI sentiment analysis into traditional optimization methods allows
    Note: Expected returns and risk-free rate are not defined in the current data.
    \]
 
-## New Optimization Formulas with Sentiment Analysis
+## Unified Optimization Function with Sentiment Analysis
 
-Incorporating sentiment analysis into traditional optimization functions allows traders to make more informed decisions based on market sentiment. The following formulas reflect this integration:
+Incorporating sentiment analysis into traditional optimization functions allows traders to make more informed decisions based on market sentiment. We can unify the optimization functions into a single function using hyperparameters to define the specific optimization goal. The following unified formula reflects this integration:
 
-To integrate sentiment analysis, we can modify the traditional optimization functions as follows:
+\[
+\text{Optimize } O = \sum_{t=1}^{T} \left( R_t + \alpha \cdot S_t \right) - \beta \cdot \text{Var}(R_t + \gamma \cdot S_t) + \delta \cdot \frac{E[R_t + \gamma \cdot S_t] - R_f}{\sigma_R}
+\]
 
-1. **Maximizing Returns with Sentiment**: 
+where:
+- \( R_t \) is the return at time \( t \).
+- \( S_t \) is the sentiment score at time \( t \).
+- \( \alpha \) is a weight that determines the influence of sentiment on returns.
+- \( \beta \) is a weight that adjusts the impact of sentiment on risk.
+- \( \gamma \) is a weight that reflects the contribution of sentiment to the expected return.
+- \( \delta \) is a weight that determines the influence of the Sharpe ratio in the optimization.
+- \( R_f \) is the risk-free rate.
+- \( \sigma_R \) is the standard deviation of returns.
+- \( E[R_t + \gamma \cdot S_t] \) is the expected return adjusted by sentiment.
 
-   This formula aims to maximize total returns by considering both the actual returns from trades and the sentiment scores derived from news and social media. The sentiment score \( S_t \) can provide insights into market mood, which can significantly influence asset prices. The weight \( \alpha \) allows traders to adjust the importance of sentiment in their return calculations, enabling a more dynamic response to market conditions.
-   \[
-   \text{Maximize } R_T = \sum_{t=1}^{T} (R_t + \alpha \cdot S_t) \quad \text{(Returns with Sentiment)}
-   \]
-   where \( S_t \) is the sentiment score at time \( t \) and \( \alpha \) is a weight that determines the influence of sentiment on returns.
-
-2. **Minimizing Risk with Sentiment**: 
-
-   This formula modifies the traditional risk minimization approach by incorporating sentiment scores into the variance calculation. By adjusting the returns with the sentiment score \( S_t \) and the weight \( \beta \), traders can account for the potential impact of market sentiment on asset volatility. This approach helps in identifying periods where sentiment may lead to increased risk, allowing for better risk management strategies.
-   \[
-   \text{Minimize } \text{Var}(R) \quad \text{where } \text{Var}(R) = \frac{1}{T-1} \sum_{t=1}^{T} (R_t + \beta \cdot S_t - \bar{R})^2 \quad \text{(Risk with Sentiment)}
-   \]
-   where \( \beta \) is a weight that adjusts the impact of sentiment on risk.
-
-3. **Sharpe Ratio Maximization with Sentiment**: 
-
-   The Sharpe ratio is a widely used measure of risk-adjusted return. By including sentiment in the expected return calculation, this formula allows traders to evaluate how sentiment influences their overall performance relative to risk. The weight \( \gamma \) provides flexibility in determining how much emphasis to place on sentiment when assessing the effectiveness of trading strategies. This can lead to more robust performance metrics that reflect both quantitative and qualitative market factors.
-   \[
-   \text{Maximize } S = \frac{E[R + \gamma \cdot S] - R_f}{\sigma_R} \quad \text{(Sharpe Ratio with Sentiment)}
-   \]
-   where \( \gamma \) is a weight that reflects the contribution of sentiment to the expected return.
+By adjusting the hyperparameters \( \alpha \), \( \beta \), \( \gamma \), and \( \delta \), traders can tailor the optimization function to focus on maximizing returns, minimizing risk, or maximizing the Sharpe ratio with sentiment analysis.
 
 ## Variable Definitions and Correspondences
 
