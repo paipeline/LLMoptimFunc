@@ -5,9 +5,11 @@ Pkg.add("JSON")
 using DataFrames
 using JSON
 
-# Load the example data from JSON string
-function load_data(json_data::String)
-    data = JSON.parse(json_data)
+# Load the example data from JSON file
+function load_data(file_path::String)
+    file = open(file_path, "r")
+    data = JSON.parse(read(file, String))
+    close(file)
     qualitative_data = data["qualitative_data"]
     quantitative_data = data["quantitative_data"]
     sentiment_analysis = DataFrame(qualitative_data["sentiment_analysis"])
