@@ -22,3 +22,4 @@ backtester.run()
 results = backtester.get_results()
 
 println("Total Backtest Results: ", results)
+println("Backtest completed successfully.")
