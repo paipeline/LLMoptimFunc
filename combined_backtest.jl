@@ -2,8 +2,8 @@
 using Pkg
 Pkg.add("DataFrames")
 Pkg.add("JSON")
-using Pkg
-Pkg.add("DataFrames")
+using DataFrames
+using JSON
 using DataFrames
 using JSON
 
@@ -45,7 +45,7 @@ struct Backtester
 
     function execute_trade(self::Backtester, signal::String, current_data::DataFrame)
         if signal == "buy"
-            return current_data.return  # Assuming 'return' is the key for returns
+            return current_data[:return]  # Assuming 'return' is the key for returns
         elseif signal == "sell"
             return -current_data.return
         end
