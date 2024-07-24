@@ -48,11 +48,6 @@ This document presents a combined optimization formula that integrates maximizin
    where \( P_i \) is the price of asset \( i \), \( Q_i \) is the quantity of asset \( i \), and \( C \) is the total capital.
 
 2. **Risk Management Constraints**
-   - **Maximum Drawdown**: The maximum allowable drawdown from the peak portfolio value:
-   \[
-   \text{MDD} \leq D
-   \]
-   where \( D \) is the maximum drawdown limit.
    - **Leverage Limits**: The total leverage used in trading must not exceed a specified limit:
    \[
    \sum_{i=1}^{N} \frac{P_i \cdot Q_i}{E} \leq L
