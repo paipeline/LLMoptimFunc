@@ -8,7 +8,8 @@ struct Backtester
     end
 
     function run(self::Backtester)
-        for i in 2:size(self.data, 1)
+        self.results = Float64[]  # Initialize results
+        for i in 1:size(self.data, 1)  # Start from the first row
             signal = self.strategy(self.data[1:i, :])
             push!(self.results, execute_trade(signal, self.data[i, :]))
         end
