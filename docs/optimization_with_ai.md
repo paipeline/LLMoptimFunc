@@ -15,10 +15,14 @@ Incorporating AI sentiment analysis into traditional optimization methods allows
    \[
    \text{Minimize } \text{Var}(R) \quad \text{where } \text{Var}(R) = \frac{1}{T-1} \sum_{t=1}^{T} (R_t - \bar{R})^2
    \]
+   Note: Returns data is not available and needs to be simulated or derived.
+   \]
 
 3. **Sharpe Ratio Maximization**: 
    \[
    \text{Maximize } S = \frac{E[R] - R_f}{\sigma_R}
+   \]
+   Note: Expected returns and risk-free rate are not defined in the current data.
    \]
 
 ## New Optimization Formulas with Sentiment Analysis
