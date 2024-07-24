@@ -65,3 +65,15 @@ function sharpe_ratio(returns::Vector{Float64}, risk_free_rate::Float64)
     expected_return = mean(returns)
     return (expected_return - risk_free_rate) / std(returns)
 end
+
+
+
+ # Main function to execute the backtest
+ function main()
+     sentiment_analysis, qualitative_data, quantitative_data = load_data("example.json")
+     results = run_backtester(sample_strategy, sentiment_analysis)  # Call the
+     println("Total Backtest Results: ", get_total_results(results))  # Print total result
+     println("Backtest completed successfully.")
+ end
+
+ main()  # Execute the main function
