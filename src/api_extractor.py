@@ -11,6 +11,6 @@ result = client.predict(
 )
 
 # Save the result to a JSON file in the current directory
-with open("prediction_result.json", "w") as json_file:
+with open("data/prediction_result.json", "w") as json_file:
     json.dump(result, json_file)
  
