@@ -12,9 +12,9 @@ R_f = 0.01                             # Risk-free rate
 # Unified optimization function with sentiment analysis
 function optimize_with_sentiment(R_t, S_t, R_f, α, β, γ, δ)
     E_R = mean(R_t .+ γ .* S_t)
-    σ_R = std(R_t)
+    σ_R = std(R_t .+ γ .* S_t)
     total_returns = sum(R_t .+ α .* S_t)
-    risk = var(R_t .+ β .* S_t)
+    risk = var(R_t .+ γ .* S_t)
     sharpe_ratio = (E_R - R_f) / σ_R
     return total_returns - β * risk + δ * sharpe_ratio
 end
