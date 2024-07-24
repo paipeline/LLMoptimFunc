@@ -8,29 +8,17 @@ R_f = 0.01                             # Risk-free rate
 β = 0.5                                # Weight for sentiment in risk
 γ = 0.5                                # Weight for sentiment in Sharpe ratio
 
-# Function to maximize returns with sentiment
-function maximize_returns_with_sentiment(R_t, S_t, α)
-    return sum(R_t .+ α .* S_t)
-end
-
-# Function to minimize risk with sentiment
-function minimize_risk_with_sentiment(R_t, S_t, β)
-    R_t_adjusted = R_t .+ β .* S_t
-    return var(R_t_adjusted)
-end
-
-# Function to maximize Sharpe ratio with sentiment
-function maximize_sharpe_with_sentiment(R_t, S_t, R_f, γ)
+# Unified optimization function with sentiment analysis
+function optimize_with_sentiment(R_t, S_t, R_f, α, β, γ, δ)
     E_R = mean(R_t .+ γ .* S_t)
     σ_R = std(R_t)
-    return (E_R - R_f) / σ_R
+    total_returns = sum(R_t .+ α .* S_t)
+    risk = var(R_t .+ β .* S_t)
+    sharpe_ratio = (E_R - R_f) / σ_R
+    return total_returns - β * risk + δ * sharpe_ratio
 end
 
-# Compute the optimization functions
-total_returns_with_sentiment = maximize_returns_with_sentiment(R_t, S_t, α)
-risk_with_sentiment = minimize_risk_with_sentiment(R_t, S_t, β)
-sharpe_ratio_with_sentiment = maximize_sharpe_with_sentiment(R_t, S_t, R_f, γ)
+# Compute the unified optimization function
+optimized_value = optimize_with_sentiment(R_t, S_t, R_f, α, β, γ, δ)
 
-println("Total Returns with Sentiment: ", total_returns_with_sentiment)
-println("Risk with Sentiment: ", risk_with_sentiment)
-println("Sharpe Ratio with Sentiment: ", sharpe_ratio_with_sentiment)
+println("Optimized Value with Sentiment: ", optimized_value)
