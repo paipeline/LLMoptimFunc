@@ -6,19 +6,19 @@ This document presents a combined optimization formula that integrates maximizin
 
 ## Optimization Functions
 
-1. **Maximizing Returns**: 
+1. **Maximizing Returns with Market Capitalization**: 
    \[
-   \text{Maximize } R_T = \sum_{t=1}^{T} R_t
+   \text{Maximize } R_T = \sum_{t=1}^{T} (R_t \cdot \text{Market Cap})
    \]
 
-2. **Minimizing Risk**: 
+2. **Minimizing Risk with Volatility**: 
    \[
-   \text{Minimize } \text{Var}(R) \quad \text{where } \text{Var}(R) = \frac{1}{T-1} \sum_{t=1}^{T} (R_t - \bar{R})^2
+   \text{Minimize } \text{Var}(R) \quad \text{where } \text{Var}(R) = \frac{1}{T-1} \sum_{t=1}^{T} (R_t - \bar{R})^2 + \text{Volatility}
    \]
 
-3. **Sharpe Ratio Maximization**: 
+3. **Sharpe Ratio Maximization with Sentiment**: 
    \[
-   \text{Maximize } S = \frac{E[R] - R_f}{\sigma_R}
+   \text{Maximize } S = \frac{E[R + \alpha \cdot S] - R_f}{\sigma_R}
    \]
 
 4. **Custom Objectives**: 
