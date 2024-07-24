@@ -3,6 +3,7 @@ Pkg.add("DataFrames")
 Pkg.add("JSON")
 using DataFrames
 using JSON
+include("backtester.jl")  # Import the Backtester struct
 
 # Load the example data
 function load_data(file_path::String)
