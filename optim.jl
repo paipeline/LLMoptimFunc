@@ -19,7 +19,17 @@ function optimize_with_sentiment(R_t, S_t, R_f, α, β, γ, δ)
     return total_returns - β * risk + δ * sharpe_ratio
 end
 
-# Compute the unified optimization function
+# Optimization function without sentiment analysis
+function optimize_without_sentiment(R_t, R_f, β, δ)
+    E_R = mean(R_t)
+    σ_R = std(R_t)
+    total_returns = sum(R_t)
+    risk = var(R_t)
+    sharpe_ratio = (E_R - R_f) / σ_R
+    return total_returns - β * risk + δ * sharpe_ratio
+end
+
+# Compute the optimization function without sentiment
 optimized_value = optimize_with_sentiment(R_t, S_t, R_f, α, β, γ, δ)
 
 println("Optimized Value with Sentiment: ", optimized_value)
