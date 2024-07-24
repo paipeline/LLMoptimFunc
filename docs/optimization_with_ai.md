@@ -86,6 +86,24 @@ The following data from `example.json` supports the feasibility of the optimizat
 
 Overall, while some variables require simulation or derivation, the available data provides a solid foundation for implementing the optimization functions effectively.
 
+## Optimization Function Without Sentiment Analysis
+
+For scenarios where sentiment analysis is not considered, we can define a simpler optimization function. This function focuses solely on traditional financial metrics such as returns, risk, and the Sharpe ratio.
+
+\[
+\text{Optimize } O = \sum_{t=1}^{T} R_t - \beta \cdot \text{Var}(R_t) + \delta \cdot \frac{E[R_t] - R_f}{\sigma_R}
+\]
+
+where:
+- \( R_t \) is the return at time \( t \).
+- \( \beta \) is a weight that adjusts the impact of risk.
+- \( \delta \) is a weight that determines the influence of the Sharpe ratio in the optimization.
+- \( R_f \) is the risk-free rate.
+- \( \sigma_R \) is the standard deviation of returns.
+- \( E[R_t] \) is the expected return.
+
+By adjusting the hyperparameters \( \beta \) and \( \delta \), traders can tailor the optimization function to focus on maximizing returns, minimizing risk, or maximizing the Sharpe ratio without considering sentiment analysis.
+
 ## Conclusion
 
 By integrating sentiment analysis into traditional optimization functions, traders can create more robust trading strategies that account for market sentiment, potentially leading to improved performance and risk management.
