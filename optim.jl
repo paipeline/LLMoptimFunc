@@ -29,7 +29,5 @@ function optimize_without_sentiment(R_t, R_f, β, δ)
     return total_returns - β * risk + δ * sharpe_ratio
 end
 
-# Compute the optimization function without sentiment
-optimized_value = optimize_with_sentiment(R_t, S_t, R_f, α, β, γ, δ)
-
-println("Optimized Value with Sentiment: ", optimized_value)
+optimized_value_without_sentiment = optimize_without_sentiment(R_t, R_f, β, δ)
+println("Optimized Value without Sentiment: ", optimized_value_without_sentiment)
