@@ -97,11 +97,3 @@ where:
 - \( E[\mu^T w + \gamma \cdot S^T w] \) is the expected return adjusted by sentiment.
 
 By adjusting the hyperparameters \( \alpha \), \( \beta \), \( \gamma \), and \( \delta \), traders can tailor the optimization function to focus on maximizing returns, minimizing risk, or maximizing the Sharpe ratio with sentiment analysis.
-
-## Conclusion
-
-Convex optimization with sentiment analysis provides a powerful framework for solving portfolio optimization problems efficiently and reliably. By incorporating sentiment scores, traders can create more robust trading strategies that account for market sentiment, potentially leading to improved performance and risk management.
-
-## Conclusion
-
-Convex optimization provides a powerful framework for solving a wide range of optimization problems efficiently and reliably. By formulating problems as convex optimization problems, we can leverage efficient algorithms and solvers to find optimal solutions in various applications.
