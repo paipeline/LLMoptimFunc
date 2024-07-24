@@ -13,6 +13,7 @@ struct Backtester
             signal = self.strategy(self.data[1:i, :])
             push!(self.results, execute_trade(signal, self.data[i, :]))
         end
+        return self.results  # Return results after running
     end
 
     function execute_trade(signal::String, current_data::DataFrame)
