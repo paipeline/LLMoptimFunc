@@ -55,7 +55,19 @@ To integrate sentiment analysis, we can modify the traditional optimization func
    \]
    where \( \gamma \) is a weight that reflects the contribution of sentiment to the expected return.
 
-## Variable Definitions
+## Variable Definitions and Correspondences
+
+- \( R_T \): Total returns over the time period \( T \). Corresponds to the calculated returns based on stock price movement.
+- \( R_t \): Returns at time \( t \). Derived from the stock price movement data in `quantitative_data` -> `stock_price_movement`.
+- \( \bar{R} \): Average returns over the time period. Calculated from \( R_t \).
+- \( S_t \): Sentiment score at time \( t \). Corresponds to `qualitative_data` -> `sentiment_analysis` -> `sentiment_score`.
+- \( \alpha \): Weight that determines the influence of sentiment on returns. This is a user-defined parameter.
+- \( \text{Var}(R) \): Variance of returns. Calculated from \( R_t \).
+- \( R_f \): Risk-free rate. This is a user-defined parameter and not present in the current data.
+- \( \sigma_R \): Standard deviation of returns. Derived from the variance calculation.
+- \( E[R] \): Expected returns. This is a user-defined parameter and not present in the current data.
+- \( \beta \): Weight that adjusts the impact of sentiment on risk. This is a user-defined parameter.
+- \( \gamma \): Weight that reflects the contribution of sentiment to the expected return. This is a user-defined parameter.
 
 - \( R_T \): Total returns over the time period \( T \).
 - \( R_t \): Returns at time \( t \).
