@@ -4,19 +4,44 @@ import numpy as np
 from datetime import datetime
 from textblob import TextBlob
 import re
+import psycopg2
 import json
 import numpy as np
 from datetime import datetime
 from textblob import TextBlob
 import re
 
+def save_to_postgresql(data, company_name, month):
+    conn = psycopg2.connect(
+        dbname="your_dbname",
+        user="your_username",
+        password="your_password",
+        host="your_host",
+        port="your_port"
+    )
+    cursor = conn.cursor()
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS stock_data (
+        company_name TEXT,
+        month TEXT,
+        data JSONB
+    )
+    """)
+    cursor.execute("""
+    INSERT INTO stock_data (company_name, month, data)
+    VALUES (%s, %s, %s)
+    """, (company_name, month, json.dumps(data)))
+    conn.commit()
+    cursor.close()
+    conn.close()
+
 client = Client("https://fingpt-fingpt-forecaster.hf.space/--replicas/me7ol/")
 result = client.predict(
-        "TSLA", # str  in 'Ticker' Textbox component
-        "2024-06-24",   # str  in 'Date' Textbox component
-        1,  # int | float (numeric value between 1 and 4) in 'n_weeks' Slider component
-        True,   # bool  in 'Use Latest Basic Financials' Checkbox component
-        api_name="/predict"
+    "TSLA",  # str  in 'Ticker' Textbox component
+    "2024-06-24",  # str  in 'Date' Textbox component
+    1,  # int | float (numeric value between 1 and 4) in 'n_weeks' Slider component
+    True,  # bool  in 'Use Latest Basic Financials' Checkbox component
+    api_name="/predict"
 )
 
 
@@ -135,4 +160,8 @@ cleaned_data["quantitative_data"]["risk_metrics"]["volatility"] = volatility
 with open('cleaned_stock_data.json', 'w') as file:
     json.dump(cleaned_data, file, indent=4)
 
-print(f"数据清理完成，已写入cleaned_stock_data.json文件。")
+company_name = cleaned_data["qualitative_data"]["company_info"]["name"]
+month = datetime.strptime("2024-06-24", "%Y-%m-%d").strftime("%B")
+save_to_postgresql(cleaned_data, company_name, month)
+
+print(f"数据清理完成，已写入cleaned_stock_data.json文件，并保存到PostgreSQL数据库。")
