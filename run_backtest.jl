@@ -22,7 +22,6 @@ end
 # Main execution
 data = load_data("example.json")
 backtester = Backtester(sample_strategy, data)
-backtester.run()
 results = backtester.run()  # Call the run method to get results
 
 println("Total Backtest Results: ", results)
