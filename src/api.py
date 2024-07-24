@@ -8,27 +8,9 @@ result = client.predict(
 		True,	# bool  in 'Use Latest Basic Financials' Checkbox component
 		api_name="/predict"
 )
-print(result)
 
-
-
-
-import json
-import numpy as np
-from datetime import datetime
-from textblob import TextBlob
-import re
-
-import json
-import numpy as np
-from datetime import datetime
-from textblob import TextBlob
-import re
-
-
-# 读取原始JSON文件
-with open('info.json', 'r') as file:
-    data = json.load(file)
+# Use the API result directly
+data = result
     
 
 def calculate_volatility(price_data, window=None):
