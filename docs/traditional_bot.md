@@ -88,6 +88,26 @@ Constraints are the conditions that the trading bot must satisfy while making de
 
 **Objective Functions**
 
+1. **Maximizing Returns**: 
+   \[
+   \text{Maximize } R_T = \sum_{t=1}^{T} R_t
+   \]
+
+2. **Minimizing Risk**: 
+   \[
+   \text{Minimize } \text{Var}(R) \quad \text{where } \text{Var}(R) = \frac{1}{T-1} \sum_{t=1}^{T} (R_t - \bar{R})^2
+   \]
+
+3. **Sharpe Ratio Maximization**: 
+   \[
+   \text{Maximize } S = \frac{E[R] - R_f}{\sigma_R}
+   \]
+
+4. **Custom Objectives**: 
+   \[
+   \text{Maximize } \text{Custom Objective}
+   \]
+
 The objective function defines the goal of the trading bot typically focused on maximizing returns or minimizing risks. It is a mathematical expression that the trading bot seeks to optimize.
 
 1. **Maximizing Returns**
