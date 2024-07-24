@@ -55,19 +55,31 @@ To integrate sentiment analysis, we can modify the traditional optimization func
    \]
    where \( \gamma \) is a weight that reflects the contribution of sentiment to the expected return.
 
-## Feasibility Analysis
+## Variable Definitions
+
+- \( R_T \): Total returns over the time period \( T \).
+- \( R_t \): Returns at time \( t \).
+- \( \bar{R} \): Average returns over the time period.
+- \( S_t \): Sentiment score at time \( t \).
+- \( \alpha \): Weight that determines the influence of sentiment on returns.
+- \( \text{Var}(R) \): Variance of returns.
+- \( R_f \): Risk-free rate.
+- \( \sigma_R \): Standard deviation of returns.
+- \( E[R] \): Expected returns.
+- \( \beta \): Weight that adjusts the impact of sentiment on risk.
+- \( \gamma \): Weight that reflects the contribution of sentiment to the expected return.
 
 The following data from `example.json` supports the feasibility of the optimization functions:
 
-1. **Market Capitalization**: The market capitalization of `2296700.17` is available in `quantitative_data` -> `company_info` -> `market_cap`, which can be used in return calculations.
+1. **Market Capitalization**: The market capitalization of `2296700.17` is available in `quantitative_data` -> `company_info` -> `market_cap`, which can be used in return calculations. This represents the total market value of the company's outstanding shares.
 
-2. **Sentiment Scores**: Sentiment scores are available from `qualitative_data` -> `sentiment_analysis`, providing insights into market mood that can be integrated into the optimization functions.
+2. **Sentiment Scores**: Sentiment scores are available from `qualitative_data` -> `sentiment_analysis`, providing insights into market mood that can be integrated into the optimization functions. These scores reflect the positive or negative sentiment derived from news headlines.
 
-3. **Stock Price Movement**: Historical stock price data is available in `quantitative_data` -> `stock_price_movement`, which can be used to derive returns and assess risk.
+3. **Stock Price Movement**: Historical stock price data is available in `quantitative_data` -> `stock_price_movement`, which can be used to derive returns and assess risk. This includes opening and closing prices over specified periods.
 
-4. **Financial Metrics**: Various financial metrics such as asset turnover, current ratio, and return on equity are available in `quantitative_data` -> `financial_metrics`, which can help in evaluating the company's performance.
+4. **Financial Metrics**: Various financial metrics such as asset turnover, current ratio, and return on equity are available in `quantitative_data` -> `financial_metrics`, which can help in evaluating the company's performance. These metrics provide insights into the company's operational efficiency and financial health.
 
-5. **Risk Metrics**: The volatility of `0.2157` is available in `quantitative_data` -> `risk_metrics`, which can be used in risk calculations.
+5. **Risk Metrics**: The volatility of `0.2157` is available in `quantitative_data` -> `risk_metrics`, which can be used in risk calculations. Volatility measures the degree of variation of trading prices over time, indicating the level of risk associated with the asset.
 
 Overall, while some variables require simulation or derivation, the available data provides a solid foundation for implementing the optimization functions effectively.
 
