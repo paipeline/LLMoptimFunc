@@ -16,7 +16,7 @@ struct Backtester
         return self.results  # Return results after running
     end
 
-    function execute_trade(signal::String, current_data::DataFrame)
+    function execute_trade(self::Backtester, signal::String, current_data::DataFrame)
         if signal == "buy"
             return current_data.return  # Assuming 'return' is the key for returns
         elseif signal == "sell"
