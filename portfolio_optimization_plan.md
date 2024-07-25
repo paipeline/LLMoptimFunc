@@ -120,3 +120,34 @@ optimal_portfolio = optimize_portfolio(
 ### Expected Outcomes
 - A set of optimal asset weights that align with the defined objectives and constraints.
 - Insights into the trade-offs between risk and return for the selected assets.
+## Price Prediction Plan
+
+### Objective
+To predict the future price of an asset based on its financial metrics and market conditions.
+
+### Variables
+- \( \text{Market Cap} \) (\( MC \)): The market capitalization of the asset.
+- \( \text{Asset Turnover} \) (\( AT \)): The asset turnover ratio.
+- \( \text{Current Ratio} \) (\( CR \)): The current ratio indicating liquidity.
+- \( \text{Debt to Equity} \) (\( DE \)): The debt-to-equity ratio.
+- \( \text{Return on Equity} \) (\( ROE \)): The return on equity.
+- \( \text{Volatility} \) (\( V \)): The volatility of the asset.
+
+### Mathematical Model
+The prediction model can be represented as:
+\[
+P = \beta_0 + \beta_1 \cdot MC + \beta_2 \cdot AT + \beta_3 \cdot CR + \beta_4 \cdot DE + \beta_5 \cdot ROE + \beta_6 \cdot V
+\]
+Where:
+- \( P \) is the predicted future price.
+- \( \beta_0 \) is the intercept of the regression model.
+- \( \beta_1, \beta_2, \beta_3, \beta_4, \beta_5, \beta_6 \) are the coefficients representing the impact of each variable on the future price.
+
+### Data Collection
+Gather historical data for the variables and corresponding future prices to train the model.
+
+### Model Training
+Use the historical data to estimate the coefficients (\( \beta \)) of the model using a regression analysis technique.
+
+### Prediction
+Once the model is trained, use the current values of the variables to predict the future price.
