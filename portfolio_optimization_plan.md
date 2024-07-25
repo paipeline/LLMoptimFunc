@@ -75,12 +75,12 @@ Using these variables, we can formulate a quadratic optimization problem to find
 
 To optimize the portfolio, we can define a function that takes the following parameters:
 
-- **Market Capitalization**: 2296700.17 (in millions)
-- **Asset Turnover**: 0.8006
-- **Current Ratio**: 2.1491
-- **Debt to Equity**: 0.0463
-- **Return on Equity**: 0.2952
-- **Volatility**: 0.2157
+- **market_cap**: 2296700.17 (in millions)
+- **asset_turnover**: 0.8006
+- **current_ratio**: 2.1491
+- **debt_to_equity**: 0.0463
+- **return_on_equity**: 0.2952
+- **volatility**: 0.21572461094858805
 
 ### Function Definition
 
