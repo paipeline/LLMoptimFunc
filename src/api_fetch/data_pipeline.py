@@ -55,7 +55,7 @@ def main():
     if not historical_prices:
         print("No historical prices available. Exiting.")
         return
-    # predicted_returns = predict_returns(historical_prices)
+    predicted_returns = predict_returns(historical_prices) if historical_prices else []
     save_predictions(predicted_returns, "data/predicted_returns.json")
 
 if __name__ == "__main__":
