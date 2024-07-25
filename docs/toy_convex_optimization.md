@@ -81,6 +81,32 @@ Imagine you want to minimize the cost of producing a product while ensuring that
   - Quality must be above a certain threshold \( Q(x) \geq Q_{min} \)
   - Production capacity must not be exceeded \( x \leq x_{max} \)
 
-## Conclusion
+## Data Extraction Plan
+
+To perform monthly portfolio optimization, we need to extract relevant financial data. The following variables will be collected:
+
+1. **Assets**: The list of assets to be included in the portfolio (e.g., stocks, bonds).
+2. **Expected Returns (\( \mu \))**: The expected monthly returns for each asset.
+3. **Covariance Matrix (\( \Sigma \))**: The covariance matrix representing the risk associated with the assets.
+4. **Sentiment Scores (\( S \))**: The sentiment scores for each asset, which can be derived from news articles or social media.
+5. **Risk-Free Rate (\( R_f \))**: The risk-free rate for the period, typically based on government bond yields.
+
+### Timeframe
+
+The data extraction will focus on the previous 12 months to calculate the expected returns and covariance matrix. The monthly data points will be used to perform the optimization at the end of each month.
+
+### Data Sources
+
+1. **Historical Prices**: Fetch historical price data for each asset from a financial API (e.g., Alpha Vantage).
+2. **Financial Metrics**: Retrieve financial metrics for each asset to calculate expected returns.
+3. **Sentiment Analysis**: Use sentiment analysis tools to derive sentiment scores from relevant news articles or social media posts.
+
+### Example Variables
+
+- **Assets**: `['AAPL', 'MSFT', 'GOOGL']`
+- **Expected Returns**: `mu = [0.01, 0.015, 0.012]` (monthly returns)
+- **Covariance Matrix**: `Sigma = [[0.0001, 0.00005, 0.00003], [0.00005, 0.0002, 0.00004], [0.00003, 0.00004, 0.00015]]`
+- **Sentiment Scores**: `S = [0.1, 0.2, 0.15]`
+- **Risk-Free Rate**: `R_f = 0.005` (monthly)
 
 Understanding the basics of convex optimization can help in making better decisions in various applications. It allows for efficient problem-solving and can lead to improved outcomes. By leveraging convex optimization techniques, one can optimize resources, reduce costs, and enhance overall performance in decision-making processes.
