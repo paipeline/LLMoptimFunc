@@ -83,6 +83,18 @@ where:
 
 By adjusting the hyperparameters \( \alpha \), \( \beta \), \( \gamma \), and \( \delta \), traders can tailor the optimization function to focus on maximizing returns, minimizing risk, or maximizing the Sharpe ratio with sentiment analysis.
 
+## Understanding the Strategy
+
+When we refer to the "strategy" in the context of the unified optimization function, we are referring to the specific configuration of hyperparameters (\( \alpha \), \( \beta \), \( \gamma \), and \( \delta \)) that define the optimization approach. These hyperparameters determine the relative importance of different components in the objective function, such as returns, sentiment, risk, and the Sharpe ratio.
+
+By adjusting these hyperparameters, you can tailor the optimization strategy to focus on different aspects of portfolio performance. For example:
+- Increasing \( \alpha \) will place more emphasis on sentiment-adjusted returns.
+- Increasing \( \beta \) will place more emphasis on minimizing risk.
+- Increasing \( \gamma \) will place more emphasis on the contribution of sentiment to the expected return.
+- Increasing \( \delta \) will place more emphasis on maximizing the Sharpe ratio.
+
+Thus, the "strategy" is essentially the set of hyperparameters that you choose to optimize the portfolio according to your specific goals and preferences.
+
 ## Proposal for Integration
 
 ### Overview
