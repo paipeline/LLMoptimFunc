@@ -80,15 +80,13 @@ To optimize the portfolio, we can define a function that takes the following par
 - **Current Ratio**: 2.1491
 - **Debt to Equity**: 0.0463
 - **Return on Equity**: 0.2952
-- **Price to Book**: 6.5933
-- **Price to Earnings**: 23.4305
 - **Volatility**: 0.2157
 
 ### Function Definition
 
 ```python
 def optimize_portfolio(market_cap, asset_turnover, current_ratio, debt_to_equity, return_on_equity, price_to_book, price_to_earnings, volatility):
-    # Placeholder for optimization logic
+    # Placeholder for optimization logic using relevant variables
     optimal_weights = {}  # This will hold the optimal weights for each asset
     # Implement optimization logic here
     return optimal_weights
