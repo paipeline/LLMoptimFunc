@@ -12,6 +12,8 @@ def fetch_historical_prices(symbol, outputsize='compact'):
     response = requests.get(url)
     data = response.json()
     if "Time Series (Daily)" not in data:
+        if "Information" in data:
+            raise ValueError(f"Error fetching historical prices for {symbol}: {data['Information']}")
         raise ValueError(f"Error fetching historical prices for {symbol}: {data}")
     with open(f"data/{symbol}_historical_prices.json", "w") as json_file:
         json.dump(data, json_file)
