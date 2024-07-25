@@ -27,7 +27,49 @@ To maximize the expected return of the portfolio while minimizing risk through d
 - **Budget Constraint**: The total investment must equal the available capital.
 - **Weight Constraints**: The sum of asset weights must equal 1 (100% of the portfolio).
 
-## Conclusion
+## Mathematical Formulation of the Optimization Function
+
+The optimization function can be mathematically represented as:
+
+\[
+\text{Maximize } E(R_p) = \sum_{i=1}^{n} w_i \cdot E(R_i)
+\]
+
+Subject to:
+
+1. **Budget Constraint**:
+   \[
+   \sum_{i=1}^{n} w_i = 1
+   \]
+
+2. **Weight Constraints**:
+   \[
+   w_i \geq 0 \quad \forall i
+   \]
+
+3. **Risk Adjustment**:
+   \[
+   \sigma_p^2 = w^T \Sigma w
+   \]
+   Where \( \sigma_p^2 \) is the portfolio variance and \( \Sigma \) is the covariance matrix of asset returns.
+
+4. **Incorporating Financial Metrics**:
+   The expected return can also be adjusted based on financial metrics:
+   \[
+   E(R_i) = \frac{ROE_i}{P/E_i} + \frac{P/B_i}{MarketCap}
+   \]
+   Where:
+   - \( ROE_i \) is the return on equity for asset \( i \).
+   - \( P/E_i \) is the price to earnings ratio for asset \( i \).
+   - \( P/B_i \) is the price to book ratio for asset \( i \).
+   - \( MarketCap \) is the market capitalization of the portfolio.
+
+5. **Volatility Constraint**:
+   \[
+   \text{Volatility} = \sqrt{w^T \Sigma w} \leq \text{Target Volatility}
+   \]
+
+### Conclusion
 Using these variables, we can formulate a quadratic optimization problem to find the optimal asset weights that maximize returns while minimizing risk.
 ## Optimization Function
 
