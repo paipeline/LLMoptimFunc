@@ -6,14 +6,18 @@ from sklearn.linear_model import LinearRegression
 API_KEY = '5U1CT3A3RMC8LJNR'
 
 def fetch_historical_prices(symbol, outputsize='compact'):
-    try:
-        url = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={symbol}&outputsize={outputsize}&apikey={API_KEY}'
+    url = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={symbol}&outputsize={outputsize}&apikey={API_KEY}'
+    response = requests.get(url)
+    data = response.json()
+    with open(f"data/{symbol}_historical_prices.json", "w") as json_file:
+        json.dump(data, json_file)
 
 def fetch_financial_metrics(symbol):
-    try:
-        url = f'https://www.alphavantage.co/query?function=OVERVIEW&symbol={symbol}&apikey={API_KEY}'
-    except Exception as e:
-        print(f"Error fetching financial metrics for {symbol}: {e}")
+    url = f'https://www.alphavantage.co/query?function=OVERVIEW&symbol={symbol}&apikey={API_KEY}'
+    response = requests.get(url)
+    data = response.json()
+    with open(f"data/{symbol}_financial_metrics.json", "w") as json_file:
+        json.dump(data, json_file)
 
 def load_data(file_path):
     with open(file_path, "r") as file:
