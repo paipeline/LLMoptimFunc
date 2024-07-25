@@ -1,12 +1,12 @@
-# Simple Convex Optimization
+# Simple Quadratic Optimization for Maximizing Returns
 
 ## Introduction
 
-Simple convex optimization focuses on minimizing a single convex function with fewer constraints and data requirements. This approach is useful for quick analyses and scenarios where data is limited.
+Simple quadratic optimization focuses on maximizing returns through a quadratic function. This approach is useful for scenarios where the relationship between variables is nonlinear and can be modeled effectively with a quadratic function.
 
 ## Basic Convex Optimization Problem
 
-A basic convex optimization problem can be formulated as follows:
+A basic quadratic optimization problem can be formulated as follows:
 
 \[
 \begin{aligned}
