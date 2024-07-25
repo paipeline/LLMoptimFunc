@@ -29,3 +29,37 @@ To maximize the expected return of the portfolio while minimizing risk through d
 
 ## Conclusion
 Using these variables, we can formulate a quadratic optimization problem to find the optimal asset weights that maximize returns while minimizing risk.
+## Optimization Function
+
+To optimize the portfolio, we can define a function that takes the following parameters:
+
+- **Market Capitalization**: 2296700.17
+- **Asset Turnover**: 0.8006
+- **Current Ratio**: 2.1491
+- **Debt to Equity**: 0.0463
+- **Return on Equity**: 0.2952
+- **Price to Book**: 6.5933
+- **Price to Earnings**: 23.4305
+- **Volatility**: 0.21572461094858805
+
+### Function Definition
+
+```python
+def optimize_portfolio(market_cap, asset_turnover, current_ratio, debt_to_equity, return_on_equity, price_to_book, price_to_earnings, volatility):
+    # Placeholder for optimization logic
+    optimal_weights = {}  # This will hold the optimal weights for each asset
+    # Implement optimization logic here
+    return optimal_weights
+
+# Example usage
+optimal_portfolio = optimize_portfolio(
+    market_cap=2296700.17,
+    asset_turnover=0.8006,
+    current_ratio=2.1491,
+    debt_to_equity=0.0463,
+    return_on_equity=0.2952,
+    price_to_book=6.5933,
+    price_to_earnings=23.4305,
+    volatility=0.21572461094858805
+)
+```
