@@ -95,7 +95,27 @@ By adjusting these hyperparameters, you can tailor the optimization strategy to 
 
 Thus, the "strategy" is essentially the set of hyperparameters that you choose to optimize the portfolio according to your specific goals and preferences.
 
-## Proposal for Integration
+## Data Integration for Convex Optimization
+
+To effectively integrate the fetched data into the convex optimization process, we will follow these steps:
+
+1. **Data Fetching**:
+   - Use `src/data_pipeline.py` to fetch historical prices and financial metrics from the Alpha Vantage API.
+   - Save the fetched data in the `data` directory.
+
+2. **Machine Learning Predictions**:
+   - The `src/data_pipeline.py` will also handle machine learning predictions.
+   - Load the fetched data and use machine learning models to predict expected returns, risk (covariance matrix), and sentiment scores.
+   - Save the predictions in the `data` directory.
+
+3. **Convex Optimization**:
+   - Update `optim.jl` to load the machine learning predictions.
+   - Formulate the convex optimization problem using the predicted parameters.
+   - Solve the optimization problem to determine the optimal portfolio weights.
+
+### Data Storage
+
+The fetched data and predictions will be stored in the `data` directory as JSON files. This format allows for easy access and manipulation of the data during the optimization process.
 
 ### Overview
 
