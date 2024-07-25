@@ -103,16 +103,16 @@ The data extraction will focus on the previous 12 months to calculate the expect
 
 ### Example Variables and Data Sources
 
-- **Assets**: `['AAPL', 'MSFT', 'GOOGL']`
+- **Assets**: `['GOOGL']`
   - **Source**: You can obtain a list of assets from financial market data providers such as Yahoo Finance, Alpha Vantage, or Bloomberg.
 
-- **Expected Returns**: `mu = [0.01, 0.015, 0.012]` (monthly returns)
+- **Expected Returns**: `mu = [0.13636363636363635]` (monthly returns)
   - **Source**: Expected returns can be calculated using historical price data. You can fetch historical prices from APIs like Alpha Vantage or Yahoo Finance and compute the average monthly returns.
 
-- **Covariance Matrix**: `Sigma = [[0.0001, 0.00005, 0.00003], [0.00005, 0.0002, 0.00004], [0.00003, 0.00004, 0.00015]]`
+- **Covariance Matrix**: `Sigma = [[0.0]]`
   - **Source**: The covariance matrix can be derived from historical return data. Use the historical returns of the assets to calculate the covariance using statistical libraries in Python (e.g., NumPy or Pandas).
 
-- **Sentiment Scores**: `S = [0.1, 0.2, 0.15]`
+- **Sentiment Scores**: `S = [0.0, -0.05, 0.4, 0.4, 0.0, 0.0, 0.0, 0.0, 0.2, -0.15, -0.125, 0.13636363636363635, 0.0, -0.2277777777777778, 0.25, 0.5, 0.7, 0.0, 0.0]`
   - **Source**: Sentiment scores can be obtained through sentiment analysis of news articles or social media posts related to the assets. Tools like Natural Language Processing (NLP) libraries (e.g., NLTK, TextBlob) can be used to analyze text data.
 
 - **Risk-Free Rate**: `R_f = 0.005` (monthly)
