@@ -14,7 +14,65 @@ Convex optimization is a method used to find the best solution from a set of pos
 
 4. **Convex Set**: A set is convex if, for any two points within the set, the line segment connecting them is also within the set. This property is crucial for ensuring that optimization problems can be solved efficiently.
 
-## Simple Example
+## Detailed Example: Portfolio Optimization
+
+### Introduction
+
+In this section, we will explore a more detailed example of portfolio optimization using convex optimization principles. The goal is to maximize the expected returns of a portfolio while managing the associated risks.
+
+### Portfolio Optimization Problem
+
+A portfolio optimization problem can be formulated as follows:
+
+\[
+\begin{aligned}
+& \underset{w}{\text{maximize}}
+& & \mu^T w \\
+& \text{subject to}
+& & \mathbf{1}^T w = 1 \\
+& & & w \geq 0
+\end{aligned}
+\]
+
+where:
+- \( w \) is the vector of portfolio weights.
+- \( \mu \) is the vector of expected returns for each asset.
+
+### Example: Portfolio with Three Assets
+
+1. **Define Expected Returns**: Assume we have three assets with the following expected returns:
+   - Asset 1: \( \mu_1 = 0.1 \) (10% expected return)
+   - Asset 2: \( \mu_2 = 0.2 \) (20% expected return)
+   - Asset 3: \( \mu_3 = 0.15 \) (15% expected return)
+
+2. **Formulate the Optimization Problem**:
+   - Objective: Maximize returns \( R = 0.1w_1 + 0.2w_2 + 0.15w_3 \)
+   - Constraints:
+     - \( w_1 + w_2 + w_3 = 1 \) (total investment must equal 100%)
+     - \( w_1, w_2, w_3 \geq 0 \) (no short selling)
+
+3. **Risk Consideration**: To incorporate risk, we can use the variance of the portfolio returns. The variance can be calculated using the covariance matrix \( \Sigma \) of the asset returns.
+
+4. **Modified Optimization Problem**:
+   - Objective: Maximize returns while minimizing risk:
+   \[
+   \begin{aligned}
+   & \underset{w}{\text{maximize}}
+   & & \mu^T w - \frac{\lambda}{2} w^T \Sigma w \\
+   & \text{subject to}
+   & & \mathbf{1}^T w = 1 \\
+   & & & w \geq 0
+   \end{aligned}
+   \]
+   where \( \lambda \) is a risk aversion parameter.
+
+5. **Solving the Optimization Problem**: Use a numerical optimization method (e.g., quadratic programming) to find the optimal weights \( w \).
+
+### Conclusion
+
+This detailed example illustrates the principles of portfolio optimization using convex optimization techniques. By maximizing expected returns while managing risk, investors can make informed decisions about asset allocation.
+
+Understanding these concepts is crucial for effective portfolio management and can lead to improved financial outcomes.
 
 Imagine you want to minimize the cost of producing a product while ensuring that you meet certain quality standards. This can be represented as a convex optimization problem:
 
