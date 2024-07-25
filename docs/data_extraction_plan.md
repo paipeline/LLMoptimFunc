@@ -7,34 +7,42 @@ To effectively optimize our portfolio using the unified optimization function, w
 ## Data Requirements
 
 ### 1. Historical Prices
+- **Data Needed**: 5-10 years of daily historical prices for each asset.
 - **Description**: Daily historical prices for each asset.
 - **Time Span**: At least 5-10 years.
 - **Assets**: 30-50 diverse assets.
 
 ### 2. Financial Metrics
+- **Data Needed**: Latest financial metrics for each company, including at least 5 key metrics.
 - **Description**: Key financial metrics for each company.
 - **Examples**: P/E ratio, EPS, revenue, net income, etc.
 
 ### 3. Company Overviews
+- **Data Needed**: Overview data for each company, including at least 5 key attributes.
 - **Description**: General information about each company.
 - **Examples**: Industry, sector, market cap, etc.
 
 ### 4. Dividends
+- **Data Needed**: Historical dividend data for each asset over the last 5-10 years.
 - **Description**: Historical dividend data for each asset.
 - **Time Span**: At least 5-10 years.
 
 ### 5. Earnings Data
+- **Data Needed**: Historical earnings data for each company over the last 5-10 years.
 - **Description**: Historical earnings data for each company.
 - **Time Span**: At least 5-10 years.
 
 ### 6. Sentiment Data
+- **Data Needed**: Sentiment scores from multiple sources, covering at least 1 year of data.
 - **Description**: Sentiment scores from multiple sources.
 - **Sources**: News articles, social media, analyst reports, etc.
 
 ### 7. Real-Time Quotes
+- **Data Needed**: Real-time quotes for each asset, updated at least every minute.
 - **Description**: Real-time price quotes for each asset.
 
 ### 8. Technical Indicators
+- **Data Needed**: Technical indicators for each asset, calculated over the last 5 years.
 - **Description**: Various technical indicators for each asset.
 - **Examples**: Moving averages, RSI, MACD, etc.
 
