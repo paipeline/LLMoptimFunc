@@ -38,6 +38,14 @@ To effectively optimize our portfolio using the unified optimization function, w
 - **Description**: Various technical indicators for each asset.
 - **Examples**: Moving averages, RSI, MACD, etc.
 
+## Yahoo Finance API Call Limits
+
+The Yahoo Finance API has the following call limits:
+
+- **Rate Limit**: 2 requests per second.
+- **Daily Limit**: 1000 requests per day.
+- **Data Limits**: Limited to 200 data points per request for historical data.
+
 ## APIs for Data Extraction
 
 Several APIs can be utilized to gather the necessary financial data for our optimization function. Below are the recommended APIs:
