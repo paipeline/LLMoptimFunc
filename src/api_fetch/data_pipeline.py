@@ -11,9 +11,8 @@ def fetch_historical_prices(symbol, outputsize='full'):
     url = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={symbol}&outputsize=compact&apikey={API_KEY}'
     response = requests.get(url)
     data = response.json()
-    if "Time Series (Daily)" not in data:
-        if "Information" in data:
-            print(f"Warning: {data['Information']}")
+    if "Time Series (Daily)" not in data or "Information" in data:
+        print(f"Warning: {data.get('Information', 'Unknown error occurred.')}")
             return []  # Return an empty list for invalid data
         raise ValueError(f"Error fetching historical prices for {symbol}: {data}")
     with open(f"data/{symbol}_historical_prices.json", "w") as json_file:
