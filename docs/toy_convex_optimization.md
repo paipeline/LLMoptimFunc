@@ -81,7 +81,62 @@ Imagine you want to minimize the cost of producing a product while ensuring that
   - Quality must be above a certain threshold \( Q(x) \geq Q_{min} \)
   - Production capacity must not be exceeded \( x \leq x_{max} \)
 
-## Data Extraction Plan
+## Data Extraction Plan Using Financial Metrics
+
+To perform monthly portfolio optimization, we need to extract relevant financial data. The following variables will be collected based on the financial metrics available in the dataset:
+
+1. **Assets**: The list of assets to be included in the portfolio (e.g., stocks, bonds).
+   - Example: `['GOOGL']`
+
+2. **Expected Returns (\( \mu \))**: The expected monthly returns for each asset.
+   - This can be calculated using historical price data. For example, if the stock price movement shows a decrease from $176.92 to $176.4, the return can be calculated as:
+     \[
+     \text{Return} = \frac{\text{Closing Price} - \text{Opening Price}}{\text{Opening Price}} = \frac{176.4 - 176.92}{176.92} \approx -0.0029
+     \]
+
+3. **Covariance Matrix (\( \Sigma \))**: The covariance matrix representing the risk associated with the assets.
+   - This can be derived from historical return data. Use the historical returns of the assets to calculate the covariance using statistical libraries in Python (e.g., NumPy or Pandas).
+
+4. **Sentiment Scores (\( S \))**: The sentiment scores for each asset, which can be derived from news articles or social media.
+   - Example: Sentiment scores from the qualitative data can be averaged to represent the overall sentiment for the asset.
+
+5. **Risk-Free Rate (\( R_f \))**: The risk-free rate for the period, typically based on government bond yields.
+   - Example: Use a standard value such as `R_f = 0.005` (monthly).
+
+6. **Financial Metrics**: Additional financial metrics that can be used to inform the optimization process:
+   - **Asset Turnover**: `0.8006`
+   - **Current Ratio**: `2.1491`
+   - **Debt to Equity**: `0.0463`
+   - **Return on Equity**: `0.2952`
+   - **Price to Book**: `6.5933`
+   - **Price to Earnings**: `23.4305`
+
+### Timeframe
+
+The data extraction will focus on the previous 12 months to calculate the expected returns and covariance matrix. The monthly data points will be used to perform the optimization at the end of each month.
+
+### Data Sources
+
+1. **Historical Prices**: Fetch historical price data for each asset from a financial API (e.g., Alpha Vantage).
+2. **Financial Metrics**: Retrieve financial metrics for each asset to calculate expected returns and assess risk.
+3. **Sentiment Analysis**: Use sentiment analysis tools to derive sentiment scores from relevant news articles or social media posts.
+
+### Example Variables and Data Sources
+
+- **Assets**: `['GOOGL']`
+- **Expected Returns**: `mu = [calculated_return]` (monthly returns)
+- **Covariance Matrix**: `Sigma = [[calculated_covariance]]`
+- **Sentiment Scores**: `S = [average_sentiment_score]`
+- **Risk-Free Rate**: `R_f = 0.005` (monthly)
+- **Financial Metrics**: 
+  - Asset Turnover: `0.8006`
+  - Current Ratio: `2.1491`
+  - Debt to Equity: `0.0463`
+  - Return on Equity: `0.2952`
+  - Price to Book: `6.5933`
+  - Price to Earnings: `23.4305`
+
+Understanding these financial metrics and their implications can enhance the portfolio optimization process, leading to more informed investment decisions.
 
 To perform monthly portfolio optimization, we need to extract relevant financial data. The following variables will be collected:
 
