@@ -47,7 +47,10 @@ def main():
     fetch_historical_prices(symbol)
     fetch_financial_metrics(symbol)
 
-    historical_prices = load_data(f"data/{symbol}_historical_prices.json")
+    historical_prices = load_data(f"data/{symbol}_historical_prices.json") if os.path.exists(f"data/{symbol}_historical_prices.json") else None
+    if historical_prices is None:
+        print("No historical prices available. Exiting.")
+        return
     predicted_returns = predict_returns(historical_prices)
     save_predictions(predicted_returns, "data/predicted_returns.json")
 
