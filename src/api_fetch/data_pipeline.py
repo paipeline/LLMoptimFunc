@@ -43,7 +43,7 @@ def predict_returns(prices):
 
 def save_predictions(predictions, file_path):
     with open(file_path, "w") as file:
-        json.dump(predictions.tolist(), file)
+        json.dump(predictions, file)  # Directly use the list
 
 def main():
     # Example usage
