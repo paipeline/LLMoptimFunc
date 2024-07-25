@@ -103,3 +103,20 @@ optimal_portfolio = optimize_portfolio(
     volatility=0.21572461094858805
 )
 ```
+## Draft Plan for Quadratic Portfolio Optimization
+
+### Objectives
+- To maximize the return on equity while minimizing risk.
+- To ensure financial stability through constraints on liquidity and debt-to-equity ratios.
+
+### Methodology
+1. **Data Collection**: Gather quantitative data from `src/example.json`.
+2. **Define Variables**: Identify relevant variables such as market capitalization, asset turnover, current ratio, debt-to-equity, and volatility.
+3. **Formulate the Objective Function**: Create a mathematical representation of the optimization goal.
+4. **Set Constraints**: Establish limits for total investment, liquidity, and debt-to-equity ratios.
+5. **Optimization Process**: Use quadratic programming techniques to find the optimal asset weights.
+6. **Analysis of Results**: Evaluate the outcomes and adjust the model as necessary.
+
+### Expected Outcomes
+- A set of optimal asset weights that align with the defined objectives and constraints.
+- Insights into the trade-offs between risk and return for the selected assets.
