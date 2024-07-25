@@ -18,16 +18,16 @@ A basic quadratic optimization problem can be formulated as follows:
 where:
 - \( f(x) \) is the objective function, which is convex.
 
-## Example: Simple Linear Optimization
+## Example: Simple Quadratic Optimization
 
-In a simple linear optimization scenario, we can minimize a linear function subject to a single constraint.
+In a simple quadratic optimization scenario, we can maximize a quadratic function subject to a single constraint.
 
 ### Problem Formulation
 
-Minimize the function:
+Maximize the function:
 
 \[
-f(x) = ax + b
+f(x) = ax^2 + bx + c
 \]
 
 Subject to the constraint:
