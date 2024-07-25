@@ -34,6 +34,8 @@ def load_data(file_path):
 def predict_returns(prices):
     X = np.arange(len(prices)).reshape(-1, 1)
     y = np.array(prices)
+    if len(prices) == 0:
+        return []  # Return an empty list for invalid data
     model = LinearRegression().fit(X, y)
     return model.predict(X)
 
