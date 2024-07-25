@@ -14,7 +14,7 @@ def fetch_historical_prices(symbol, outputsize='full'):
     if "Time Series (Daily)" not in data:
         if "Information" in data:
             print(f"Warning: {data['Information']}")
-            return None  # Return None or handle as needed
+            return []  # Return an empty list for invalid data
         raise ValueError(f"Error fetching historical prices for {symbol}: {data}")
     with open(f"data/{symbol}_historical_prices.json", "w") as json_file:
         json.dump(data, json_file)
@@ -47,8 +47,8 @@ def main():
     fetch_historical_prices(symbol)
     fetch_financial_metrics(symbol)
 
-    historical_prices = load_data(f"data/{symbol}_historical_prices.json") if os.path.exists(f"data/{symbol}_historical_prices.json") else None
-    if historical_prices is None:
+    historical_prices = load_data(f"data/{symbol}_historical_prices.json") if os.path.exists(f"data/{symbol}_historical_prices.json") else []
+    if not historical_prices:
         print("No historical prices available. Exiting.")
         return
     predicted_returns = predict_returns(historical_prices)
