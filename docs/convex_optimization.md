@@ -23,7 +23,48 @@ where:
 - \( g_i(x) \) are the inequality constraint functions, which are convex.
 - \( h_j(x) \) are the equality constraint functions, which are affine (i.e., linear).
 
-## Integrating API Data and Machine Learning with Convex Optimization
+## Toy Portfolio Optimization
+
+### Introduction
+
+This section presents a simplified example of portfolio optimization using convex optimization principles. The goal is to maximize returns while managing risk.
+
+### Portfolio Optimization Problem
+
+A portfolio optimization problem can be formulated as follows:
+
+\[
+\begin{aligned}
+& \underset{w}{\text{maximize}}
+& & \mu^T w \\
+& \text{subject to}
+& & \mathbf{1}^T w = 1 \\
+& & & w \geq 0
+\end{aligned}
+\]
+
+where:
+- \( w \) is the vector of portfolio weights.
+- \( \mu \) is the vector of expected returns.
+
+### Example: Simple Portfolio Optimization
+
+1. **Define Expected Returns**: Assume we have three assets with expected returns:
+   - Asset 1: \( \mu_1 = 0.1 \)
+   - Asset 2: \( \mu_2 = 0.2 \)
+   - Asset 3: \( \mu_3 = 0.15 \)
+
+2. **Formulate the Optimization Problem**:
+   - Objective: Maximize returns \( R = 0.1w_1 + 0.2w_2 + 0.15w_3 \)
+   - Constraints:
+     - \( w_1 + w_2 + w_3 = 1 \)
+     - \( w_1, w_2, w_3 \geq 0 \)
+
+3. **Solve the Optimization Problem**: Use a simple optimization method (e.g., gradient ascent) to find the optimal weights.
+
+### Conclusion
+
+This toy example illustrates the basic principles of portfolio optimization using convex optimization techniques. By maximizing expected returns while adhering to constraints, one can make informed investment decisions.
 
 Combining machine learning with convex optimization involves using machine learning models to predict parameters or constraints that are then used in a convex optimization problem. This approach leverages the predictive power of machine learning and the efficiency of convex optimization.
 
