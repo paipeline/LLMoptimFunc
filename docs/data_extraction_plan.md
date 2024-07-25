@@ -38,6 +38,16 @@ To effectively optimize our portfolio using the unified optimization function, w
 - **Description**: Various technical indicators for each asset.
 - **Examples**: Moving averages, RSI, MACD, etc.
 
+## APIs for Data Extraction
+
+Several APIs can be utilized to gather the necessary financial data for our optimization function. Below are the recommended APIs:
+
+- **Yahoo Finance API**: Provides historical prices, financial metrics, company overviews, dividends, and real-time quotes.
+- **Alpha Vantage API**: Offers historical prices, financial metrics, technical indicators, and real-time quotes.
+- **Finnhub API**: Supplies real-time quotes, historical prices, financial metrics, and sentiment data from news articles.
+- **IEX Cloud API**: Delivers historical prices, financial metrics, and real-time quotes.
+- **Polygon.io API**: Provides real-time quotes, historical prices, and financial metrics.
+
 ## Data Extraction Steps
 
 ### Step 1: Fetch Historical Prices
