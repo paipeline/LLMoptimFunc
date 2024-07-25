@@ -13,7 +13,7 @@ def fetch_historical_prices(symbol, outputsize='full'):
     data = response.json()
     if "Time Series (Daily)" not in data or "Information" in data:
         print(f"Warning: {data.get('Information', 'Unknown error occurred.')}")
-            return []  # Return an empty list for invalid data
+        return []  # Return an empty list for invalid data
         raise ValueError(f"Error fetching historical prices for {symbol}: {data}")
     with open(f"data/{symbol}_historical_prices.json", "w") as json_file:
         json.dump(data, json_file)
