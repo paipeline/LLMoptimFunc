@@ -36,7 +36,7 @@ function evaluate_model(λ::Float64)
     optimize!(model)
 
     # Return the maximized value
-    return objective_value(model)
+    return objective_value(model), percentages
 end
 
 # Hyperparameter tuning using grid search
@@ -49,7 +49,7 @@ function tune_lambda()
 
     # Perform grid search
     for λ in lambda_values
-        result = evaluate_model(λ)
+        result, _ = evaluate_model(λ)
         results[λ] = result
     end
 
@@ -72,10 +72,16 @@ objective_values = collect(values(results))
 
 p = plot(lambda_values, objective_values, label="Optimal Value Curve", xlabel="Lambda (λ)", ylabel="Maximized Value", title="Optimal Value vs Individual Asset Values", legend=:topright)
 for i in 1:length(expected_returns)
-    asset_value = [evaluate_model(λ) for λ in lambda_values]  # Calculate asset values for each lambda
+    asset_values = [evaluate_model(λ)[1] for λ in lambda_values]  # Calculate asset values for each lambda
+    asset_allocations = [evaluate_model(λ)[2] for λ in lambda_values]  # Calculate asset allocations for each lambda
     plot!(lambda_values, asset_value, label="Asset $i Value", linestyle=:dash)
 end
 scatter!(p, [optimal_lambda], [results[optimal_lambda]], label="Best Lambda", color=:red, markersize=8)
+
+# Plot asset allocations for the best lambda
+best_allocation = asset_allocations[argmax(lambda_values .== optimal_lambda)]
+bar_labels = ["Asset $i" for i in 1:length(best_allocation)]
+bar(bar_labels, best_allocation, label="Best Asset Allocation", color=:blue, alpha=0.5)
 
 println("Optimal Lambda: ", optimal_lambda)
 println("Maximized Value at Optimal Lambda: ", results[optimal_lambda])
