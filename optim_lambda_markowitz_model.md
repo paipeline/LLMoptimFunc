@@ -35,3 +35,10 @@ The tradeoff variable \( \lambda \) plays a crucial role in the classical Markow
 
 ## Conclusion
 Optimizing the tradeoff variable \( \lambda \) is essential for enhancing the performance of the classical Markowitz model. By employing machine learning methods such as grid search and Bayesian optimization, investors can identify the most suitable \( \lambda \) that aligns with their risk-return preferences, leading to better investment decisions.
+## Installation Instructions
+Before running the `optim_lambda_markowitz_model.jl` script, ensure that you have the required packages installed. You can install the `BayesianOptimization` package by running the following command in the Julia REPL:
+
+```julia
+import Pkg
+Pkg.add("BayesianOptimization")
+```
