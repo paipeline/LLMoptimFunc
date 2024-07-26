@@ -34,6 +34,14 @@ optimize!(model)
 # Get the maximized value
 maximized_value = objective_value(model)
 
+# Check if weights are non-negative
+if any(value(weights) .< 0)
+    println("Warning: Some asset weights are negative.")
+end
+
+# Print the sum of weights
+println("Sum of Asset Weights: ", sum(value(weights)))
+
 # Return the maximized value
 println("Maximized Value: ", maximized_value)
 println("Optimized Asset Weights:")
