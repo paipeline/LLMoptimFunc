@@ -10,6 +10,9 @@ To perform the classical Markowitz model optimization, the following data is req
 5. **Budget Constraint**: A constraint ensuring that the total allocation of funds equals 1.
 
 ## Variables
+
+### Expected Returns Calculation
+The expected returns for each asset are calculated as the average return over all previous dates. This provides a single value representing the anticipated performance of each asset based on historical data.
 In the context of the classical Markowitz model, the following variables are defined:
 
 - \( x[i] \): The allocation of funds to asset \( i \) in the portfolio, where \( x[i] \geq 0 \).
