@@ -31,3 +31,12 @@ maximized_value = objective_value(model)
 
 # Return the maximized value
 println("Maximized Value: ", maximized_value)
+println("Optimized Asset Weights:")
+for i in 1:length(weights)
+    println("Asset ", i, " (", expected_returns_df.Ticker[i], "): ", value(weights[i]))
+end
+
+println("\nExplanation:")
+println("The maximized return represents the highest expected return achievable given the constraints of the model.")
+println("This value is crucial for investors as it indicates the optimal allocation of funds across different assets")
+println("to achieve the best possible return while managing risk.")
