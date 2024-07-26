@@ -23,7 +23,8 @@ expected_returns_percentage = expected_returns .* 100
 covariance_matrix = cov(Matrix(data[!, Not(:Date)])) |> x -> round.(x, digits=4)
 
 # Create a DataFrame for expected returns with date and ticker
-expected_returns_df = DataFrame(Date = data[!, :Date], Ticker = names(data)[2:end], Expected_Returns = expected_returns_percentage)
+tickers = names(data)[2:end]  # Extract tickers from the DataFrame
+expected_returns_df = DataFrame(Date = data[!, :Date], Ticker = repeat(tickers, inner=length(data[!, :Date])), Expected_Returns = expected_returns_percentage)
 
 # Save expected returns to CSV
 CSV.write("data/expected_returns.csv", expected_returns_df)
