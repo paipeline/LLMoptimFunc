@@ -134,14 +134,15 @@ To predict the future price of an asset based on its financial metrics and marke
 - \( \text{Volatility} \) (\( V \)): The volatility of the asset.
 
 ### Mathematical Model
-The prediction model can be represented as:
+The prediction model can be represented as a quadratic optimization problem:
 \[
-P = \beta_0 + \beta_1 \cdot MC + \beta_2 \cdot AT + \beta_3 \cdot CR + \beta_4 \cdot DE + \beta_5 \cdot ROE + \beta_6 \cdot V
+P = \beta_0 + \beta_1 \cdot MC + \beta_2 \cdot AT + \beta_3 \cdot CR + \beta_4 \cdot DE + \beta_5 \cdot ROE + \beta_6 \cdot V + \beta_7 \cdot MC^2 + \beta_8 \cdot AT^2 + \beta_9 \cdot CR^2 + \beta_{10} \cdot DE^2 + \beta_{11} \cdot ROE^2 + \beta_{12} \cdot V^2
 \]
 Where:
 - \( P \) is the predicted future price.
 - \( \beta_0 \) is the intercept of the regression model.
 - \( \beta_1, \beta_2, \beta_3, \beta_4, \beta_5, \beta_6 \) are the coefficients representing the impact of each variable on the future price.
+- \( \beta_7, \beta_8, \beta_9, \beta_{10}, \beta_{11}, \beta_{12} \) are the coefficients for the quadratic terms of each variable.
 
 ### Data Collection
 Gather historical data for the variables and corresponding future prices to train the model.
