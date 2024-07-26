@@ -71,10 +71,11 @@ lambda_values = collect(keys(results))
 objective_values = collect(values(results))
 
 p = plot(lambda_values, objective_values, label="Optimal Value Curve", xlabel="Lambda (λ)", ylabel="Maximized Value", title="Optimal Value vs Individual Asset Values", legend=:topright)
+asset_values = [evaluate_model(λ)[1] for λ in lambda_values]  # Calculate asset values for each lambda
+asset_allocations = [evaluate_model(λ)[2] for λ in lambda_values]  # Calculate asset allocations for each lambda
+asset_allocations_values = [value.(asset_allocations[j]) for j in 1:length(lambda_values)]  # Extract numerical values
+
 for i in 1:length(expected_returns)
-    asset_values = [evaluate_model(λ)[1] for λ in lambda_values]  # Calculate asset values for each lambda
-    asset_allocations = [evaluate_model(λ)[2] for λ in lambda_values]  # Calculate asset allocations for each lambda
-    asset_allocations_values = [value.(asset_allocations[j]) for j in 1:length(lambda_values)]  # Extract numerical values
     plot!(lambda_values, [asset_allocations_values[j][i] for j in 1:length(lambda_values)], label="Asset $i Value", linestyle=:dash)
 end
 scatter!(p, [optimal_lambda], [results[optimal_lambda]], label="Best Lambda", color=:red, markersize=8)
