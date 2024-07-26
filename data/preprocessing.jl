@@ -3,7 +3,7 @@ using DataFrames
 using Statistics
 
 # Load the simplified return data
-data = CSV.File("data/sp500/simplified_return.csv") |> DataFrame
+data = CSV.File("data/sp500/returns.csv") |> DataFrame
 
 # Calculate expected returns (mean of returns)
 expected_returns = mean.(eachcol(data[!, Not(:Date)]))
