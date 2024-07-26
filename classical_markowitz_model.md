@@ -23,9 +23,15 @@ In the context of the classical Markowitz model, the following variables are def
 - \( rr \): A vector of expected returns for each asset.
 - \( \rho \): The risk aversion coefficient.
 
-## Implications of Maximized Value
+## Tradeoff Between Return and Variance
 
-The `maximized_value` is crucial for investors as it indicates the optimal expected return based on the selected asset allocations. It has significant implications for investment decision-making, risk management, performance evaluation, and portfolio optimization.
+The classical Markowitz model addresses the tradeoff between maximizing expected return and minimizing portfolio variance. Investors seek to achieve the highest possible return while managing the associated risks. This balance is crucial for effective investment decision-making.
+
+The `maximized_value` represents the optimal expected return based on the selected asset allocations, while the variance quantifies the risk involved. By adjusting the risk aversion coefficient, investors can influence the tradeoff, allowing them to align their investment strategies with their risk tolerance.
+
+### Implications of Maximized Value
+
+The `maximized_value` is essential for understanding the optimal allocation of funds across different assets. It provides insights into how to achieve the best possible return while managing risk effectively.
 
 ### Covariance Matrix Output
 The covariance matrix is saved in a CSV file named `covariance_matrix.csv`. It is structured as follows:
@@ -43,7 +49,7 @@ Ticker2,cov(Ticker2,Ticker1),cov(Ticker2,Ticker2),cov(Ticker2,Ticker3),...
 Ticker3,cov(Ticker3,Ticker1),cov(Ticker3,Ticker2),cov(Ticker3,Ticker3),...
 ...
 ```
-The classical Markowitz model can be formulated as a quadratic optimization problem. The objective is to minimize the portfolio variance while achieving a minimum expected return. The mathematical formulation is as follows:
+The classical Markowitz model can be formulated as a quadratic optimization problem. The objective is to maximize expected return while minimizing portfolio variance. The mathematical formulation is as follows:
 
 ### Quadratic Model Explanation
 The classical Markowitz model is a quadratic optimization problem where the objective is to minimize the portfolio variance while achieving a specified expected return. The quadratic nature arises from the formulation of the portfolio variance, which is expressed as:
@@ -59,9 +65,9 @@ where:
 The objective function is defined as:
 
 ### Objective Function
-Minimize:
+Maximize:
 \[
-\text{Minimize } \frac{1}{2} x^T \Sigma x
+\text{Maximize } E(R) - \frac{1}{2} \rho x^T \Sigma x
 \]
 
 ### Subject to Constraints
@@ -78,4 +84,4 @@ E(R) = rr^T x \geq \rho
 x[i] \geq 0 \quad \forall i
 \]
 
-This formulation allows for the optimization of asset allocations in a way that balances risk and return according to the investor's preferences.
+This formulation allows for the optimization of asset allocations in a way that balances maximizing returns while minimizing risks according to the investor's preferences.
