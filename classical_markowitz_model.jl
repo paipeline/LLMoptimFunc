@@ -1,8 +1,7 @@
 using CSV
 using DataFrames
 using JuMP
-using Ipopt
-using GLPK
+using Gurobi
 
 # Load expected returns and covariance matrix
 expected_returns_df = CSV.File("data/expected_returns.csv") |> DataFrame
@@ -16,7 +15,7 @@ covariance_matrix = Matrix(covariance_matrix_df)
 risk_aversion_coefficient = 0.5  # Adjust this value as needed
 
 # Create the optimization model
-model = Model(Ipopt.Optimizer)
+model = Model(Gurobi.Optimizer)
 
 # Define variables for asset weights
 @variable(model, weights[1:size(expected_returns, 1)] >= 0)
