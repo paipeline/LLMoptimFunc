@@ -54,7 +54,7 @@ function tune_lambda()
     # Perform Bayesian optimization
     f(x) = evaluate_model(x[1])
     bounds = [0.0 1.0]
-    res = BayesianOptimization.optimize(f, bounds; method=:tree_parzen_estimator, num_init_samples=5, num_iterations=25)
+    res = BayesianOptimization.optimize!(f, bounds; method=:tree_parzen_estimator, num_init_samples=5, num_iterations=25)
 
     best_lambda = res.optimal_parameters[1]
 
