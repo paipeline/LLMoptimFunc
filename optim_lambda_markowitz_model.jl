@@ -1,7 +1,7 @@
 using CSV
 using DataFrames
 using JuMP, Gurobi
-using Gurobi
+using Gurobi, JuMP
 using BayesianOptimization
 using Plots
 
