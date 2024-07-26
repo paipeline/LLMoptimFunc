@@ -2,8 +2,13 @@ using CSV
 using DataFrames
 using JuMP
 using Gurobi
-import Pkg
-Pkg.add("BayesianOptimization")
+using Pkg
+
+# Install BayesianOptimization if not already installed
+if !("BayesianOptimization" in keys(Pkg.installed()))
+    Pkg.add("BayesianOptimization")
+end
+
 try
     using BayesianOptimization
 catch e
@@ -33,21 +38,18 @@ initial_investment = 10000.0  # Adjust this value as needed
 budget = 1.0  # Total allocation must equal 100%
 
 # Function to evaluate the model with a given lambda
-function evaluate_model(lambda)
+function evaluate_model(lambda::Float64)
     model = Model(Gurobi.Optimizer)
 
     # Define variables for asset percentages
     @variable(model, percentages[1:size(expected_returns, 1)] >= 0)
 
-    # Define the objective function (maximize expected return)
+    # Define the objective function (maximize expected return and minimize variance)
     @objective(model, Max, sum(expected_returns[i] * percentages[i] for i in 1:length(expected_returns)) - 
-        lambda * sum(percentages[i]^2 for i in 1:length(percentages)))
+        lambda * sum(covariance_matrix[i, j] * percentages[i] * percentages[j] for i in 1:length(expected_returns) for j in 1:length(expected_returns)))
 
     # Constraint: sum of weights must equal the budget
     @constraint(model, sum(percentages) == 1.0)  # Total allocation must equal 100%
-
-    # Define the expected return constraint
-    @constraint(model, sum(expected_returns[i] * percentages[i] for i in 1:length(expected_returns)) >= lambda)
 
     # Solve the optimization problem
     optimize!(model)
@@ -71,7 +73,7 @@ function tune_lambda()
     end
 
     # Perform Bayesian optimization
-    bo = BayesianOptimization(evaluate_model, (0.0, 1.0), n_iter=5)
+    bo = BayesianOptimization(evaluate_model, Dict(:lambda => (0.0, 1.0)), n_iter=5)
     best_lambda = bo.maximize()
 
     return best_lambda, results
@@ -79,9 +81,6 @@ end
 
 # Cross-validation function to evaluate performance
 function cross_validation()
-    # Placeholder for cross-validation logic
-    # This function should implement k-fold cross-validation to evaluate the model
-    # For simplicity, we will just call tune_lambda here
     best_lambda, results = tune_lambda()
     return best_lambda, results
 end
