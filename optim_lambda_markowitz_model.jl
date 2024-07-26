@@ -1,6 +1,6 @@
 using CSV
 using DataFrames
-using JuMP, Gurobi
+using JuMP, Gurobi, BayesianOptimization, Plots
 using Gurobi, JuMP
 using BayesianOptimization
 using Plots
@@ -34,7 +34,7 @@ function evaluate_model(lambda::Float64)
     @constraint(model, sum(percentages) == 1.0)  # Total allocation must equal 100%
 
     # Solve the optimization problem
-    optimize(model)
+    optimize!(model)  # Ensure the model is optimized
 
     # Return the maximized value
     return objective_value(model)
