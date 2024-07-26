@@ -11,8 +11,8 @@ covariance_matrix_df = CSV.File("data/covariance_matrix.csv") |> DataFrame
 expected_returns = expected_returns_df.Expected_Returns
 covariance_matrix = Matrix(covariance_matrix_df)
 
-# Define risk aversion coefficient
-risk_aversion_coefficient = 0.5  # Adjust this value as needed
+# Define tradeoff variable
+lambda = 0.5  # Adjust this value as needed
 
 # Create the optimization model
 model = Model(Gurobi.Optimizer)
@@ -22,7 +22,7 @@ model = Model(Gurobi.Optimizer)
 
 # Define the objective function (maximize expected return)
 @objective(model, Max, sum(expected_returns[i] * percentages[i] for i in 1:length(expected_returns)) - 
-    risk_aversion_coefficient * sum(percentages[i]^2 for i in 1:length(percentages)))
+    lambda * sum(percentages[i]^2 for i in 1:length(percentages)))
 
 # Define the initial investment amount
 initial_investment = 10000.0  # Adjust this value as needed
