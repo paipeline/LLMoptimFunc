@@ -6,17 +6,17 @@ To perform the classical Markowitz model optimization, the following data is req
 1. **Expected Returns**: A vector of expected returns for each asset in the portfolio. This can be estimated using historical data or predictive models.
 2. **Covariance Matrix**: A matrix that represents the covariance between the returns of the assets. This quantifies how the returns of different assets move together.
 3. **Number of Assets**: The total number of assets in the portfolio, denoted as \( n \).
-4. **Risk Aversion Coefficient**: A scalar value representing the investor's risk tolerance, denoted as \( \rho \).
+4. **Risk Aversion Coefficient**: A scalar value representing the investor's risk tolerance, denoted as \( \rho \). This coefficient influences the trade-off between risk and return in the optimization process.
 5. **Budget Constraint**: A constraint ensuring that the total allocation of funds equals 1.
 
 ## Variables
 
 ### Expected Returns Calculation
-The expected returns for each asset are calculated as the average return over all previous dates. This provides a single value representing the anticipated performance of each asset based on historical data.
+The expected returns for each asset are calculated as the average return over all previous dates, derived from the historical return data. This provides a single value representing the anticipated performance of each asset based on historical data.
 In the context of the classical Markowitz model, the following variables are defined:
 
 - \( x[i] \): The allocation of funds to asset \( i \) in the portfolio, where \( x[i] \geq 0 \).
-- \( \Sigma \): The covariance matrix of asset returns.
+- \( \Sigma \): The covariance matrix of asset returns, calculated from the historical return data to quantify how the returns of different assets move together.
 - \( rr \): A vector of expected returns for each asset.
 - \( \rho \): The risk aversion coefficient.
 
