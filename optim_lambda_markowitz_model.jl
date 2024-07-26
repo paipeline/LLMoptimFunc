@@ -2,8 +2,7 @@ using CSV
 using DataFrames
 using JuMP
 using Gurobi
-using Pkg
-Pkg.add("BayesianOptimization")
+using BayesianOptimization
 using Plots
 
 # Load expected returns and covariance matrix
@@ -56,8 +55,8 @@ function tune_lambda()
     end
 
     # Perform Bayesian optimization
-    # bo = BayesianOptimization(evaluate_model, Dict(:lambda => (0.0, 1.0)), n_iter=5)
-    # best_lambda = bo.maximize()
+    bo = BayesianOptimization(evaluate_model, Dict(:lambda => (0.0, 1.0)), n_iter=5)
+    best_lambda = bo.maximize()
 
     return results
 end
