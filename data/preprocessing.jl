@@ -13,14 +13,27 @@ end
 # Load the simplified return data
 data = CSV.File(file_path) |> DataFrame
 
-# Calculate expected returns (mean of returns)
+# Calculate expected returns (mean of returns) for all assets
 expected_returns = mean.(eachcol(data[!, Not(:Date)])) |> x -> x .* 100
+
+# Create a DataFrame for expected returns
+expected_returns_df = DataFrame(Ticker = names(data)[2:end], Expected_Returns = expected_returns_percentage)
+
+# Filter expected returns to include only selected tickers
+expected_returns_df = expected_returns_df[expected_returns_df.Ticker .∈ selected_tickers, :]
 
 # Convert expected returns to percentage
 expected_returns_percentage = expected_returns .* 100
 
-# Calculate the covariance matrix of the returns
+# Calculate the covariance matrix of the returns for all assets
 covariance_matrix = cov(Matrix(data[!, Not(:Date)])) |> x -> round.(x, digits=4)
+
+# Create a DataFrame for covariance matrix
+covariance_matrix_df = DataFrame(covariance_matrix, :auto)
+
+# Filter covariance matrix to include only selected tickers
+covariance_matrix_df = covariance_matrix_df[selected_tickers, selected_tickers]
+rename!(covariance_matrix_df, names(data)[2:end])
 
 # Define the selected stock tickers
 selected_tickers = ["AAPL", "MSFT", "GOOGL", "AMZN", "NVDA", "FB", "ADBE", "CSCO", "INTC", "ORCL"]
