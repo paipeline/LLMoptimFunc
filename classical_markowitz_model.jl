@@ -45,7 +45,7 @@ if any(value.(percentages) .< 0)
 end
 
 # Print the sum of weights
-println("Sum of Asset Weights: ", sum(value.(weights)))
+println("Sum of Asset Weights: ", sum(value.(percentages)))
 
 # Return the maximized value
 println("Maximized Value: ", maximized_value)
