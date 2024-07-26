@@ -15,7 +15,7 @@ covariance_matrix = Matrix(covariance_matrix_df)
 risk_aversion_coefficient = 0.5  # Adjust this value as needed
 
 # Create the optimization model
-model = Model(GLPK.Optimizer)
+model = Model(Ipopt.Optimizer)
 
 # Define variables for asset weights
 @variable(model, weights[1:size(expected_returns, 1)] >= 0)
