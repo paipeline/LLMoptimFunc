@@ -30,7 +30,7 @@ CSV.write("data/expected_returns.csv", expected_returns_df)
 
 # Create a DataFrame for covariance matrix
 covariance_matrix_df = DataFrame(covariance_matrix, :auto)
-names!(covariance_matrix_df, names(data)[2:end])
+rename!(covariance_matrix_df, names(data)[2:end])
 
 # Save covariance matrix to CSV
 CSV.write("data/covariance_matrix.csv", covariance_matrix_df)
