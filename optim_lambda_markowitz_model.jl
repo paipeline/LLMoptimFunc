@@ -2,13 +2,15 @@ using CSV
 using DataFrames
 using JuMP
 using Gurobi
-using Plots
 
 # Load expected returns and covariance matrix
 expected_returns_df = CSV.File("data/expected_returns.csv") |> DataFrame
 covariance_matrix_df = CSV.File("data/covariance_matrix.csv") |> DataFrame
 
-# Extract expected returns and covariance matrix
+# Extract expected returns and covariance matrix, ensuring they are not empty
+if nrow(expected_returns_df) == 0 || nrow(covariance_matrix_df) == 0
+    error("Expected returns or covariance matrix is empty.")
+end
 expected_returns = expected_returns_df.Expected_Returns
 covariance_matrix = Matrix(covariance_matrix_df)
 
@@ -19,7 +21,7 @@ initial_investment = 10000.0  # Adjust this value as needed
 budget = 1.0  # Total allocation must equal 100%
 
 # Function to evaluate the model with a given lambda
-function evaluate_model(lambda::Float64)
+function evaluate_model(λ::Float64)
     model = Model(Gurobi.Optimizer)
 
     # Define variables for asset percentages
@@ -32,7 +34,7 @@ function evaluate_model(lambda::Float64)
     # Constraint: sum of weights must equal the budget
     @constraint(model, sum(percentages) == 1.0)  # Total allocation must equal 100%
 
-    # Solve the optimization problem
+    # Solve the optimization problem to find the optimal asset allocation
     optimize!(model)
 
     # Return the maximized value
@@ -54,7 +56,7 @@ function tune_lambda()
     end
 
     # Perform grid search
-    best_lambda = argmax(values(results))  # Get the index of the maximum value
+    best_λ = argmax(values(results))  # Get the index of the maximum value
 
     return best_lambda, results
 end
