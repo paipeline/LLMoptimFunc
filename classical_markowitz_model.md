@@ -23,7 +23,15 @@ In the context of the classical Markowitz model, the following variables are def
 - \( rr \): A vector of expected returns for each asset.
 - \( \rho \): The risk aversion coefficient.
 
-## Tradeoff Between Return and Variance
+## Tuning the Tradeoff Variable (λ)
+
+The tradeoff variable \( \lambda \) is a free hyperparameter that needs to be tuned to achieve optimal results in the classical Markowitz model. Tuning can be performed using various machine learning methods, including:
+
+1. **Grid Search**: This method involves defining a range of values for \( \lambda \) and evaluating the model's performance for each value. The optimal \( \lambda \) is selected based on the best performance metric.
+
+2. **Bayesian Optimization**: This is a more sophisticated approach that builds a probabilistic model of the function mapping \( \lambda \) values to performance metrics. It iteratively selects \( \lambda \) values to evaluate, balancing exploration and exploitation to find the optimal value efficiently.
+
+By employing these tuning methods, investors can determine the most suitable \( \lambda \) that aligns with their risk-return preferences, leading to better investment decisions.
 
 The classical Markowitz model addresses the tradeoff between maximizing expected return and minimizing portfolio variance. Investors seek to achieve the highest possible return while managing the associated risks. This balance is crucial for effective investment decision-making.
 
