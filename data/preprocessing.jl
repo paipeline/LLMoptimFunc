@@ -38,7 +38,7 @@ CSV.write("data/expected_returns.csv", expected_returns_df)
 covariance_matrix_df = DataFrame(covariance_matrix, :auto)
 
 # Filter covariance matrix to include only selected tickers
-covariance_matrix_df = covariance_matrix_df[:, selected_tickers][selected_tickers, :]
+covariance_matrix_df = covariance_matrix_df[selected_tickers, selected_tickers]
 rename!(covariance_matrix_df, names(data)[2:end])
 
 # Save covariance matrix to CSV
