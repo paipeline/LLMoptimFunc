@@ -3,6 +3,7 @@ using DataFrames
 using JuMP
 using Gurobi
 import Pkg
+Pkg.add("BayesianOptimization")
 try
     using BayesianOptimization
 catch e
