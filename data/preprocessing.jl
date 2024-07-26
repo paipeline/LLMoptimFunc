@@ -3,7 +3,7 @@ using DataFrames
 using Statistics
 
 # Define the file path
-file_path = "data/sp500/simplified_return.csv"
+file_path = "data/sp500/returns.csv"
 
 # Check if the file exists
 if !isfile(file_path)
