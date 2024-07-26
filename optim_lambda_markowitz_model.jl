@@ -2,7 +2,6 @@ using CSV
 using DataFrames
 using JuMP
 using Gurobi
-using BayesianOptimization
 using Plots
 
 # Load expected returns and covariance matrix
@@ -54,12 +53,8 @@ function tune_lambda()
         results[λ] = result
     end
 
-    # Perform Bayesian optimization
-    f(x) = evaluate_model(x[1])
-    bounds = [(0.0, 1.0)]
-    res = boptimize(f, bounds, method=:tree_parzen_estimator, num_init_samples=5, num_iterations=25)
-
-    best_lambda = res.best_solution[1]
+    # Perform grid search
+    best_lambda = argmax(values(results))  # Get the index of the maximum value
 
     return best_lambda, results
 end
