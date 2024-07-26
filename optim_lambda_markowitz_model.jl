@@ -73,10 +73,10 @@ function tune_lambda()
     end
 
     # Perform Bayesian optimization
-    bo = BayesianOptimization(evaluate_model, Dict(:lambda => (0.0, 1.0)), n_iter=5)
-    best_lambda = bo.maximize()
+    # bo = BayesianOptimization(evaluate_model, Dict(:lambda => (0.0, 1.0)), n_iter=5)
+    # best_lambda = bo.maximize()
 
-    return best_lambda, results
+    return results
 end
 
 # Cross-validation function to evaluate performance
