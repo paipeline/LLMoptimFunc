@@ -29,7 +29,7 @@ selected_tickers = ["AAPL", "MSFT", "GOOGL", "AMZN", "NVDA", "FB", "ADBE", "CSCO
 expected_returns_df = DataFrame(Ticker = names(data)[2:end], Expected_Returns = expected_returns_percentage)
 
 # Filter expected returns to include only selected tickers
-expected_returns_df = expected_returns_df[in.(expected_returns_df.Ticker, selected_tickers), :]
+expected_returns_df = expected_returns_df[expected_returns_df.Ticker .∈ selected_tickers, :]
 
 # Save expected returns to CSV
 CSV.write("data/expected_returns.csv", expected_returns_df)
@@ -38,7 +38,7 @@ CSV.write("data/expected_returns.csv", expected_returns_df)
 covariance_matrix_df = DataFrame(covariance_matrix, :auto)
 
 # Filter covariance matrix to include only selected tickers
-covariance_matrix_df = covariance_matrix_df[in.(names(data)[2:end], selected_tickers), in.(names(data)[2:end], selected_tickers)]
+covariance_matrix_df = covariance_matrix_df[:, selected_tickers][selected_tickers, :]
 rename!(covariance_matrix_df, names(data)[2:end])
 
 # Save covariance matrix to CSV
