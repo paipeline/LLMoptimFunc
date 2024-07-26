@@ -1,9 +1,6 @@
 using CSV
 using DataFrames
 using JuMP, Gurobi, BayesianOptimization, Plots
-using Gurobi, JuMP
-using BayesianOptimization
-using Plots
 
 # Load expected returns and covariance matrix
 expected_returns_df = CSV.File("data/expected_returns.csv") |> DataFrame
@@ -34,7 +31,7 @@ function evaluate_model(lambda::Float64)
     @constraint(model, sum(percentages) == 1.0)  # Total allocation must equal 100%
 
     # Solve the optimization problem
-    optimize!(model)  # Ensure the model is optimized
+    optimize!(model)
 
     # Return the maximized value
     return objective_value(model)
@@ -57,7 +54,7 @@ function tune_lambda()
     # Perform Bayesian optimization
     f(x) = evaluate_model(x[1])
     bounds = [0.0 1.0]
-    res = BayesianOptimization.optimize(f, bounds, method=:tree_parzen_estimator, num_init_samples=5, num_iterations=25)
+    res = BayesianOptimization.optimize(f, bounds; method=:tree_parzen_estimator, num_init_samples=5, num_iterations=25)
 
     best_lambda = res.optimal_parameters[1]
 
