@@ -13,17 +13,8 @@ end
 # Load the simplified return data
 data = CSV.File(file_path) |> DataFrame
 
-# Define the selected stock tickers
-selected_tickers = ["AAPL", "MSFT", "GOOGL", "AMZN", "NVDA", "FB", "ADBE", "CSCO", "INTC", "ORCL"]
-
 # Calculate expected returns (mean of returns) for selected tickers
 expected_returns = mean.(eachcol(data[!, selected_tickers])) |> x -> x .* 100
-
-# Create a DataFrame for expected returns
-expected_returns_df = DataFrame(Ticker = selected_tickers, Expected_Returns = expected_returns)
-
-# Define the selected stock tickers
-selected_tickers = ["AAPL", "MSFT", "GOOGL", "AMZN", "NVDA", "FB", "ADBE", "CSCO", "INTC", "ORCL"]
 
 # Create a DataFrame for expected returns
 expected_returns_df = DataFrame(Ticker = selected_tickers, Expected_Returns = expected_returns)
