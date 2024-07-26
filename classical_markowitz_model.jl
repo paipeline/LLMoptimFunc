@@ -56,7 +56,7 @@ end
 
 # Check if the sum of weights is approximately equal to 1
 if abs(sum(value.(percentages)) - 1) < 1e-5
-    println("The sum of asset weights is approximately equal to 1.")
+    println("The sum of asset percentages is approximately equal to 1.")
 else
     println("Warning: The sum of asset weights is not equal to 1.")
 end
