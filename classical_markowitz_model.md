@@ -27,7 +27,21 @@ In the context of the classical Markowitz model, the following variables are def
 
 The `maximized_value` represents the optimal expected return of the investment portfolio based on the selected asset allocations, risk aversion coefficient, and budget constraint. It is calculated after the optimization process and reflects the best possible return that can be achieved given the constraints of the model.
 
-### Real Application Example
+### Real Application Example and Implications of Maximized Value
+
+The `maximized_value` is crucial for investors as it indicates the optimal expected return based on the selected asset allocations. In the example of Alice, the `maximized_value` of $1,200 represents the highest return she can expect from her investment of $10,000, given her risk tolerance and the constraints of the model.
+
+This value has significant real-world implications:
+
+1. **Investment Decision-Making**: Knowing the `maximized_value` helps investors make informed decisions about where to allocate their funds. It provides a benchmark for evaluating the performance of their investments.
+
+2. **Risk Management**: The `maximized_value` reflects the trade-off between risk and return. Investors can adjust their risk aversion coefficient to see how it affects the expected return, allowing them to align their investment strategy with their risk tolerance.
+
+3. **Performance Evaluation**: After the investment period, investors can compare the actual returns with the `maximized_value` to assess the effectiveness of their investment strategy. This comparison can guide future investment decisions.
+
+4. **Portfolio Optimization**: The `maximized_value` serves as a target for portfolio optimization. Investors can use it to refine their asset allocation strategies and improve their overall investment performance.
+
+In summary, the `maximized_value` is not just a theoretical output; it has practical implications for investors in terms of decision-making, risk management, performance evaluation, and portfolio optimization.
 
 For instance, consider an investor named Alice who wants to invest in a portfolio of stocks. She has the following expected returns for three stocks:
 
