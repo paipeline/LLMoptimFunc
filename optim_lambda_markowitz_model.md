@@ -20,10 +20,8 @@ The tradeoff variable \( \lambda \) plays a crucial role in the classical Markow
   - For each value of \( \lambda \), run the optimization model and calculate the performance metrics.
   - Store the results for each \( \lambda \).
 
-- **Bayesian Optimization**:
-  - Implement a Bayesian optimization framework to model the relationship between \( \lambda \) values and performance metrics.
-  - Use the results from the grid search to initialize the model.
-  - Iteratively select \( \lambda \) values to evaluate, balancing exploration and exploitation to find the optimal value efficiently.
+## Removed Bayesian Optimization
+The previous implementation included Bayesian optimization for tuning \( \lambda \). This has been removed, and only grid search is now utilized for hyperparameter tuning.
 
 ### 4. Model Evaluation
 - **Cross-Validation**: Use cross-validation techniques to evaluate the performance of the model for different \( \lambda \) values.

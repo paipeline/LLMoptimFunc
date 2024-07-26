@@ -29,7 +29,7 @@ function evaluate_model(λ::Float64)
 
     # Define the objective function (maximize expected return and minimize variance)
     @objective(model, Max, sum(expected_returns[i] * percentages[i] for i in 1:length(expected_returns)) - 
-        lambda * sum(covariance_matrix[i, j] * percentages[i] * percentages[j] for i in 1:length(expected_returns) for j in 1:length(expected_returns)))
+        λ * sum(covariance_matrix[i, j] * percentages[i] * percentages[j] for i in 1:length(expected_returns) for j in 1:length(expected_returns)))
 
     # Constraint: sum of weights must equal the budget
     @constraint(model, sum(percentages) == 1.0)  # Total allocation must equal 100%
@@ -38,13 +38,17 @@ function evaluate_model(λ::Float64)
     optimize!(model)
 
     # Return the maximized value
-    return objective_value(model)
+    if termination_status(model) == MOI.OPTIMAL
+        return objective_value(model)
+    else
+        error("Optimization did not converge to a solution.")
+    end
 end
 
 # Hyperparameter tuning using grid search
 function tune_lambda()
     # Define a range of values for λ
-    lambda_values = 0.0:0.1:1.0  # Adjust the range and step size as needed
+    lambda_values = 0.0:0.01:1.0  # Adjust the range and step size for finer granularity
 
     # Store results for each λ
     results = Dict{Float64, Float64}()
