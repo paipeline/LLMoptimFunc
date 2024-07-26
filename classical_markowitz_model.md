@@ -9,6 +9,9 @@ To perform the classical Markowitz model optimization, the following data is req
 4. **Risk Aversion Coefficient**: A scalar value representing the investor's risk tolerance, denoted as \( \rho \). This coefficient influences the trade-off between risk and return in the optimization process.
 5. **Budget Constraint**: A constraint ensuring that the total allocation of funds equals 1.
 
+## Budget Constraint Explanation
+The budget constraint is a critical component of the optimization model. It ensures that the total allocation of funds across all assets equals the specified budget. In this model, the budget is set to 1, representing 100% of the portfolio. This constraint allows the optimization process to focus on maximizing returns while adhering to the investor's total available capital.
+
 ## Variables
 
 ### Expected Returns Calculation
