@@ -35,7 +35,7 @@ optimize!(model)
 maximized_value = objective_value(model)
 
 # Check if weights are non-negative
-if any(value(weights) .< 0)
+if any(value.(weights) .< 0)
     println("Warning: Some asset weights are negative.")
 end
 
