@@ -17,18 +17,18 @@ risk_aversion_coefficient = 0.5  # Adjust this value as needed
 # Create the optimization model
 model = Model(Gurobi.Optimizer)
 
-# Define variables for asset weights
-@variable(model, weights[1:size(expected_returns, 1)] >= 0)
+# Define variables for asset percentages
+@variable(model, percentages[1:size(expected_returns, 1)] >= 0)
 
 # Define the objective function (maximize expected return)
-@objective(model, Max, sum(expected_returns[i] * weights[i] for i in 1:length(expected_returns)) - 
-    risk_aversion_coefficient * sum(weights[i]^2 for i in 1:length(weights)))
+@objective(model, Max, sum(expected_returns[i] * percentages[i] for i in 1:length(expected_returns)) - 
+    risk_aversion_coefficient * sum(percentages[i]^2 for i in 1:length(percentages)))
 
 # Define the budget
 budget = 1.0  # Adjust this value as needed
 
 # Constraint: sum of weights must equal the budget
-@constraint(model, sum(weights) == budget)
+@constraint(model, sum(percentages) == 1.0)  # Total allocation must equal 100%
 
 # Solve the optimization problem
 optimize!(model)
@@ -46,9 +46,9 @@ println("Sum of Asset Weights: ", sum(value.(weights)))
 
 # Return the maximized value
 println("Maximized Value: ", maximized_value)
-println("Optimized Asset Weights:")
-for i in 1:length(weights)
-    println("Asset ", i, " (", expected_returns_df.Ticker[i], "): ", value.(weights[i]))
+println("Optimized Asset Percentages:")
+for i in 1:length(percentages)
+    println("Asset ", i, " (", expected_returns_df.Ticker[i], "): ", value.(percentages[i]))
 end
 
 # Check if the sum of weights is approximately equal to 1
