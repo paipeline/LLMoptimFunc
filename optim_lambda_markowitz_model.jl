@@ -2,6 +2,7 @@ using CSV
 using DataFrames
 using JuMP
 using Gurobi
+using Plots
 
 # Load expected returns and covariance matrix
 expected_returns_df = CSV.File("data/expected_returns.csv") |> DataFrame
@@ -16,9 +17,6 @@ covariance_matrix = Matrix(covariance_matrix_df)
 
 # Define the initial investment amount
 initial_investment = 10000.0  # Adjust this value as needed
-
-# Define the budget as a percentage
-budget = 1.0  # Total allocation must equal 100%
 
 # Function to evaluate the model with a given lambda
 function evaluate_model(λ::Float64)
@@ -38,55 +36,45 @@ function evaluate_model(λ::Float64)
     optimize!(model)
 
     # Return the maximized value
-    if termination_status(model) == MOI.OPTIMAL
-        return objective_value(model)
-    else
-        error("Optimization did not converge to a solution.")
-    end
+    return objective_value(model)
 end
 
 # Hyperparameter tuning using grid search
 function tune_lambda()
     # Define a range of values for λ
-    lambda_values = 0.0:0.01:1.0  # Adjust the range and step size for finer granularity
+    lambda_values = 0.0:0.1:1.0  # Adjust the range and step size as needed
 
     # Store results for each λ
     results = Dict{Float64, Float64}()
 
-    # Perform grid search only
+    # Perform grid search
     for λ in lambda_values
         result = evaluate_model(λ)
         results[λ] = result
     end
 
-    # Perform grid search
-    best_lambda = argmax(values(results))  # Get the index of the maximum value
-
-    return keys(results)[best_lambda], results  # Return the best lambda
-end
-
-# Cross-validation function to evaluate performance
-function cross_validation()
-    best_lambda, results = tune_lambda()
-    return best_lambda, results
+    return results
 end
 
 # Function to pick the best lambda
-function pick_best_lambda(results)
-    best_lambda = argmax(values(results))  # Get the index of the maximum value
-    return collect(keys(results))[best_lambda]  # Return the best lambda
+function pick_best_lambda(results::Dict{Float64, Float64})
+    best_lambda = argmax(λ -> results[λ], keys(results))
+    return best_lambda
 end
 
 # Main execution
-best_lambda, results = cross_validation()
+results = tune_lambda()
 optimal_lambda = pick_best_lambda(results)
 
 # Plotting the results
-lambdas = collect(keys(results))
-values = collect(values(results))
+lambda_values = collect(keys(results))
+objective_values = collect(values(results))
 
-scatter(lambdas, values, label="Cross-Validation Results", xlabel="Lambda (λ)", ylabel="Maximized Value", title="Cross-Validation of Lambda")
-scatter!([optimal_lambda], [evaluate_model(optimal_lambda)], label="Best Lambda", color=:red, markersize=8)
+p = scatter(lambda_values, objective_values, label="Cross-Validation Results", xlabel="Lambda (λ)", ylabel="Maximized Value", title="Cross-Validation of Lambda")
+scatter!(p, [optimal_lambda], [results[optimal_lambda]], label="Best Lambda", color=:red, markersize=8)
 
 println("Optimal Lambda: ", optimal_lambda)
-println("Maximized Value at Optimal Lambda: ", evaluate_model(optimal_lambda))
+println("Maximized Value at Optimal Lambda: ", results[optimal_lambda])
+
+# Save the plot
+savefig(p, "lambda_optimization_plot.png")
