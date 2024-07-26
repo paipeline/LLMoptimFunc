@@ -23,7 +23,34 @@ In the context of the classical Markowitz model, the following variables are def
 - \( rr \): A vector of expected returns for each asset.
 - \( \rho \): The risk aversion coefficient.
 
-## Optimization Model Mathematical Formulation
+## Maximized Value and Its Application
+
+The `maximized_value` represents the optimal expected return of the investment portfolio based on the selected asset allocations, risk aversion coefficient, and budget constraint. It is calculated after the optimization process and reflects the best possible return that can be achieved given the constraints of the model.
+
+### Real Application Example
+
+For instance, consider an investor named Alice who wants to invest in a portfolio of stocks. She has the following expected returns for three stocks:
+
+- Stock A: 8%
+- Stock B: 5%
+- Stock C: 10%
+
+Alice has a risk aversion coefficient of 0.5, indicating her moderate risk tolerance. She wants to allocate her total investment of $10,000 among these stocks.
+
+After running the classical Markowitz model, the `maximized_value` might output a value of $1,200. This means that, based on the optimal allocation of her investment, Alice can expect to earn a return of $1,200 from her $10,000 investment.
+
+1. **Initial Investment**: Alice decides to invest $10,000 based on the model's output.
+2. **Optimal Allocation**: The model suggests she should allocate:
+   - 50% to Stock A ($5,000)
+   - 30% to Stock B ($3,000)
+   - 20% to Stock C ($2,000)
+3. **Expected Returns**:
+   - Stock A: $5,000 * 8% = $400
+   - Stock B: $3,000 * 5% = $150
+   - Stock C: $2,000 * 10% = $200
+4. **Total Expected Return**: $400 + $150 + $200 = $750
+
+After a year, if Alice decides to sell her stocks, she can expect to receive a total return of $750 based on the optimal allocation suggested by the model.
 
 ### Covariance Matrix Output
 The covariance matrix is saved in a CSV file named `covariance_matrix.csv`. It is structured as follows:
