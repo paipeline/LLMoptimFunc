@@ -40,6 +40,19 @@ Ticker3,cov(Ticker3,Ticker1),cov(Ticker3,Ticker2),cov(Ticker3,Ticker3),...
 ```
 The classical Markowitz model can be formulated as a quadratic optimization problem. The objective is to minimize the portfolio variance while achieving a minimum expected return. The mathematical formulation is as follows:
 
+### Quadratic Model Explanation
+The classical Markowitz model is a quadratic optimization problem where the objective is to minimize the portfolio variance while achieving a specified expected return. The quadratic nature arises from the formulation of the portfolio variance, which is expressed as:
+
+\[
+\text{Variance} = x^T \Sigma x
+\]
+
+where:
+- \( x \) is the vector of asset weights in the portfolio.
+- \( \Sigma \) is the covariance matrix of asset returns.
+
+The objective function is defined as:
+
 ### Objective Function
 Minimize:
 \[
