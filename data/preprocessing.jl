@@ -29,7 +29,7 @@ expected_returns_df = DataFrame(Ticker = selected_tickers, Expected_Returns = ex
 selected_tickers = ["AAPL", "MSFT", "GOOGL", "AMZN", "NVDA", "FB", "ADBE", "CSCO", "INTC", "ORCL"]
 
 # Create a DataFrame for expected returns
-expected_returns_df = DataFrame(Ticker = names(data)[2:end], Expected_Returns = expected_returns)
+expected_returns_df = DataFrame(Ticker = selected_tickers, Expected_Returns = expected_returns)
 
 # Filter expected returns to include only selected tickers
 expected_returns_df = expected_returns_df[expected_returns_df.Ticker .∈ selected_tickers, :]
