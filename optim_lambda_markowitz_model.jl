@@ -39,7 +39,7 @@ function evaluate_model(lambda::Float64)
     return objective_value(model)
 end
 
-# Hyperparameter tuning using Bayesian optimization combined with grid search
+# Hyperparameter tuning using grid search
 function tune_lambda()
     # Define a range of values for λ
     lambda_values = 0.0:0.1:1.0  # Adjust the range and step size as needed
@@ -47,7 +47,7 @@ function tune_lambda()
     # Store results for each λ
     results = Dict{Float64, Float64}()
 
-    # Perform grid search
+    # Perform grid search only
     for λ in lambda_values
         result = evaluate_model(λ)
         results[λ] = result
