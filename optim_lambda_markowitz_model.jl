@@ -87,7 +87,7 @@ end
 
 # Function to pick the best lambda
 function pick_best_lambda(results)
-    best_result = maximum(results, by=x -> x[2])  # Get the maximum result
+    best_result = maximum(results)  # Get the maximum result
     return best_result[1]  # Return the best lambda
 end
 
