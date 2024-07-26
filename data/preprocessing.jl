@@ -3,7 +3,7 @@ using DataFrames
 using Statistics
 
 # Define the file path
-file_path = "data/sp500/returns.csv"
+file_path = "data/sp500/simplified_return.csv"
 
 # Check if the file exists
 if !isfile(file_path)
@@ -22,20 +22,11 @@ expected_returns_percentage = expected_returns .* 100
 # Calculate the covariance matrix of the returns
 covariance_matrix = cov(Matrix(data[!, Not(:Date)])) |> x -> round.(x, digits=4)
 
-# Create a DataFrame for expected returns with date and ticker
-tickers = names(data)[2:end]  # Extract tickers from the DataFrame
-expected_returns_df = DataFrame(Date = data[!, :Date], Ticker = repeat(tickers, inner=length(data[!, :Date])), Expected_Returns = expected_returns_percentage)
+# Print the results
+println("Expected Returns (in %):")
+for (ticker, expected_return) in zip(names(data)[2:end], expected_returns_percentage)
+    println("$ticker: $expected_return%")
+end
 
-# Save expected returns to CSV
-CSV.write("data/expected_returns.csv", expected_returns_df)
-
-# Create a DataFrame for covariance matrix with tickers as row and column headers
-covariance_matrix_df = DataFrame(covariance_matrix, :auto)
-names!(covariance_matrix_df, names(data)[2:end])
-
-# Save covariance matrix to CSV
-CSV.write("data/covariance_matrix.csv", covariance_matrix_df)
-
-# Print confirmation messages
-println("Expected returns saved to data/expected_returns.csv")
-println("Covariance matrix saved to data/covariance_matrix.csv")
+println("\nCovariance Matrix:")
+println(covariance_matrix)
