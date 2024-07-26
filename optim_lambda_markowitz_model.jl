@@ -74,7 +74,7 @@ end
 # Function to pick the best lambda
 function pick_best_lambda(results)
     best_lambda = argmax(values(results))  # Get the index of the maximum value
-    return keys(results)[best_lambda]  # Return the best lambda
+    return collect(keys(results))[best_lambda]  # Return the best lambda
 end
 
 # Main execution
