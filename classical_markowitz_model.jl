@@ -33,6 +33,9 @@ budget = 1.0  # Total allocation must equal 100%
 # Constraint: sum of weights must equal the budget
 @constraint(model, sum(percentages) == 1.0)  # Total allocation must equal 100%
 
+# Define the expected return constraint
+@constraint(model, sum(expected_returns[i] * percentages[i] for i in 1:length(expected_returns)) >= lambda)
+
 # Solve the optimization problem
 optimize!(model)
 
