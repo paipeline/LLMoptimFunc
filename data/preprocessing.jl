@@ -2,8 +2,16 @@ using CSV
 using DataFrames
 using Statistics
 
+# Define the file path
+file_path = "data/sp500/simplified_return.csv"
+
+# Check if the file exists
+if !isfile(file_path)
+    error("File not found: $file_path")
+end
+
 # Load the simplified return data
-data = CSV.File("data/sp500/simplified_return.csv") |> DataFrame
+data = CSV.File(file_path) |> DataFrame
 
 # Calculate expected returns (mean of returns)
 expected_returns = mean.(eachcol(data[!, Not(:Date)]))
