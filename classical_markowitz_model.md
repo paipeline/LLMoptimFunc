@@ -6,7 +6,7 @@ To perform the classical Markowitz model optimization, the following data is req
 1. **Expected Returns**: A vector of expected returns for each asset in the portfolio. This can be estimated using historical data or predictive models.
 2. **Covariance Matrix**: A matrix that represents the covariance between the returns of the assets. This quantifies how the returns of different assets move together.
 3. **Number of Assets**: The total number of assets in the portfolio, denoted as \( n \).
-4. **Risk Aversion Coefficient**: A scalar value representing the investor's risk tolerance, denoted as \( \rho \). This coefficient influences the trade-off between risk and return in the optimization process.
+4. **Tradeoff Variable**: A scalar value representing the investor's tradeoff between risk and return, denoted as \( \lambda \). This variable influences the trade-off in the optimization process.
 5. **Budget Constraint**: A constraint ensuring that the total allocation of funds equals 1.
 
 ## Budget Constraint Explanation
@@ -67,13 +67,13 @@ The objective function is defined as:
 ### Objective Function
 Maximize:
 \[
-\text{Maximize } E(R) - \frac{1}{2} \rho x^T \Sigma x
+\text{Maximize } E(R) - \lambda x^T \Sigma x
 \]
 
 ### Subject to Constraints
 1. Expected return constraint:
 \[
-E(R) = rr^T x \geq \rho
+E(R) = rr^T x \geq \lambda
 \]
 2. Budget constraint:
 \[
