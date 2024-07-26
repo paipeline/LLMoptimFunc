@@ -87,9 +87,17 @@ E(R) = rr^T x \geq \lambda
 \[
 \sum_{i=1}^{n} x[i] = 1
 \]
-3. Non-negativity constraint:
+3. Expected return constraint:
 \[
-x[i] \geq 0 \quad \forall i
+E(R) = rr^T x \geq \lambda
+\]
+### Explanation of Constraints
+
+1. **Budget Constraint**: This constraint ensures that the total allocation of funds across all assets equals the specified budget. In this model, the budget is set to 1, representing 100% of the portfolio. This constraint allows the optimization process to focus on maximizing returns while adhering to the investor's total available capital.
+
+2. **Expected Return Constraint**: This constraint is necessary to ensure that the portfolio meets a minimum expected return level, which is crucial for investors who have specific return targets. By enforcing this constraint, the optimization process can identify asset allocations that not only maximize returns but also satisfy the investor's risk-return profile. It helps in aligning the portfolio with the investor's financial goals and risk tolerance.
+
+3. **Non-negativity Constraint**: This constraint ensures that no short selling occurs in the portfolio, meaning that all asset allocations must be non-negative. This is important for investors who wish to avoid the risks associated with short selling.
 \]
 
 This formulation allows for the optimization of asset allocations in a way that balances maximizing returns while minimizing risks according to the investor's preferences.
