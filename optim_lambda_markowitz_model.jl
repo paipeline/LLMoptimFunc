@@ -34,7 +34,7 @@ function evaluate_model(lambda::Float64)
     @constraint(model, sum(percentages) == 1.0)  # Total allocation must equal 100%
 
     # Solve the optimization problem
-    optimize!(model)  # Ensure the model is optimized
+    optimize(model)
 
     # Return the maximized value
     return objective_value(model)
