@@ -16,8 +16,17 @@ data = CSV.File(file_path) |> DataFrame
 # Calculate expected returns (mean of returns) for all assets
 expected_returns = mean.(eachcol(data[!, Not(:Date)])) |> x -> x .* 100
 
+# Convert expected returns to percentage
+expected_returns_percentage = expected_returns .* 100
+
 # Create a DataFrame for expected returns
-expected_returns_df = DataFrame(Ticker = names(data)[2:end], Expected_Returns = expected_returns_percentage)
+expected_returns_df = DataFrame(Ticker = names(data)[2:end], Expected_Returns = expected_returns)
+
+# Define the selected stock tickers
+selected_tickers = ["AAPL", "MSFT", "GOOGL", "AMZN", "NVDA", "FB", "ADBE", "CSCO", "INTC", "ORCL"]
+
+# Create a DataFrame for expected returns
+expected_returns_df = DataFrame(Ticker = names(data)[2:end], Expected_Returns = expected_returns)
 
 # Filter expected returns to include only selected tickers
 expected_returns_df = expected_returns_df[expected_returns_df.Ticker .∈ selected_tickers, :]
