@@ -3,24 +3,7 @@ using DataFrames
 using JuMP
 using Gurobi
 using Pkg
-
-# Install BayesianOptimization if not already installed
-if !("BayesianOptimization" in keys(Pkg.installed()))
-    Pkg.add("BayesianOptimization")
-end
-
-try
-    using BayesianOptimization
-catch e
-    if e isa ArgumentError && e.msg == "Package BayesianOptimization not found in current path."
-        println("The BayesianOptimization package is not installed. Please run the following command in the Julia REPL:")
-        println("import Pkg; Pkg.add(\"BayesianOptimization\")")
-        println("After installing, please rerun the script.")
-        return  # Exit the script gracefully
-    else
-        rethrow(e)
-    end
-end
+Pkg.add("BayesianOptimization")
 using Plots
 
 # Load expected returns and covariance matrix
