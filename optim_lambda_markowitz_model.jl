@@ -55,10 +55,13 @@ function tune_lambda()
     end
 
     # Perform Bayesian optimization
-    bo = BayesianOptimization(evaluate_model, Dict(:lambda => (0.0, 1.0)), n_iter=5)
-    best_lambda = bo.maximize()
+    f(x) = evaluate_model(x[1])
+    bounds = [0.0 1.0]
+    res = BayesianOptimization.optimize(f, bounds, method=:tree_parzen_estimator, num_init_samples=5, num_iterations=25)
 
-    return results
+    best_lambda = res.optimal_parameters[1]
+
+    return best_lambda, results
 end
 
 # Cross-validation function to evaluate performance
@@ -78,8 +81,8 @@ best_lambda, results = cross_validation()
 optimal_lambda = pick_best_lambda(results)
 
 # Plotting the results
-lambdas = [r[1] for r in results]
-values = [r[2] for r in results]
+lambdas = collect(keys(results))
+values = collect(values(results))
 
 scatter(lambdas, values, label="Cross-Validation Results", xlabel="Lambda (λ)", ylabel="Maximized Value", title="Cross-Validation of Lambda")
 scatter!([optimal_lambda], [evaluate_model(optimal_lambda)], label="Best Lambda", color=:red, markersize=8)
