@@ -21,6 +21,23 @@ In the context of the classical Markowitz model, the following variables are def
 - \( \rho \): The risk aversion coefficient.
 
 ## Optimization Model Mathematical Formulation
+
+### Covariance Matrix Output
+The covariance matrix is saved in a CSV file named `covariance_matrix.csv`. It is structured as follows:
+
+1. The first row contains the tickers of the assets.
+2. The first column also contains the tickers.
+3. The intersection of the rows and columns contains the covariance values.
+
+The expected output format in `covariance_matrix.csv` looks like this:
+
+```
+,Ticker1,Ticker2,Ticker3,...
+Ticker1,cov(Ticker1,Ticker1),cov(Ticker1,Ticker2),cov(Ticker1,Ticker3),...
+Ticker2,cov(Ticker2,Ticker1),cov(Ticker2,Ticker2),cov(Ticker2,Ticker3),...
+Ticker3,cov(Ticker3,Ticker1),cov(Ticker3,Ticker2),cov(Ticker3,Ticker3),...
+...
+```
 The classical Markowitz model can be formulated as a quadratic optimization problem. The objective is to minimize the portfolio variance while achieving a minimum expected return. The mathematical formulation is as follows:
 
 ### Objective Function
