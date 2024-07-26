@@ -40,13 +40,13 @@ if any(value(weights) .< 0)
 end
 
 # Print the sum of weights
-println("Sum of Asset Weights: ", sum(value(weights)))
+println("Sum of Asset Weights: ", sum(value.(weights)))
 
 # Return the maximized value
 println("Maximized Value: ", maximized_value)
 println("Optimized Asset Weights:")
 for i in 1:length(weights)
-    println("Asset ", i, " (", expected_returns_df.Ticker[i], "): ", value(weights[i]))
+    println("Asset ", i, " (", expected_returns_df.Ticker[i], "): ", value.(weights[i]))
 end
 
 println("\nExplanation:")
