@@ -64,12 +64,12 @@ function tune_lambda()
     lambda_values = 0.0:0.1:1.0  # Adjust the range and step size as needed
 
     # Store results for each λ
-    results = []
+    results = Dict{Float64, Float64}()
 
     # Perform grid search
     for λ in lambda_values
         result = evaluate_model(λ)
-        push!(results, (λ, result))
+        results[λ] = result
     end
 
     # Perform Bayesian optimization
@@ -87,8 +87,8 @@ end
 
 # Function to pick the best lambda
 function pick_best_lambda(results)
-    best_result = maximum(results)  # Get the maximum result
-    return best_result[1]  # Return the best lambda
+    best_lambda = findmax(values)[2]  # Get the index of the maximum value
+    return lambdas[best_lambda]  # Return the best lambda
 end
 
 # Main execution
