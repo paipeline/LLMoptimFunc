@@ -24,8 +24,11 @@ model = Model(Gurobi.Optimizer)
 @objective(model, Max, sum(expected_returns[i] * weights[i] for i in 1:length(expected_returns)) - 
     risk_aversion_coefficient * sum(weights[i]^2 for i in 1:length(weights)))
 
-# Fake constraint: sum of weights must equal 1
-@constraint(model, sum(weights) == 1)
+# Define the budget
+budget = 1.0  # Adjust this value as needed
+
+# Constraint: sum of weights must equal the budget
+@constraint(model, sum(weights) == budget)
 
 # Solve the optimization problem
 optimize!(model)
