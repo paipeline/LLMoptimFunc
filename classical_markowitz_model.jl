@@ -48,6 +48,13 @@ for i in 1:length(weights)
     println("Asset ", i, " (", expected_returns_df.Ticker[i], "): ", value.(weights[i]))
 end
 
+# Check if the sum of weights is approximately equal to 1
+if abs(sum(value.(weights)) - 1) < 1e-5
+    println("The sum of asset weights is approximately equal to 1.")
+else
+    println("Warning: The sum of asset weights is not equal to 1.")
+end
+
 println("\nExplanation:")
 println("The maximized return represents the highest expected return achievable given the constraints of the model.")
 println("This value is crucial for investors as it indicates the optimal allocation of funds across different assets")
