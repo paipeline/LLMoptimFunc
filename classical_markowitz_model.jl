@@ -51,7 +51,7 @@ println("Sum of Asset Weights: ", sum(value.(percentages)))
 println("Maximized Value: ", maximized_value)
 println("Optimized Asset Percentages (Dollar Amounts):")
 for i in 1:length(percentages)
-    println("Asset ", i, " (", expected_returns_df.Ticker[i], "): $", value.(percentages[i]) * initial_investment)
+    println("Asset ", i, " (", expected_returns_df.Ticker[i], "): $", value(percentages[i]) * initial_investment)
 end
 
 # Check if the sum of weights is approximately equal to 1
