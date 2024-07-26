@@ -20,7 +20,7 @@ expected_returns = mean.(eachcol(data[!, Not(:Date)])) |> x -> x .* 100
 expected_returns_percentage = expected_returns .* 100
 
 # Create a DataFrame for expected returns
-expected_returns_df = DataFrame(Ticker = names(data)[2:end], Expected_Returns = expected_returns)
+expected_returns_df = DataFrame(Ticker = selected_tickers, Expected_Returns = expected_returns)
 
 # Define the selected stock tickers
 selected_tickers = ["AAPL", "MSFT", "GOOGL", "AMZN", "NVDA", "FB", "ADBE", "CSCO", "INTC", "ORCL"]
@@ -34,15 +34,18 @@ expected_returns_df = expected_returns_df[expected_returns_df.Ticker .∈ select
 # Convert expected returns to percentage
 expected_returns_percentage = expected_returns .* 100
 
-# Calculate the covariance matrix of the returns for all assets
-covariance_matrix = cov(Matrix(data[!, Not(:Date)])) |> x -> round.(x, digits=4)
+# Filter the data to include only selected tickers
+filtered_data = data[:, [:Date] .∪ selected_tickers]
+
+# Calculate the covariance matrix of the returns for the selected assets
+covariance_matrix = cov(Matrix(filtered_data[!, Not(:Date)])) |> x -> round.(x, digits=4)
 
 # Create a DataFrame for covariance matrix
 covariance_matrix_df = DataFrame(covariance_matrix, :auto)
 
 # Filter covariance matrix to include only selected tickers
 covariance_matrix_df = covariance_matrix_df[selected_tickers, selected_tickers]
-rename!(covariance_matrix_df, names(data)[2:end])
+rename!(covariance_matrix_df, selected_tickers)
 
 # Define the selected stock tickers
 selected_tickers = ["AAPL", "MSFT", "GOOGL", "AMZN", "NVDA", "FB", "ADBE", "CSCO", "INTC", "ORCL"]
