@@ -40,7 +40,7 @@ optimize!(model)
 maximized_value = objective_value(model)
 
 # Check if weights are non-negative
-if any(value.(weights) .< 0)
+if any(value.(percentages) .< 0)
     println("Warning: Some asset weights are negative.")
 end
 
@@ -55,7 +55,7 @@ for i in 1:length(percentages)
 end
 
 # Check if the sum of weights is approximately equal to 1
-if abs(sum(value.(weights)) - 1) < 1e-5
+if abs(sum(value.(percentages)) - 1) < 1e-5
     println("The sum of asset weights is approximately equal to 1.")
 else
     println("Warning: The sum of asset weights is not equal to 1.")
