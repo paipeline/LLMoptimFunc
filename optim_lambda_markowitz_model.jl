@@ -2,17 +2,13 @@ using CSV
 using DataFrames
 using JuMP
 using Gurobi
-try
-    using BayesianOptimization
-catch e
-    if e isa ArgumentError && e.msg == "Package BayesianOptimization not found in current path."
-        println("The BayesianOptimization package is not installed. Please run the following command in the Julia REPL:")
-        println("import Pkg; Pkg.add(\"BayesianOptimization\")")
-        error("BayesianOptimization package not found.")
-    else
-        rethrow(e)
-    end
+import Pkg
+if !(@isdefined BayesianOptimization)
+    println("The BayesianOptimization package is not installed. Please run the following command in the Julia REPL:")
+    println("import Pkg; Pkg.add(\"BayesianOptimization\")")
+    error("BayesianOptimization package not found.")
 end
+using BayesianOptimization
 using Plots
 
 # Load expected returns and covariance matrix
