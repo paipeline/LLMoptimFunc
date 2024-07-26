@@ -42,7 +42,7 @@ end
 # Hyperparameter tuning using grid search
 function tune_lambda()
     # Define a range of values for λ
-    lambda_values = 0.0:0.1:1.0  # Adjust the range and step size as needed
+    lambda_values = 0.0:0.05:1.0  # Create more lambda values for tuning
 
     # Store results for each λ
     results = Dict{Float64, Float64}()
@@ -70,7 +70,11 @@ optimal_lambda = pick_best_lambda(results)
 lambda_values = collect(keys(results))
 objective_values = collect(values(results))
 
-p = scatter(lambda_values, objective_values, label="Cross-Validation Results", xlabel="Lambda (λ)", ylabel="Maximized Value", title="Cross-Validation of Lambda")
+p = plot(lambda_values, objective_values, label="Optimal Value Curve", xlabel="Lambda (λ)", ylabel="Maximized Value", title="Optimal Value vs Individual Asset Values", legend=:topright)
+for i in 1:length(expected_returns)
+    asset_value = [evaluate_model(λ) for λ in lambda_values]  # Calculate asset values for each lambda
+    plot!(lambda_values, asset_value, label="Asset $i Value", linestyle=:dash)
+end
 scatter!(p, [optimal_lambda], [results[optimal_lambda]], label="Best Lambda", color=:red, markersize=8)
 
 println("Optimal Lambda: ", optimal_lambda)
