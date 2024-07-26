@@ -11,6 +11,9 @@ covariance_matrix_df = CSV.File("data/covariance_matrix.csv") |> DataFrame
 expected_returns = expected_returns_df.Expected_Returns
 covariance_matrix = Matrix(covariance_matrix_df)
 
+# Define risk aversion coefficient
+risk_aversion_coefficient = 0.5  # Adjust this value as needed
+
 # Create the optimization model
 model = Model(GLPK.Optimizer)
 
@@ -18,7 +21,8 @@ model = Model(GLPK.Optimizer)
 @variable(model, weights[1:size(expected_returns, 1)] >= 0)
 
 # Define the objective function (maximize expected return)
-@objective(model, Max, sum(expected_returns[i] * weights[i] for i in 1:length(expected_returns)))
+@objective(model, Max, sum(expected_returns[i] * weights[i] for i in 1:length(expected_returns)) - 
+    risk_aversion_coefficient * sum(weights[i]^2 for i in 1:length(weights)))
 
 # Fake constraint: sum of weights must equal 1
 @constraint(model, sum(weights) == 1)
