@@ -14,13 +14,13 @@ end
 data = CSV.File(file_path) |> DataFrame
 
 # Calculate expected returns (mean of returns)
-expected_returns = mean.(eachcol(data[!, Not(:Date)]))
+expected_returns = mean.(eachcol(data[!, Not(:Date)])) |> x -> x .* 100
 
 # Convert expected returns to percentage
 expected_returns_percentage = expected_returns .* 100
 
 # Calculate the covariance matrix of the returns
-covariance_matrix = cov(Matrix(data[!, Not(:Date)]))
+covariance_matrix = cov(Matrix(data[!, Not(:Date)])) |> x -> round.(x, digits=4)
 
 # Print the results
 println("Expected Returns (in %):")
