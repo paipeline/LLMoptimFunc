@@ -1,6 +1,7 @@
 using CSV
 using DataFrames
 using JuMP
+using Ipopt
 using GLPK
 
 # Load expected returns and covariance matrix
