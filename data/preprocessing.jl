@@ -30,6 +30,8 @@ expected_returns_df = DataFrame(Ticker = selected_tickers, Expected_Returns = ex
 
 # Filter expected returns to include only selected tickers
 expected_returns_df = expected_returns_df[expected_returns_df.Ticker .∈ selected_tickers, :]
+# Convert expected returns to percentage
+expected_returns_percentage = expected_returns .* 100
 
 # Convert expected returns to percentage
 expected_returns_percentage = expected_returns .* 100
