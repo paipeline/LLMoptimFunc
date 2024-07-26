@@ -75,15 +75,10 @@ asset_values = [evaluate_model(λ)[1] for λ in lambda_values]  # Calculate asse
 asset_allocations = [evaluate_model(λ)[2] for λ in lambda_values]  # Calculate asset allocations for each lambda
 asset_allocations_values = [value.(asset_allocations[j]) for j in 1:length(lambda_values)]  # Extract numerical values
 
-for i in 1:length(expected_returns)
-    plot!(lambda_values, [asset_allocations_values[j][i] for j in 1:length(lambda_values)], label="Asset $i Value", linestyle=:dash)
-end
+# Remove the loop for plotting asset allocations
 scatter!(p, [optimal_lambda], [results[optimal_lambda]], label="Best Lambda", color=:red, markersize=8)
 
-# Plot asset allocations for the best lambda
-best_allocation = asset_allocations[argmax(lambda_values .== optimal_lambda)]
-bar_labels = ["Asset $i" for i in 1:length(best_allocation)]
-bar(bar_labels, best_allocation, label="Best Asset Allocation", color=:blue, alpha=0.5)
+# Remove the plotting of asset allocations
 
 println("Optimal Lambda: ", optimal_lambda)
 println("Maximized Value at Optimal Lambda: ", results[optimal_lambda])
