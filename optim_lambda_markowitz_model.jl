@@ -62,7 +62,7 @@ function tune_lambda()
     # Perform grid search
     best_lambda = argmax(values(results))  # Get the index of the maximum value
 
-    return collect(keys(results))[best_lambda], results  # Return the best lambda
+    return keys(results)[best_lambda], results  # Return the best lambda
 end
 
 # Cross-validation function to evaluate performance
