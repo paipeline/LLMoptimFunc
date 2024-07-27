@@ -24,8 +24,11 @@ expected_returns = filtered_data[selected_tickers].mean() * 100
 # Create a DataFrame for expected returns
 expected_returns_df = pd.DataFrame({'Ticker': selected_tickers, 'Expected_Returns': expected_returns})
 
-# Calculate the correlation matrix of the returns for the selected assets
-correlation_matrix = filtered_data[selected_tickers].corr().round(4)
+# Calculate the standard deviations for the selected tickers
+std_devs = filtered_data[selected_tickers].std()
+
+# Calculate the correlation matrix from the covariance matrix
+correlation_matrix = covariance_matrix / np.outer(std_devs, std_devs)
 
 # Create a DataFrame for correlation matrix
 correlation_matrix_df = pd.DataFrame(correlation_matrix, columns=selected_tickers, index=selected_tickers)
