@@ -31,11 +31,14 @@ covariance_matrix = cov(Matrix(filtered_data[!, Not(:Date)])) |> x -> round.(x, 
 # Create a DataFrame for covariance matrix
 covariance_matrix_df = DataFrame(covariance_matrix, Symbol.(selected_tickers))
 
-# Save expected returns to CSV
-CSV.write("data/expected_returns.csv", expected_returns_df)
+# Calculate the correlation matrix from the covariance matrix
+correlation_matrix = covariance_matrix ./ (std(expected_returns) .* std(expected_returns)')
 
-# Save covariance matrix to CSV
-CSV.write("data/covariance_matrix.csv", covariance_matrix_df)
+# Create a DataFrame for correlation matrix
+correlation_matrix_df = DataFrame(correlation_matrix, Symbol.(selected_tickers))
+
+# Save correlation matrix to CSV
+CSV.write("data/correlation_matrix.csv", correlation_matrix_df)
 
 # Print confirmation messages
 println("Expected returns saved to data/expected_returns.csv")
