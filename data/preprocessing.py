@@ -10,7 +10,7 @@ if not os.path.isfile(file_path):
     raise FileNotFoundError(f"File not found: {file_path}")
 
 # Load the simplified return data
-data = pd.read_csv(file_path)
+data = pd.read_csv(file_path, header=0)
 
 # Define the selected tech stock tickers
 selected_tickers = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'NVDA', 'FB', 'ADBE', 'CSCO', 'INTC', 'ORCL']
