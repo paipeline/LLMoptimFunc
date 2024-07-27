@@ -16,5 +16,5 @@ savefig("data/expected_returns_plot.png")
 
 # 2. Heatmap for correlation matrix
 correlation_matrix_df = CSV.File("data/correlation_matrix.csv") |> DataFrame
-heatmap(Matrix(correlation_matrix_df), title="Correlation Matrix Heatmap", xlabel="Tickers", ylabel="Tickers", color=:viridis)
+heatmap(Matrix(correlation_matrix_df), title="Correlation Matrix Heatmap", xlabel="Tickers", ylabel="Tickers", color=:viridis, clims=(0, 1), xticks=(1:length(tickers), tickers), yticks=(1:length(tickers), tickers))
 savefig("data/correlation_matrix_heatmap.png")
