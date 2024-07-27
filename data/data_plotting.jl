@@ -1,5 +1,6 @@
 using CSV
 using DataFrames
+using LinearAlgebra
 using Plots
 
 # Load expected returns and covariance matrix
