@@ -18,6 +18,13 @@ savefig("data/expected_returns_plot.png")
 heatmap(Matrix(covariance_matrix_df[!, Not(:AAPL)]), title="Covariance Matrix Heatmap", xlabel="Tickers", ylabel="Tickers", color=:viridis)
 savefig("data/covariance_matrix_heatmap.png")
 
-# 3. Scatter plot for AAPL vs MSFT returns
+# 3. Standard deviation plot for assets
+std_devs = sqrt.(diag(Matrix(covariance_matrix_df)))  # Calculate standard deviations
+fig = plot(std_devs, label="Standard Deviation", color="g")
+xlabel("Assets")
+ylabel("Standard Deviation (%)")
+title("Standard Deviation of Selected Assets")
+legend()
+savefig("data/standard_deviation_plot.png")
 scatter(expected_returns_df[expected_returns_df.Ticker .== "AAPL", :Expected_Returns], expected_returns_df[expected_returns_df.Ticker .== "MSFT", :Expected_Returns], label="AAPL vs MSFT", xlabel="AAPL Returns", ylabel="MSFT Returns", title="Scatter Plot: AAPL vs MSFT")
 savefig("data/scatter_aapl_vs_msft.png")
