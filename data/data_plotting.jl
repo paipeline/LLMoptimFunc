@@ -26,5 +26,6 @@ ylabel("Standard Deviation (%)")
 title("Standard Deviation of Selected Assets")
 legend()
 savefig("data/standard_deviation_plot.png")
+# 4. Scatter plot for AAPL vs MSFT returns
 scatter(expected_returns_df[expected_returns_df.Ticker .== "AAPL", :Expected_Returns], expected_returns_df[expected_returns_df.Ticker .== "MSFT", :Expected_Returns], label="AAPL vs MSFT", xlabel="AAPL Returns", ylabel="MSFT Returns", title="Scatter Plot: AAPL vs MSFT")
 savefig("data/scatter_aapl_vs_msft.png")
