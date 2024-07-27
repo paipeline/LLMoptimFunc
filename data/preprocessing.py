@@ -31,6 +31,9 @@ correlation_matrix = filtered_data[selected_tickers].corr().round(4)
 std_devs = filtered_data[selected_tickers].std()
 covariance_matrix = correlation_matrix * np.outer(std_devs, std_devs)
 
+# Filter the covariance matrix to include only the selected tickers
+covariance_matrix = covariance_matrix[selected_tickers].loc[selected_tickers]
+
 # Create a DataFrame for covariance matrix
 covariance_matrix_df = pd.DataFrame(covariance_matrix, columns=selected_tickers, index=selected_tickers)
 
