@@ -12,12 +12,12 @@ expected_returns = expected_returns_df.Expected_Returns
 
 # 1. Bar plot for expected returns
 bar(tickers, expected_returns, label="Expected Returns", xlabel="Tickers", ylabel="Expected Return (%)", title="Expected Returns of Selected Tickers", legend=:topright)
-savefig("expected_returns_plot.png")
+savefig("data/expected_returns_plot.png")
 
 # 2. Heatmap for covariance matrix
 heatmap(covariance_matrix_df[!, Not(:AAPL)], title="Covariance Matrix Heatmap", xlabel="Tickers", ylabel="Tickers", color=:viridis)
-savefig("covariance_matrix_heatmap.png")
+savefig("data/covariance_matrix_heatmap.png")
 
 # 3. Scatter plot for AAPL vs MSFT returns
 scatter(expected_returns_df[expected_returns_df.Ticker .== "AAPL", :Expected_Returns], expected_returns_df[expected_returns_df.Ticker .== "MSFT", :Expected_Returns], label="AAPL vs MSFT", xlabel="AAPL Returns", ylabel="MSFT Returns", title="Scatter Plot: AAPL vs MSFT")
-savefig("scatter_aapl_vs_msft.png")
+savefig("data/scatter_aapl_vs_msft.png")
