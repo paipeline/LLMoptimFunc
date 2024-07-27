@@ -1,6 +1,5 @@
 using CSV
 using DataFrames
-using LinearAlgebra
 using Plots
 
 # Load expected returns and covariance matrix
@@ -15,21 +14,6 @@ expected_returns = expected_returns_df.Expected_Returns
 bar(tickers, expected_returns, label="Expected Returns", xlabel="Tickers", ylabel="Expected Return (%)", title="Expected Returns of Selected Tickers", legend=:topright)
 savefig("data/expected_returns_plot.png")
 
-# 3. Standard deviation plot for assets
-std_devs = sqrt.(diag(Matrix(covariance_matrix_df |> Matrix{Float64})))  # Calculate standard deviations
-fig = plot(std_devs, label="Standard Deviation", color="g")
-xlabel("Assets")
-ylabel("Standard Deviation (%)")
-title("Standard Deviation of Selected Assets")
-legend()
-savefig("data/standard_deviation_plot.png")
-std_devs = sqrt.(diag(Matrix(covariance_matrix_df)))  # Calculate standard deviations
-fig = plot(std_devs, label="Standard Deviation", color="g")
-xlabel("Assets")
-ylabel("Standard Deviation (%)")
-title("Standard Deviation of Selected Assets")
-legend()
-savefig("data/standard_deviation_plot.png")
-# 4. Scatter plot for AAPL vs MSFT returns
-scatter(expected_returns_df[expected_returns_df.Ticker .== "AAPL", :Expected_Returns], expected_returns_df[expected_returns_df.Ticker .== "MSFT", :Expected_Returns], label="AAPL vs MSFT", xlabel="AAPL Returns", ylabel="MSFT Returns", title="Scatter Plot: AAPL vs MSFT")
-savefig("data/scatter_aapl_vs_msft.png")
+# 2. Heatmap for covariance matrix
+heatmap(Matrix(covariance_matrix_df[!, Not(:AAPL)]), title="Covariance Matrix Heatmap", xlabel="Tickers", ylabel="Tickers", color=:viridis)
+savefig("data/covariance_matrix_heatmap.png")
