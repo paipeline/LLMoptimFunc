@@ -16,7 +16,7 @@ bar(tickers, expected_returns, label="Expected Returns", xlabel="Tickers", ylabe
 savefig("data/expected_returns_plot.png")
 
 # 3. Standard deviation plot for assets
-std_devs = sqrt.(diag(Matrix(covariance_matrix_df |> Matrix)))  # Calculate standard deviations
+std_devs = sqrt.(diag(Matrix(covariance_matrix_df |> Matrix{Float64})))  # Calculate standard deviations
 fig = plot(std_devs, label="Standard Deviation", color="g")
 xlabel("Assets")
 ylabel("Standard Deviation (%)")
