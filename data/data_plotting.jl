@@ -15,7 +15,7 @@ bar(tickers, expected_returns, label="Expected Returns", xlabel="Tickers", ylabe
 savefig("data/expected_returns_plot.png")
 
 # 2. Heatmap for covariance matrix
-heatmap(covariance_matrix_df[!, Not(:AAPL)], title="Covariance Matrix Heatmap", xlabel="Tickers", ylabel="Tickers", color=:viridis)
+heatmap(Matrix(covariance_matrix_df[!, Not(:AAPL)]), title="Covariance Matrix Heatmap", xlabel="Tickers", ylabel="Tickers", color=:viridis)
 savefig("data/covariance_matrix_heatmap.png")
 
 # 3. Scatter plot for AAPL vs MSFT returns
