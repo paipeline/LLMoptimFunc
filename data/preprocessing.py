@@ -34,11 +34,13 @@ covariance_matrix = filtered_data[selected_tickers].cov()
 # correlation_matrix_df = CSV.File("data/correlation_matrix.csv") |> DataFrame
 
 # Save correlation matrix to CSV
-correlation_matrix_df.to_csv("data/correlation_matrix.csv", index=True)
+correlation_matrix_df.to_csv("data/correlation_matrix.csv")
 
-# Convert correlation matrix to covariance matrix using the standard deviations
-std_devs = filtered_data[selected_tickers].std()
-covariance_matrix = correlation_matrix * np.outer(std_devs, std_devs)
+# Calculate the correlation matrix from the covariance matrix
+correlation_matrix = covariance_matrix / np.outer(std_devs, std_devs)
+
+# Create a DataFrame for correlation matrix
+correlation_matrix_df = pd.DataFrame(correlation_matrix, columns=selected_tickers, index=selected_tickers)
 
 # Filter the covariance matrix to include only the selected tickers
 covariance_matrix = covariance_matrix[selected_tickers].loc[selected_tickers]
