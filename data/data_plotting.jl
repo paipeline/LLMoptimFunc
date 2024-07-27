@@ -14,6 +14,7 @@ expected_returns = expected_returns_df.Expected_Returns
 bar(tickers, expected_returns, label="Expected Returns", xlabel="Tickers", ylabel="Expected Return (%)", title="Expected Returns of Selected Tickers", legend=:topright)
 savefig("data/expected_returns_plot.png")
 
-# 2. Heatmap for covariance matrix
-heatmap(Matrix(covariance_matrix_df[!, Not(:AAPL)]), title="Covariance Matrix Heatmap", xlabel="Tickers", ylabel="Tickers", color=:viridis)
+# 2. Heatmap for correlation matrix
+correlation_matrix_df = CSV.File("data/correlation_matrix.csv") |> DataFrame
+heatmap(Matrix(correlation_matrix_df[!, Not(:AAPL)]), title="Correlation Matrix Heatmap", xlabel="Tickers", ylabel="Tickers", color=:viridis)
 savefig("data/covariance_matrix_heatmap.png")
