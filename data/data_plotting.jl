@@ -14,11 +14,14 @@ expected_returns = expected_returns_df.Expected_Returns
 bar(tickers, expected_returns, label="Expected Returns", xlabel="Tickers", ylabel="Expected Return (%)", title="Expected Returns of Selected Tickers", legend=:topright)
 savefig("data/expected_returns_plot.png")
 
-# 2. Heatmap for covariance matrix
-heatmap(Matrix(covariance_matrix_df[!, Not(:AAPL)]), title="Covariance Matrix Heatmap", xlabel="Tickers", ylabel="Tickers", color=:viridis)
-savefig("data/covariance_matrix_heatmap.png")
-
 # 3. Standard deviation plot for assets
+std_devs = sqrt.(diag(Matrix(covariance_matrix_df)))  # Calculate standard deviations
+fig = plot(std_devs, label="Standard Deviation", color="g")
+xlabel("Assets")
+ylabel("Standard Deviation (%)")
+title("Standard Deviation of Selected Assets")
+legend()
+savefig("data/standard_deviation_plot.png")
 std_devs = sqrt.(diag(Matrix(covariance_matrix_df)))  # Calculate standard deviations
 fig = plot(std_devs, label="Standard Deviation", color="g")
 xlabel("Assets")
