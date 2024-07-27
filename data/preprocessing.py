@@ -34,6 +34,12 @@ covariance_matrix = correlation_matrix * np.outer(std_devs, std_devs)
 # Create a DataFrame for covariance matrix
 covariance_matrix_df = pd.DataFrame(covariance_matrix, columns=selected_tickers, index=selected_tickers)
 
+# Create a condensed DataFrame with only the ticker data
+condensed_data = filtered_data[['Date'] + selected_tickers]
+
+# Save the condensed data to CSV
+condensed_data.to_csv("data/condensed_data.csv", index=False)
+
 # Save expected returns to CSV
 expected_returns_df.to_csv("data/expected_returns.csv", index=False)
 
