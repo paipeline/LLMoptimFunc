@@ -25,7 +25,7 @@ excess_returns = expected_returns .- risk_free_rate
 
 # Define the objective function (maximize Sharpe Ratio)
 @objective(sharpe_model, Max, sum(excess_returns[i] * sharpe_percentages[i] for i in 1:length(excess_returns)) / 
-    sqrt(sum(covariance_matrix[i, j] * sharpe_percentages[i] * sharpe_percentages[j] for i in 1:length(sharpe_percentages), j in 1:length(sharpe_percentages))))
+    sqrt(sum(covariance_matrix[i, j] * sharpe_percentages[i] * sharpe_percentages[j] for i in 1:length(sharpe_percentages), j in 1:length(sharpe_percentages)) + 1e-10))  # Added small value to avoid division by zero
 
 # Define the budget as a percentage
 budget = 1.0  # Total allocation must equal 100%
