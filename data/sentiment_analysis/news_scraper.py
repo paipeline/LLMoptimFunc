@@ -1,4 +1,5 @@
 import requests
+import logging
 from datetime import datetime, timedelta
 
 def get_finnhub_news(ticker, date, api_key):
@@ -13,6 +14,14 @@ def get_finnhub_news(ticker, date, api_key):
     return sorted_news
 
 
+def setup_logger():
+    logging.basicConfig(filename='news_log.txt', level=logging.INFO, 
+                        format='%(asctime)s - %(message)s')
+
+def log_news(news):
+    for item in news:
+        logging.info(f"Title: {item['title']}, Date: {item['date']}, Importance: {item['importance']}")
+
 def get_monthly_news(ticker, start_date, end_date, api_key):
     all_news = []
     current_date = start_date
@@ -21,6 +30,7 @@ def get_monthly_news(ticker, start_date, end_date, api_key):
         if news:
             all_news.extend(news)
         current_date += timedelta(days=1)
+    log_news(all_news)
     return all_news
 
 
@@ -31,6 +41,7 @@ if __name__ == "__main__":
     api_key = "cqjngvhr01qnjotgajdgcqjngvhr01qnjotgaje0"
     start_date = datetime(2024, 1, 1)
     end_date = datetime(2024, 1, 31)
+    setup_logger()
     news = get_monthly_news(ticker, start_date, end_date, api_key)
     print(news)
     all_news = []
