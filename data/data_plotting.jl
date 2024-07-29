@@ -15,5 +15,5 @@ bar(tickers, expected_returns, label="Expected Returns", xlabel="Tickers", ylabe
 savefig("data/expected_returns_plot.png")
 
 # 2. Heatmap for covariance matrix
-heatmap(Matrix(covariance_matrix_df[!, Not(:AAPL)]), title="Covariance Matrix Heatmap", xlabel="Tickers", ylabel="Tickers", color=:viridis)
+heatmap(Matrix(covariance_matrix_df[!, 2:end]), title="Covariance Matrix Heatmap", xlabel="Tickers", ylabel="Tickers", color=:viridis)
 savefig("data/covariance_matrix_heatmap.png")
