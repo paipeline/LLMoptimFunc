@@ -1,29 +1,24 @@
 import requests
-from bs4 import BeautifulSoup
-from datetime import datetime
+from datetime import datetime, timedelta
 
-def fetch_yahoo_finance_data(ticker):
-    url = f'https://finance.yahoo.com/quote/{ticker}/news?p={ticker}'
+def get_finnhub_news(ticker, date, api_key):
+    date_from = f'{date}T00:00:00Z'
+    date_to = f'{date}T23:59:59Z'
+    url = f'https://finnhub.io/api/v1/company-news?symbol={ticker}&from={date_from}&to={date_to}&token={api_key}'
     response = requests.get(url)
     if response.status_code != 200:
         return None
-    soup = BeautifulSoup(response.text, 'html.parser')
-    news_items = []
-    for item in soup.find_all('li', class_='js-stream-content'):
-        headline = item.find('h3').get_text() if item.find('h3') else None
-        date = item.find('time')['datetime'] if item.find('time') else None
-        source = item.find('span', class_='C(#959595)').get_text() if \
-        item.find('span', class_='C(#959595)') else None
-        if headline and date and source:
-            news_items.append({'headline': headline, 'date': date, 'source': source})
-    return news_items
+    news_data = response.json()
+    sorted_news = sorted(news_data, key=lambda x: x['importance'], reverse=True)[:5]
+    return sorted_news
 
 
-def get_finnhub_news(ticker, api_key):
-    import requests
-
-    url = f'https://finnhub.io/api/v1/company-news?symbol={ticker}&from=2022-01-01&to={datetime.now().strftime("%Y-%m-%d")}&token={api_key}'
-    response = requests.get(url)
-    if response.status_code != 200:
-        return None
-    return response.json()
+def get_monthly_news(ticker, start_date, end_date, api_key):
+    all_news = []
+    current_date = start_date
+    while current_date <= end_date:
+        news = get_finnhub_news(ticker, current_date.strftime('%Y-%m-%d'), api_key)
+        if news:
+            all_news.extend(news)
+        current_date += timedelta(days=1)
+    return all_news
