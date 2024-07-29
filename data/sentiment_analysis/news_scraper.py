@@ -21,8 +21,8 @@ def fetch_yahoo_finance_data(ticker):
 def get_finnhub_news(ticker, api_key):
     import requests
 
-    url =f'https://finnhub.io/api/v1/company-news?symbol={ticker}&from=2022-01-01&to=20…
-        response = requests.get(url)
+    url = f'https://finnhub.io/api/v1/company-news?symbol={ticker}&from=2022-01-01&to={datetime.now().strftime("%Y-%m-%d")}&token={api_key}'
+    response = requests.get(url)
         if response.status_code != 200:
             return None
         return response.json()
