@@ -52,4 +52,3 @@ if __name__ == "__main__":
             all_news.extend(news)
         current_date += timedelta(days=1)
     print(all_news)
-    return all_news
