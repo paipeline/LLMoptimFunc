@@ -1,22 +1,19 @@
 using CSV
 using DataFrames
 using Plots
-using Statistics
 
 # Load expected returns and covariance matrix
 expected_returns_df = CSV.File("data/expected_returns.csv") |> DataFrame
-covariance_matrix_df = CSV.File("data/covariance_matrix.csv", header=false) |> DataFrame
+covariance_matrix_df = CSV.File("data/covariance_matrix.csv") |> DataFrame
 
-# Remove the first column from the expected returns DataFrame
-expected_returns_df = expected_returns_df[:, 2:end]
+# Extract expected returns and tickers
+tickers = expected_returns_df.Ticker
+expected_returns = expected_returns_df.Expected_Returns
 
-# Remove the first column from the covariance matrix DataFrame
-covariance_matrix_df = covariance_matrix_df[:, 2:end]
+# 1. Bar plot for expected returns
+bar(tickers, expected_returns, label="Expected Returns", xlabel="Tickers", ylabel="Expected Return (%)", title="Expected Returns of Selected Tickers", legend=:topright)
+savefig("data/expected_returns_plot.png")
 
-# Convert covariance matrix to a correlation matrix
-covariance_matrix = Matrix(covariance_matrix_df)
-correlation_matrix = cor(covariance_matrix)
-
-# Plot correlation heatmap
-heatmap(expected_returns_df[:, 1], expected_returns_df[:, 1], correlation_matrix, title="Correlation Matrix Heatmap", xlabel="Tickers", ylabel="Tickers", color=:viridis)
-savefig("data/correlation_matrix_heatmap.png")
+# 2. Heatmap for covariance matrix
+heatmap(Matrix(covariance_matrix_df[!, Not(:AAPL)]), title="Covariance Matrix Heatmap", xlabel="Tickers", ylabel="Tickers", color=:viridis)
+savefig("data/covariance_matrix_heatmap.png")
