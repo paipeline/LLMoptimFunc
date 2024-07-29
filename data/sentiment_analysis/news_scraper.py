@@ -13,6 +13,15 @@ def get_finnhub_news(ticker, date, api_key):
     return sorted_news
 
 
+if __name__ == "__main__":
+    ticker = "AAPL"  # Example ticker symbol
+    api_key = "your_api_key_here"  # Replace with your actual API key
+    start_date = datetime(2024, 1, 1)  # Example start date
+    end_date = datetime(2024, 1, 31)  # Example end date
+
+    news = get_monthly_news(ticker, start_date, end_date, api_key)
+    print(news)
+
 def get_monthly_news(ticker, start_date, end_date, api_key):
     all_news = []
     current_date = start_date
