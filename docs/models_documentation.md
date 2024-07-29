@@ -4,7 +4,7 @@ This document provides an overview of the optimization models used in the projec
 
 ## 1. Optimized Lambda Markowitz Model
 
-The Optimized Lambda Markowitz Model seeks to maximize returns while minimizing risk (variance) in a portfolio. The optimization problem is defined as:
+The Optimized Lambda Markowitz Model aims to maximize returns while reducing risk (variance) in a portfolio. The optimization problem is defined as:
 
 ### Objective Function
 
@@ -13,10 +13,10 @@ The Optimized Lambda Markowitz Model seeks to maximize returns while minimizing 
 \]
 
 Where:
-- \( Z \) is the value we want to maximize.
+- \( Z \) is the value to maximize.
 - \( E[R_i] \) is the expected return for asset \( i \).
-- \( w_i \) is the proportion of the total investment in asset \( i \).
-- \( \lambda \) represents the investor's risk tolerance.
+- \( w_i \) is the percentage of the total investment in asset \( i \).
+- \( \lambda \) indicates the investor's risk tolerance.
 - \( \sigma_{ij} \) is the covariance between the returns of assets \( i \) and \( j \).
 
 ### Constraints
@@ -33,7 +33,7 @@ Where:
 
 ## 2. Classical Markowitz Model
 
-The Classical Markowitz Model aims to maximize expected returns while managing risk. The optimization problem is defined as:
+The Classical Markowitz Model seeks to maximize expected returns while controlling risk. The optimization problem is defined as:
 
 ### Objective Function
 
@@ -42,10 +42,10 @@ The Classical Markowitz Model aims to maximize expected returns while managing r
 \]
 
 Where:
-- \( Z \) is the value we want to maximize.
+- \( Z \) is the value to maximize.
 - \( E[R_i] \) is the expected return for asset \( i \).
-- \( w_i \) is the proportion of the total investment in asset \( i \).
-- \( \lambda \) represents the investor's risk tolerance.
+- \( w_i \) is the percentage of the total investment in asset \( i \).
+- \( \lambda \) indicates the investor's risk tolerance.
 
 ### Constraints
 
@@ -61,7 +61,7 @@ Where:
 
 ## 3. Sharpe Ratio Model
 
-The Sharpe Ratio Model seeks to maximize the Sharpe ratio, which measures the expected return per unit of risk. The optimization problem is defined as:
+The Sharpe Ratio Model aims to maximize the Sharpe ratio, which measures the expected return for each unit of risk. The optimization problem is defined as:
 
 ### Objective Function
 
@@ -73,7 +73,7 @@ Where:
 - \( S \) is the Sharpe ratio.
 - \( E[R_i] \) is the expected return for asset \( i \).
 - \( r_f \) is the risk-free rate.
-- \( w_i \) is the proportion of the total investment in asset \( i \).
+- \( w_i \) is the percentage of the total investment in asset \( i \).
 - \( \sigma_{ij} \) is the covariance between the returns of assets \( i \) and \( j \).
 
 ### Constraints
