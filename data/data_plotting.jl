@@ -1,5 +1,6 @@
 using CSV
 using DataFrames
+using Statistics
 using Plots
 
 # Load expected returns and covariance matrix
