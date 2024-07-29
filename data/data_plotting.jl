@@ -13,11 +13,11 @@ expected_returns = expected_returns_df.Expected_Returns
 
 # 1. Bar plot for expected returns
 bar(tickers, expected_returns, label="Expected Returns", xlabel="Tickers", ylabel="Expected Return (%)", title="Expected Returns of Selected Tickers", legend=:topright)
-savefig("data/expected_returns_plot.png")
+savefig("plots/expected_returns_plot.png")
 
 # Create a correlation matrix
 correlation_matrix = cor(Matrix(covariance_matrix_df[!, 2:end]))
 
 # 2. Heatmap for correlation matrix
 heatmap(correlation_matrix, title="Correlation Matrix Heatmap", xlabel="Tickers", ylabel="Tickers", color=:viridis)
-savefig("data/covariance_matrix_heatmap.png")
+savefig("plots/correlation_matrix_heatmap.png")

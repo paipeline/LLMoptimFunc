@@ -46,6 +46,8 @@ The expected returns for each ticker are as follows:
 | ORCL   | 1.6904413736044697 |
 
 
+
+
 ## Covariance
 The covariance matrix is as follows:
 
@@ -79,3 +81,34 @@ ORCL,0.3805378205635235,0.5294476776352243,0.4206752349315646,0.4127461574881663
 
 
 
+
+
+
+## Sentiment analysis scores
+The expected returns for each ticker are as follows:
+
+| Ticker | Expected Returns |
+|--------|------------------|
+| AAPL   | 0.1 |
+| MSFT   | 0.2 |
+| GOOGL  | 0.1  |
+| AMZN   | 0.1  |
+| NVDA   | 0  |
+| FB     | -0.1 |
+| ADBE   | -0.2 |
+| CSCO   | -0.2 |
+| INTC   | 0.6 |
+| ORCL   | 0.4 |
+
+
+## Insider sentiment scores
+![Alt text](image.png)
+
+
+## plan
+
+
+
+
+
+![Alt text](image-1.png)

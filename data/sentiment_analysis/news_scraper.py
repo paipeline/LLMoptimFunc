@@ -7,6 +7,7 @@ def get_finnhub_news(ticker, date, api_key):
     date_to = f'{date}T23:59:59Z'
     url = f'https://finnhub.io/api/v1/company-news?symbol={ticker}&from={date_from}&to={date_to}&token={api_key}'
     response = requests.get(url)
+    print(response)
     if response.status_code != 200:
         return None
     news_data = response.json()
