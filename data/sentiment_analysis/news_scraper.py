@@ -11,7 +11,7 @@ def fetch_yahoo_finance_data(ticker):
     for item in soup.find_all('li', class_='js-stream-content'):
         headline = item.find('h3').get_text() if item.find('h3') else None
         date = item.find('time')['datetime'] if item.find('time') else None
-        source = item.find('span', class_='C(#959595)').get_text() if
+        source = item.find('span', class_='C(#959595)').get_text() if \
         item.find('span', class_='C(#959595)') else None
         if headline and date and source:
             news_items.append({'headline': headline, 'date': date, 'source': source})
@@ -23,6 +23,6 @@ def get_finnhub_news(ticker, api_key):
 
     url = f'https://finnhub.io/api/v1/company-news?symbol={ticker}&from=2022-01-01&to={datetime.now().strftime("%Y-%m-%d")}&token={api_key}'
     response = requests.get(url)
-        if response.status_code != 200:
+    if response.status_code != 200:
             return None
         return response.json()
