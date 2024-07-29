@@ -21,8 +21,6 @@ if __name__ == "__main__":
 
     news = get_monthly_news(ticker, start_date, end_date, api_key)
     print(news)
-
-def get_monthly_news(ticker, start_date, end_date, api_key):
     all_news = []
     current_date = start_date
     while current_date <= end_date:
