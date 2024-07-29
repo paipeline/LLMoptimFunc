@@ -42,13 +42,17 @@ if __name__ == "__main__":
     start_date = datetime(2024, 1, 1)
     end_date = datetime(2024, 1, 31)
     setup_logger()
-    news = get_monthly_news(ticker, start_date, end_date, api_key)
-    print(news)
-    all_news = []
-    current_date = start_date
-    while current_date <= end_date:
-        news = get_finnhub_news(ticker, current_date.strftime('%Y-%m-%d'), api_key)
-        if news:
-            all_news.extend(news)
-        current_date += timedelta(days=1)
-    print(all_news)
+    # one day news
+    
+    
+    
+    # news = get_monthly_news(ticker, start_date, end_date, api_key)
+    # print(news)
+    # all_news = []
+    # current_date = start_date
+    # while current_date <= end_date:
+    #     news = get_finnhub_news(ticker, current_date.strftime('%Y-%m-%d'), api_key)
+    #     if news:
+    #         all_news.extend(news)
+    #     current_date += timedelta(days=1)
+    # print(all_news)
