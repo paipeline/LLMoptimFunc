@@ -88,6 +88,20 @@ Where:
    w_i \geq 0 \quad \forall i
    \]
 
-## Conclusion
+## Data Inputs
+
+### Expected Returns
+
+The expected returns are calculated as the mean of historical returns for each selected asset. This data is stored in a CSV file named `expected_returns.csv`, which contains two columns: `Ticker` and `Expected_Returns`. The tickers represent the assets, and the expected returns are expressed as percentages.
+
+### Covariance Matrix
+
+The covariance matrix quantifies the degree to which the returns of the selected assets move together. It is calculated from the historical return data and saved in a CSV file named `covariance_matrix.csv`. The matrix is structured such that each entry \(\sigma_{ij}\) represents the covariance between asset \(i\) and asset \(j\).
+
+### Data Flow to Models
+
+1. **Loading Data**: The models load the expected returns and covariance matrix from their respective CSV files using the `CSV` and `DataFrames` libraries.
+2. **Data Structure**: The expected returns are stored in a DataFrame, while the covariance matrix is converted to a matrix format for optimization calculations.
+3. **Model Execution**: The loaded data is then used as inputs in the optimization models to determine the optimal asset allocation based on the defined objective functions and constraints.
 
 This document outlines the mathematical formulations and constraints for the optimization models used in this project. Each model provides a different approach to portfolio optimization, allowing for flexibility in investment strategies based on risk preferences.
