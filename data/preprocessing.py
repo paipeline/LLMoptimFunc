@@ -30,8 +30,11 @@ std_devs = filtered_data[selected_tickers].std()
 # Calculate the covariance matrix of the returns for the selected assets
 covariance_matrix = filtered_data[selected_tickers].cov()
 
-# Load correlation matrix from CSV
-# correlation_matrix_df = CSV.File("data/correlation_matrix.csv") |> DataFrame
+# Calculate the correlation matrix from the covariance matrix
+correlation_matrix = covariance_matrix / np.outer(std_devs, std_devs)
+
+# Create a DataFrame for correlation matrix
+correlation_matrix_df = pd.DataFrame(correlation_matrix, columns=selected_tickers, index=selected_tickers)
 
 # Save correlation matrix to CSV
 correlation_matrix_df.to_csv("data/correlation_matrix.csv")

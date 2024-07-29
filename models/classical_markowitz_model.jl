@@ -4,8 +4,8 @@ using JuMP
 using Gurobi
 
 # Load expected returns and covariance matrix
-expected_returns_df = CSV.File("data/expected_returns.csv") |> DataFrame
-covariance_matrix_df = CSV.File("data/covariance_matrix.csv") |> DataFrame
+expected_returns_df = CSV.File("../data/expected_returns.csv") |> DataFrame
+covariance_matrix_df = CSV.File("../data/covariance_matrix.csv") |> DataFrame
 
 # Extract expected returns and covariance matrix
 expected_returns = expected_returns_df.Expected_Returns

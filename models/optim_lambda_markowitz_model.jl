@@ -5,15 +5,15 @@ using Gurobi
 using Plots
 
 # Load expected returns and covariance matrix
-expected_returns_df = CSV.File("data/expected_returns.csv") |> DataFrame
-covariance_matrix_df = CSV.File("data/covariance_matrix.csv") |> DataFrame
+expected_returns_df = CSV.File("../data/expected_returns.csv") |> DataFrame
+covariance_matrix_df = CSV.File("../data/covariance_matrix.csv") |> DataFrame
 
 # Extract expected returns and covariance matrix, ensuring they are not empty
 if nrow(expected_returns_df) == 0 || nrow(covariance_matrix_df) == 0
     error("Expected returns or covariance matrix is empty.")
 end
 expected_returns = expected_returns_df.Expected_Returns
-covariance_matrix = Matrix(covariance_matrix_df)
+covariance_matrix = Matrix{Float64}(select(covariance_matrix_df, Not(:Date)))
 
 # Define the initial investment amount
 initial_investment = 10000.0  # Adjust this value as needed
