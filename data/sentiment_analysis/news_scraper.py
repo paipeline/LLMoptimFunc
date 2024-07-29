@@ -43,6 +43,8 @@ if __name__ == "__main__":
     end_date = datetime(2024, 1, 31)
     setup_logger()
     # one day news
+    one_day_news = get_finnhub_news(ticker, start_date.strftime('%Y-%m-%d'), api_key)
+    print(one_day_news)
     
     
     
