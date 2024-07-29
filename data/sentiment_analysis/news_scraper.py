@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+from datetime import datetime
 
 def fetch_yahoo_finance_data(ticker):
     url = f'https://finance.yahoo.com/quote/{ticker}/news?p={ticker}'
