@@ -51,8 +51,8 @@ def save_news_data(data, ticker, year, month):
         json.dump(data, json_file, indent=4)
 
 def loop_fetch_news():
-    months = []
     for year in range(2022, 2025):  # Loop through years from 2022 to 2024
+        months = []  # Reset months for each year
         for month in range(1, 13):
             if year == 2022 and month < 6:
                 continue
