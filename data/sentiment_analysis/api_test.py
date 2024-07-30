@@ -1,8 +1,13 @@
+import os
+print("current directory")
+print(os.getcwd())
 import requests
-from util import ticker_mapping
 from dotenv import load_dotenv
 import json
-import os
+
+
+from util import ticker_mapping
+
 
 load_dotenv()
   
@@ -29,13 +34,13 @@ def fetch_news(year,month, ticker):
 
 
 def save_news_data(data, ticker, year, month):
-    file_path = f"data/{ticker}/{year}_{month}.json"
+    file_path = f"raw/{ticker}/{year}_{month}.json"
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
     
     with open(file_path, 'w') as json_file:
         json.dump(data, json_file, indent=4)
 
-def test_fetch_news():
+def loop_fetch_news():
     months = []
     for year in range(2022, 2025):
         for month in range(1, 13):
@@ -47,9 +52,9 @@ def test_fetch_news():
     tickers = list(ticker_mapping.values())
     for ticker in tickers:
         for month in months:
-        news_data = fetch_news(year, month, ticker)           
-        save_news_data(news_data, ticker, year, month.zfill(2))  # Ensure month is two digits
-        print(news_data)
+                news_data = fetch_news(year, month, ticker)           
+                save_news_data(news_data, ticker, year, month.zfill(2))  # Ensure month is two digits
+                print(news_data)
                                                               
 if __name__ == "__main__":                                   
-    test_fetch_news()
+    loop_fetch_news()
