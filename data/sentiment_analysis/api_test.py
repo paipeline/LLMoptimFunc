@@ -1,5 +1,6 @@
 import requests
 from dotenv import load_dotenv
+import json
 import os
 
 load_dotenv()
@@ -26,12 +27,21 @@ def fetch_news(year,month, ticker):
 
 
 
-def test_fetch_news():                                       
+def save_news_data(data, ticker, year, month):
+    directory = f"data/{ticker}/{year}_{month}"
+    os.makedirs(directory, exist_ok=True)
+    file_path = os.path.join(directory, "news_data.json")
+    
+    with open(file_path, 'w') as json_file:
+        json.dump(data, json_file, indent=4)
+
+def test_fetch_news():
     months = [("06"), ("07")]  
     ticker = "TESLA"
     for month in months:
         news_data = fetch_news(2022, month, ticker)           
-        print(news_data)                               
+        save_news_data(news_data, ticker, 2022, month)
+        print(news_data)
                                                               
 if __name__ == "__main__":                                   
     test_fetch_news()
