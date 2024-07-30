@@ -28,7 +28,7 @@ App_ID = os.getenv("APP_ID")
   
 def fetch_news(year, month, ticker): 
     news_data = {}
-    for month in months:
+    for month in months:  # Iterate over the months passed to the function
         month_start = f"{year}-{month}-01"
         month_end = f"{year}-{int(month) + 1}-01" if month != "12" else f"{year + 1}-01-01"
         token = requests.post("https://api.aylien.com/v1/oauth/token", auth=(username, password), data={"grant_type": "password"}).json()["access_token"]
