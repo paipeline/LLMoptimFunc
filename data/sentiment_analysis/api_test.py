@@ -1,10 +1,13 @@
 import requests
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
   
 #Oauth authentication with user credentials
-username = "ppeng24@wisc.edu"
-password = "1234560769wW.."
-#Pre-populated with Production App-Id
-App_ID = "4db0d080"
+username = os.getenv("USERNAME")
+password = os.getenv("PASSWORD")
+App_ID = os.getenv("APP_ID")
   
 #Requesting a bearer token from oauth endpoint
 #Review the docs for detailed authentication workflows docs.aylien.com/newsapi/v6
