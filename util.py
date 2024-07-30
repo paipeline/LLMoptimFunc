@@ -1,5 +1,5 @@
 ticker_mapping = {
-    "AAPL": "Apple Inc.",
+    "AAPL": "Apple ",
     "MSFT": "Microsoft Corporation",
     "GOOGL": "Alphabet Inc. (Class A)",
     "AMZN": "Amazon.com, Inc.",
