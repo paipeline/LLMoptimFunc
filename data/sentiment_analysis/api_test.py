@@ -9,7 +9,8 @@ username = os.getenv("USERNAME")
 password = os.getenv("PASSWORD")
 App_ID = os.getenv("APP_ID")
   
-#Requesting a bearer token from oauth endpoint
+def get_news_by_date_and_ticker(date, ticker):
+    # Requesting a bearer token from oauth endpoint
 #Review the docs for detailed authentication workflows docs.aylien.com/newsapi/v6
 token = requests.post("https://api.aylien.com/v1/oauth/token", auth=(username, password), data={"grant_type": "password"}).json()["access_token"]
   
