@@ -70,7 +70,8 @@ def get_sentiment(ticker, year, month):
     file_path = f"data/sentiment_analysis/raw/{ticker}/{year}_{month}.json"
     with open(file_path, 'r') as json_file:
         data = json.load(json_file)
-    return data
+    sentiments = [story['sentiment'] for story in data.get('stories', [])]
+    return sentiments
     
 
 
