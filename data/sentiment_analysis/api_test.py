@@ -26,7 +26,7 @@ username = os.getenv("USERNAME")
 password = os.getenv("PASSWORD")
 App_ID = os.getenv("APP_ID")
   
-def fetch_news(year, month, ticker): 
+def fetch_news(year, months, ticker): 
     news_data = {}
     for month in months:  # Iterate over the months passed to the function
         month_start = f"{year}-{month}-01"
@@ -68,8 +68,9 @@ def loop_fetch_news():
         months = [f"{month:02d}" for month in range(1, 13) if not (year == 2022 and month < 6) and not (year == 2024 and month > 7)]
         tickers = list(ticker_mapping.values())
         for ticker in tickers:
-            news_data = fetch_news(year, month, ticker)  # Fetch news for each ticker
-            save_news_data(news_data, ticker, year, month.zfill(2))  # Ensure month is two digits
+            for month in months:
+                news_data = fetch_news(year, month, ticker)  # Fetch news for each ticker
+                save_news_data(news_data, ticker, year, month.zfill(2))  # Ensure month is two digits
             print(news_data)
                                                               
 if __name__ == "__main__":                                   
