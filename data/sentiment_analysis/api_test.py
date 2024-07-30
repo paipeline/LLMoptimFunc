@@ -45,8 +45,8 @@ def test_fetch_news():
             months.append(f"{month:02d}")
     ticker = "TESLA"
     for month in months:
-        news_data = fetch_news(2022, month, ticker)           
-        save_news_data(news_data, ticker, 2022, month.zfill(2))  # Ensure month is two digits
+        news_data = fetch_news(year, month, ticker)           
+        save_news_data(news_data, ticker, year, month.zfill(2))  # Ensure month is two digits
         print(news_data)
                                                               
 if __name__ == "__main__":                                   
