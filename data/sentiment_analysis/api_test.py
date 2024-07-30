@@ -27,10 +27,10 @@ def fetch_news(year,month, ticker):
 
 
 def test_fetch_news():                                       
-    months = [("2022-05-01"), ("2022-06-01")]  
+    months = [("05"), ("06")]  
     ticker = "TESLA"
     for month in months:
-        news_data = fetch_news(month, ticker)           
+        news_data = fetch_news(2022, month, ticker)           
         print(news_data)                               
                                                               
 if __name__ == "__main__":                                   
