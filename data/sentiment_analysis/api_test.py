@@ -77,18 +77,17 @@ def loop_fetch_news():
 
 
 def save_sentiments_to_csv(sentiments, ticker, year, month):
-    file_path = f"data/sentiment_analysis/sentiments.csv"
+    file_path = f"data/sentiment_analysis/sentiment/{ticker}/{year}_{month}.csv"
     file_exists = os.path.isfile(file_path)
-
     with open(file_path, 'a', newline='') as csv_file:
-        fieldnames = ['year', 'month', 'ticker', 'sentiment']
+        fieldnames = ['year', 'month', 'ticker', 'title','body']
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
         if not file_exists:
             writer.writeheader()  # Write header only if file does not exist
 
         for sentiment in sentiments:
-            writer.writerow({'year': year, 'month': month, 'ticker': ticker, 'sentiment': sentiment})
+            writer.writerow({'year': year, 'month': month, 'ticker': ticker, 'title': sentiment['title']['score'], 'body': sentiment['body']['score']})
             
 def get_sentiment(ticker, year, month):
     file_path = f"data/sentiment_analysis/raw/{ticker}/{year}_{month}.json"
