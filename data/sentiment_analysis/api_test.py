@@ -28,9 +28,8 @@ def fetch_news(year,month, ticker):
 
 
 def save_news_data(data, ticker, year, month):
-    directory = f"data/{ticker}/{year}_{month}"
-    os.makedirs(directory, exist_ok=True)
-    file_path = os.path.join(directory, "news_data.json")
+    file_path = f"data/{ticker}/{year}_{month}.json"
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)
     
     with open(file_path, 'w') as json_file:
         json.dump(data, json_file, indent=4)
