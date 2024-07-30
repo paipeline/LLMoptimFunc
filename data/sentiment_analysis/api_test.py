@@ -52,7 +52,7 @@ def save_news_data(data, ticker, year, month):
 
 def loop_fetch_news():
     months = []
-    for year in range(2022, 2025):  # Ensure the year range is from 2022 to 2024
+    for year in range(2022, 2025):  # Loop through years from 2022 to 2024
         for month in range(1, 13):
             if year == 2022 and month < 6:
                 continue
