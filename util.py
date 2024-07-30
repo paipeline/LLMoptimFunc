@@ -8,5 +8,6 @@ ticker_mapping = {
     "ADBE": "Adobe",
     "CSCO": "Cisco",
     "INTC": "Intel",
-    "ORCL": "Oracle"
+    "ORCL": "Oracle",
+    "TSLA": "Tesla",
 }
