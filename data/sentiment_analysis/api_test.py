@@ -26,22 +26,9 @@ username = os.getenv("USERNAME")
 password = os.getenv("PASSWORD")
 App_ID = os.getenv("APP_ID")
   
-def fetch_news(year, months, ticker): 
-    news_data = {}
-    for month in months:  # Iterate over the months passed to the function
-        month_start = f"{year}-{month}-01"
-        month_end = f"{year}-{int(month) + 1}-01" if month != "12" else f"{year + 1}-01-01"
-        token = requests.post("https://api.aylien.com/v1/oauth/token", auth=(username, password), data={"grant_type": "password"}).json()["access_token"]
-        
-        # Passing the token as a header with App Id
-        headers = {"Authorization": "Bearer {}".format(token), "AppId":"4db0d080"}
-        
-        # V6 URL
-        url = f'https://api.aylien.com/v6/news/stories?aql=text: ({ticker}) AND sentiment.title.polarity:(negative neutral positive)&cursor=*&published_at.end={month_end}T00:00:00.000Z&published_at.start={month_start}T00:00:00.000Z'
-        
-        response = requests.get(url, headers=headers)
-        news_data[month] = response.json()  # Store news data for each month
-    return news_data
+def fetch_news(year,month,ticker): 
+    month_start = f"{year}-{month}-01"
+    month_end = f"{year}-{int(month) + 1}-01" if month != "12" else f"{year + 1}-01-01"
     print(month_end)
     token = requests.post("https://api.aylien.com/v1/oauth/token", auth=(username, password), data={"grant_type": "password"}).json()["access_token"]
     
@@ -64,14 +51,29 @@ def save_news_data(data, ticker, year, month):
         json.dump(data, json_file, indent=4)
 
 def loop_fetch_news():
-    for year in range(2022, 2025):  # Loop through years from 2022 to 2024
-        months = [f"{month:02d}" for month in range(1, 13) if not (year == 2022 and month < 6) and not (year == 2024 and month > 7)]
-        tickers = list(ticker_mapping.values())
-        for ticker in tickers:
-            for month in months:
-                news_data = fetch_news(year, month, ticker)  # Fetch news for each ticker
-                save_news_data(news_data, ticker, year, month.zfill(2))  # Ensure month is two digits
-            print(news_data)
-                                                              
+    tickers = list(ticker_mapping.values())
+    for ticker in tickers:
+        for year in range(2022, 2025):  # Loop through years from 2022 to 2024
+            for month in range(1, 13):
+                if year == 2022 and month < 6:
+                    continue
+                if year == 2024 and month > 7:
+                    break
+                month_str = f"{month:02d}"
+                print(f"Fetching news for {ticker} for {year}-{month_str}")
+                news_data = fetch_news(year, month_str, ticker)
+                save_news_data(news_data, ticker, year, month_str)  # Ensure month is two digits
+                # print(news_data)
+
+
+def get_sentiment(ticker, year, month):
+    file_path = f"data/sentiment_analysis/raw/{ticker}/{year}_{month}.json"
+    with open(file_path, 'r') as json_file:
+        data = json.load(json_file)
+    return data
+    
+
+
+
 if __name__ == "__main__":                                   
-    loop_fetch_news()
+    # loop_fetch_news()
