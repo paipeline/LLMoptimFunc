@@ -50,6 +50,10 @@ def save_news_data(data, ticker, year, month):
     with open(file_path, 'w') as json_file:
         json.dump(data, json_file, indent=4)
 
+def is_in_folder(ticker, year, month):
+    file_path = f"data/sentiment_analysis/raw/{ticker}/{year}_{month}.json"
+    return os.path.isfile(file_path)
+
 def loop_fetch_news():
     tickers = list(ticker_mapping.values())
     for ticker in tickers:
@@ -61,6 +65,9 @@ def loop_fetch_news():
                     break
                 month_str = f"{month:02d}"
                 print(f"Fetching news for {ticker} for {year}-{month_str}")
+                if is_in_folder(ticker, year, month_str):
+                    print(f"Already fetched news for {ticker} for {year}-{month_str}")
+                    continue
                 news_data = fetch_news(year, month_str, ticker)
                 save_news_data(news_data, ticker, year, month_str)  # Ensure month is two digits
                 # print(news_data)
