@@ -4,6 +4,7 @@ print(os.getcwd())
 import requests
 from dotenv import load_dotenv
 import json
+import csv
 
 ticker_mapping = {
     "Apple": "AAPL",
@@ -70,9 +71,25 @@ def loop_fetch_news():
                     continue
                 news_data = fetch_news(year, month_str, ticker)
                 save_news_data(news_data, ticker, year, month_str)  # Ensure month is two digits
+                sentiments = get_sentiment(ticker, year, month_str)
+                save_sentiments_to_csv(sentiments, ticker, year, month_str)
                 # print(news_data)
 
 
+def save_sentiments_to_csv(sentiments, ticker, year, month):
+    file_path = f"data/sentiment_analysis/sentiments.csv"
+    file_exists = os.path.isfile(file_path)
+
+    with open(file_path, 'a', newline='') as csv_file:
+        fieldnames = ['year', 'month', 'ticker', 'sentiment']
+        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+
+        if not file_exists:
+            writer.writeheader()  # Write header only if file does not exist
+
+        for sentiment in sentiments:
+            writer.writerow({'year': year, 'month': month, 'ticker': ticker, 'sentiment': sentiment})
+            
 def get_sentiment(ticker, year, month):
     file_path = f"data/sentiment_analysis/raw/{ticker}/{year}_{month}.json"
     with open(file_path, 'r') as json_file:
