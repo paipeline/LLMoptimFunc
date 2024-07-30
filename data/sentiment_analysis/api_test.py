@@ -5,13 +5,23 @@ import requests
 from dotenv import load_dotenv
 import json
 
-
-from .util import ticker_mapping
-
+ticker_mapping = {
+    "Apple": "AAPL",
+    "Microsoft": "MSFT",
+    "Google": "GOOGL",
+    "Amazon": "AMZN",
+    "NVIDIA": "NVDA",
+    "Meta": "FB",
+    "Adobe": "ADBE",
+    "Cisco": "CSCO",
+    "Intel": "INTC",
+    "Oracle": "ORCL",
+    "Tesla": "TSLA",
+}
 
 load_dotenv()
-  
-#Oauth authentication with user credentials
+
+# Oauth authentication with user credentials
 username = os.getenv("USERNAME")
 password = os.getenv("PASSWORD")
 App_ID = os.getenv("APP_ID")
@@ -34,7 +44,7 @@ def fetch_news(year,month, ticker):
 
 
 def save_news_data(data, ticker, year, month):
-    file_path = f"raw/{ticker}/{year}_{month}.json"
+    file_path = f"data/sentiment_analysis/raw/{ticker}/{year}_{month}.json"
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
     
     with open(file_path, 'w') as json_file:
