@@ -46,7 +46,7 @@ def test_fetch_news():
             months.append(f"{month:02d}")
     tickers = list(ticker_mapping.values())
     for ticker in tickers:
-    for month in months:
+        for month in months:
         news_data = fetch_news(year, month, ticker)           
         save_news_data(news_data, ticker, year, month.zfill(2))  # Ensure month is two digits
         print(news_data)
