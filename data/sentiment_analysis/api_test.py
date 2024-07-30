@@ -70,9 +70,6 @@ def loop_fetch_news():
                     print(f"Already fetched news for {ticker} for {year}-{month_str}")
                     continue
                 news_data = fetch_news(year, month_str, ticker)
-                save_news_data(news_data, ticker, year, month_str)  # Ensure month is two digits
-                sentiments = get_sentiment(ticker, year, month_str)
-                save_sentiments_to_csv(sentiments, ticker, year, month_str)
                 # print(news_data)
 
 
@@ -100,58 +97,5 @@ def get_sentiment(ticker, year, month):
 
 
 if __name__ == "__main__":                                   
-    # loop_fetch_news()
-import os
-import unittest
-import json
-import csv
-from api import get_sentiment, save_sentiments_to_csv
-
-class TestSentimentFunctions(unittest.TestCase):
-
-    def setUp(self):
-        self.ticker = "AAPL"
-        self.year = 2023
-        self.month = "01"
-        self.test_json_path = f"data/sentiment_analysis/raw/{self.ticker}/{self.year}_{self.month}.json"
-        self.test_csv_path = f"data/sentiment_analysis/sentiment/{self.ticker}/{self.year}_{self.month}.csv"
-        
-        # Create a test JSON file
-        os.makedirs(os.path.dirname(self.test_json_path), exist_ok=True)
-        test_data = {
-            "stories": [
-                {"sentiment": {"title": "positive", "body": "positive"}},
-                {"sentiment": {"title": "negative", "body": "negative"}},
-            ]
-        }
-        with open(self.test_json_path, 'w') as json_file:
-            json.dump(test_data, json_file)
-
-    def test_get_sentiment(self):
-        sentiments = get_sentiment(self.ticker, self.year, self.month)
-        self.assertEqual(len(sentiments), 2)
-        self.assertEqual(sentiments[0]['title'], "positive")
-        self.assertEqual(sentiments[1]['body'], "negative")
-
-    def test_save_sentiments_to_csv(self):
-        sentiments = get_sentiment(self.ticker, self.year, self.month)
-        save_sentiments_to_csv(sentiments, self.ticker, self.year, self.month)
-        
-        # Check if the CSV file is created and contains the correct data
-        self.assertTrue(os.path.isfile(self.test_csv_path))
-        with open(self.test_csv_path, 'r') as csv_file:
-            reader = csv.DictReader(csv_file)
-            rows = list(reader)
-            self.assertEqual(len(rows), 2)
-            self.assertEqual(rows[0]['title'], "positive")
-            self.assertEqual(rows[1]['body'], "negative")
-
-    def tearDown(self):
-        # Remove test files after tests
-        if os.path.isfile(self.test_json_path):
-            os.remove(self.test_json_path)
-        if os.path.isfile(self.test_csv_path):
-            os.remove(self.test_csv_path)
-
-if __name__ == "__main__":
-    unittest.main()
+    loop_fetch_news()
+    
