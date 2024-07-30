@@ -87,7 +87,7 @@ def save_sentiments_to_csv(sentiments, ticker, year, month):
             writer.writeheader()  # Write header only if file does not exist
 
         for sentiment in sentiments:
-            writer.writerow({'year': year, 'month': month, 'ticker': ticker, 'title': sentiment['title']['score'], 'body': sentiment['body']['score']})
+            writer.writerow({'year': year, 'month': month, 'ticker': ticker, 'title': sentiment['title'], 'body': sentiment['body']})
             
 def get_sentiment(ticker, year, month):
     file_path = f"data/sentiment_analysis/raw/{ticker}/{year}_{month}.json"
