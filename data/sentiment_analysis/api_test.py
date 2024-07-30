@@ -27,13 +27,14 @@ def fetch_news(month, ticker):
 
 
 
- def test_fetch_news():                                       
+def test_fetch_news():                                       
      months = [("2022-05"), ("2022-06")]  # List of months to scrape
      for month in months:
          news_data = fetch_news(month, ticker)                     
-     ticker = "TESLA"                                         
-     news_data = fetch_news(date, ticker)                     
-     print(news_data)                                         
+    ticker = "TESLA"                                         
+    for month in months:
+        news_data = fetch_news(month, ticker)                     
+        print(news_data)                                         
                                                               
  if __name__ == "__main__":                                   
      test_fetch_news(
