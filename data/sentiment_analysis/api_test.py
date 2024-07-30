@@ -9,7 +9,9 @@ username = os.getenv("USERNAME")
 password = os.getenv("PASSWORD")
 App_ID = os.getenv("APP_ID")
   
-def fetch_news(month, ticker):
+def fetch_news(month, ticker): 
+    month_str = month.strftime("%Y-%m")  # Format month for URL
+    url = f'https://api.aylien.com/v6/news/stories?aql=text: (TESLA) AND sentiment.title.polarity:(negative neutral positive)&cursor=*&published_at.end={month_str}-01T00:00:00.000Z&published_at.start={month_str}-01T00:00:00.000Z'
     # Requesting a bearer token from oauth endpoint
     #Review the docs for detailed authentication workflows docs.aylien.com/newsapi/v6
     token = requests.post("https://api.aylien.com/v1/oauth/token", auth=(username, password), data={"grant_type": "password"}).json()["access_token"]
@@ -26,7 +28,9 @@ def fetch_news(month, ticker):
 
 
  def test_fetch_news():                                       
-     date = "2022-06-01"                                      
+     months = [("2022-05"), ("2022-06")]  # List of months to scrape
+     for month in months:
+         news_data = fetch_news(month, ticker)                     
      ticker = "TESLA"                                         
      news_data = fetch_news(date, ticker)                     
      print(news_data)                                         
