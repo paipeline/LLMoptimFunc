@@ -1,4 +1,5 @@
 import requests
+from util import ticker_mapping
 from dotenv import load_dotenv
 import json
 import os
@@ -43,7 +44,8 @@ def test_fetch_news():
             if year == 2024 and month > 7:
                 break
             months.append(f"{month:02d}")
-    ticker = "TESLA"
+    tickers = list(ticker_mapping.values())
+    for ticker in tickers:
     for month in months:
         news_data = fetch_news(year, month, ticker)           
         save_news_data(news_data, ticker, year, month.zfill(2))  # Ensure month is two digits
