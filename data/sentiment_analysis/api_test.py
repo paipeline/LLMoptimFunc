@@ -59,12 +59,12 @@ def loop_fetch_news():
             if year == 2024 and month > 7:
                 break
             months.append(f"{month:02d}")
-    tickers = list(ticker_mapping.values())
-    for ticker in tickers:
-        for month in months:
-                news_data = fetch_news(year, month, ticker)           
-                save_news_data(news_data, ticker, year, month.zfill(2))  # Ensure month is two digits
-                print(news_data)
+        tickers = list(ticker_mapping.values())
+        for ticker in tickers:
+            for month in months:
+                    news_data = fetch_news(year, month, ticker)           
+                    save_news_data(news_data, ticker, year, month.zfill(2))  # Ensure month is two digits
+                    print(news_data)
                                                               
 if __name__ == "__main__":                                   
     loop_fetch_news()
