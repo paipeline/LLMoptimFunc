@@ -40,7 +40,7 @@ def test_fetch_news():
     ticker = "TESLA"
     for month in months:
         news_data = fetch_news(2022, month, ticker)           
-        save_news_data(news_data, ticker, 2022, month)
+        save_news_data(news_data, ticker, 2022, month.zfill(2))  # Ensure month is two digits
         print(news_data)
                                                               
 if __name__ == "__main__":                                   
