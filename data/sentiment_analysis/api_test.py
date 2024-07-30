@@ -10,8 +10,8 @@ password = os.getenv("PASSWORD")
 App_ID = os.getenv("APP_ID")
   
 def fetch_news(year,month, ticker): 
-    month_start = str(year + "-" + month + "-01")
-    month_end = str(year + "-" + month+1 + "-01")
+    month_start = f"{year}-{month}-01"
+    month_end = f"{year}-{int(month) + 1}-01" if month != "12" else f"{year + 1}-01-01"
     print(month_end)
     token = requests.post("https://api.aylien.com/v1/oauth/token", auth=(username, password), data={"grant_type": "password"}).json()["access_token"]
     
