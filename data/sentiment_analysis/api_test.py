@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 import json
 
 
-from util import ticker_mapping
+from .util import ticker_mapping
 
 
 load_dotenv()
