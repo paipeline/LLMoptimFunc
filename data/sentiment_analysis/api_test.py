@@ -26,7 +26,7 @@ username = os.getenv("USERNAME")
 password = os.getenv("PASSWORD")
 App_ID = os.getenv("APP_ID")
   
-def fetch_news(year,month, ticker): 
+def fetch_news(year,month,ticker): 
     month_start = f"{year}-{month}-01"
     month_end = f"{year}-{int(month) + 1}-01" if month != "12" else f"{year + 1}-01-01"
     print(month_end)
