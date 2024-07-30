@@ -35,7 +35,14 @@ def save_news_data(data, ticker, year, month):
         json.dump(data, json_file, indent=4)
 
 def test_fetch_news():
-    months = [("06"), ("07")]  
+    months = []
+    for year in range(2022, 2025):
+        for month in range(1, 13):
+            if year == 2022 and month < 6:
+                continue
+            if year == 2024 and month > 7:
+                break
+            months.append(f"{month:02d}")
     ticker = "TESLA"
     for month in months:
         news_data = fetch_news(2022, month, ticker)           
