@@ -1,0 +1,16 @@
+{
+    "errors": [
+        {
+            "id": "stories_params_published_at",
+            "links": {
+                "about": "https://docs.aylien.com/newsapi/#error-codes-amp-responses",
+                "docs": "https://docs.aylien.com/newsapi"
+            },
+            "type": "http://httpstatus.es/422",
+            "title": "Feature not enabled in the plan.",
+            "status": 422,
+            "code": "KB422",
+            "detail": "published_at must be after 2022-05-02T00:00:00Z, instead got [2022-03-01T00:00:00Z TO *]. This might be because your plan does not have access to data before 2022-05-02T00:00:00Z. You can read more about working with dates here: https://docs.aylien.com/newsapi/common-workflows/#working-with-dates"
+        }
+    ]
+}

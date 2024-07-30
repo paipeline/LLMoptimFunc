@@ -1,0 +1,16 @@
+{
+    "errors": [
+        {
+            "id": "stories",
+            "links": {
+                "about": "https://docs.aylien.com/newsapi/#error-codes-amp-responses",
+                "docs": "https://docs.aylien.com/newsapi"
+            },
+            "type": "http://httpstatus.es/422",
+            "title": "Unprocessable Entity",
+            "status": 422,
+            "code": "KB422",
+            "detail": "Provided query contains invalid published_at definition. It resolves to an empty time range."
+        }
+    ]
+}

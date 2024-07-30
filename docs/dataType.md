@@ -112,3 +112,182 @@ The expected returns for each ticker are as follows:
 
 
 ![Alt text](image-1.png)
+
+
+
+
+
+Sentiment analysis - raw data
+
+{
+    "next_page_cursor": "MTcyMjMwMzk0MDAwMCw3MDAxMTAzMTQz",
+    "stories": [
+        {
+            "author": {
+                "id": 3046387
+            },
+            "body": "Consolidate Pending US Fed Policy Guidance  Bursa Malaysia shares rose on Monday, matching regional gains after a closely watched key US\ninflation data showed easing inflation, raising the odds for interest rate cuts ahead. The FBM KLCI climbed 11.68 points to close at 1,624.56, off an early low of 1,616.35 and high of 1,625.55, as gainers led losers 626 to 455 on total turnover of 4.23bn shares worth RM2.89bn.\n  Supports at 1,615/1,607; Resistance at 1,638/1,640\n  Stocks should consolidate at current levels as investors await earnings from key US technology names and upcoming monetary policy guidance from the US Federal Reserve. Immediate index supports will be at 1,615, 1,607 and 1,583, the respective 30-day, 50-day and 100-day moving average levels, while immediate resistance will be the recent high of 1,638, with 1,640 and 1,660 as tougher upside hurdles.\n  Bargain Gamuda & Sunway Construction\n  Gamuda should attract buyers on weakness for rebound upside, with a confirmed breakout above the 161.8%FP (RM8.19) to aim for the 176.4%FP (RM8.54) and 200%FP (RM9.10) ahead, and key uptrend supports from the rising 30-day ma (RM7.31) and 50-day ma (RM6.80). SunCon will need convincing breakout above the 150%FP (RM5.19) to target the 161.8%FP (RM5.46) and 176.4%FP (RM5.80) going forward, with uptrend supports from the 30-day ma (RM4.37) and 50-day ma (RM3.94) cushioning downside.\n  Asian Markets Rebound on Rate-Cut Optimism\n  Stocks in Asia rebounded on Monday after a key U.S. inflation report late last Friday raised hopes for an interest rate cut. The inflation report showed personal income rose by less than expected, while personal spending increased in line with economist estimates. Another report also showed that consumer sentiment in the U.S. deteriorated less than previously estimated in July. The Fed is likely to signal its plans to cut in September at the conclusion of its meeting on Wednesday, according to economists surveyed by Bloomberg News, a move they say will kick off reductions each quarter through 2025. Money markets are fully pricing a September move, with a chance of two more by year-end, according to swaps data compiled by Bloomberg. A raft of earnings including Apple Inc., Amazon.com Inc and Microsoft Corp. will also be parsed for clues about the health of the world's largest economy.\n  Elsewhere in Asia, Chinese factory activity data is due this week, providing further insight into a surprise People's Bank of China rate cut to boost a flailing economy. Australian inflation data will also be keenly awaited as traders' debate whether the nation's central bank will hike its key rate as early as next week. Japan's Nikkei 225 jumped 2.13% to finish at 38,468.63, while the broad-based Topix added 2.23% to 2,759.67. Australia's S&P/ASX 200 gained 0.86% to 7,989.60 and South Korea's Kospi rose 1.30% to 2.767.53. Hong Kong Hang Seng index also gained 1.28% to finish at 17,238.34, while the Shanghai Composite added 0.03% to 2,891.85.\n  Wall Street Subdued Ahead of Big Tech Earnings\n  Wall Street's main indexes were mostly flat in choppy trading overnight as traders awaited high-profile corporate results and the Federal Reserve's monetary policy meeting this week. The Dow Jones Industrial Average lost 0.12% to end at 40,539.93. The S&P 500 inched up by 0.08% to 5,463.54 and the Nasdaq Composite added 0.07% to 17,370.20. The choppy trading on Wall Street comes as traders seem reluctant to make significant moves ahead of the big tech earnings and Federal Reserve's monetary policy meeting this week. This week's earnings slate will play a role in determining whether tech stocks can now bounce back from last week's declines. Another key event this week will be the Federal Reserve meeting, with the central bank set to release a new policy statement on Wednesday.\n  The Fed is not expected to cut interest rates this week, but traders will be looking for clues as to how likely the central bank is to make a move at its September meeting. On Friday investors will focus on the July non-farm payrolls report for signs of possible weakening in the labor market. Among the S&P 500's 11 major industry sector indexes consumer discretionary was boosted by Tesla as the electric vehicle maker's stock rallied after Morgan Stanley named the electric vehicle stock a top pick. On Semiconductor advanced 11.5% after reporting better-than-expected earnings and revenue.\n  Source: TA Research - 30 Jul 2024",
+            "categories": [
+                {
+                    "id": "IAB13",
+                    "label": "Personal Finance",
+                    "score": 0.53,
+                    "links": {
+                        "self": "https://api.aylien.com/api/v1/classify/taxonomy/iab-qag/IAB13"
+                    }
+                },
+                {
+                    "id": "IAB13-11",
+                    "label": "Stocks",
+                    "score": 0.42,
+                    "links": {
+                        "parents": [
+                            "https://api.aylien.com/api/v1/classify/taxonomy/iab-qag/IAB13"
+                        ],
+                        "self": "https://api.aylien.com/api/v1/classify/taxonomy/iab-qag/IAB13-11"
+                    }
+                },
+                {
+                    "id": "04000000",
+                    "label": "economy, business and finance",
+                    "score": 0.07,
+                    "links": {
+                        "self": "https://api.aylien.com/api/v1/classify/taxonomy/iptc-subjectcode/04000000"
+                    }
+                },
+                {
+                    "id": "04019000",
+                    "label": "finance (general)",
+                    "score": 0.07,
+                    "links": {
+                        "parents": [
+                            "https://api.aylien.com/api/v1/classify/taxonomy/iptc-subjectcode/04000000"
+                        ],
+                        "self": "https://api.aylien.com/api/v1/classify/taxonomy/iptc-subjectcode/04019000"
+                    }
+                },
+                {
+                    "id": "ay.econ",
+                    "label": "Economics",
+                    "score": 0.8,
+                    "links": {
+                        "self": "https://api.aylien.com/api/v1/classify/taxonomy/aylien/ay.econ"
+                    }
+                },
+                {
+                    "id": "ay.econ.monetary",
+                    "label": "Monetary Policy",
+                    "score": 0.8,
+                    "links": {
+                        "parents": [
+                            "https://api.aylien.com/api/v1/classify/taxonomy/aylien/ay.econ.policy"
+                        ],
+                        "self": "https://api.aylien.com/api/v1/classify/taxonomy/aylien/ay.econ.monetary"
+                    }
+                },
+                {
+                    "id": "ay.econ.policy",
+                    "label": "Economic Policy",
+                    "score": 0.8,
+                    "links": {
+                        "parents": [
+                            "https://api.aylien.com/api/v1/classify/taxonomy/aylien/ay.econ",
+                            "https://api.aylien.com/api/v1/classify/taxonomy/aylien/ay.pol.govpol"
+                        ],
+                        "self": "https://api.aylien.com/api/v1/classify/taxonomy/aylien/ay.econ.policy"
+                    }
+                },
+                {
+                    "id": "ay.fin",
+                    "label": "Finance",
+                    "score": 0.8,
+                    "links": {
+                        "self": "https://api.aylien.com/api/v1/classify/taxonomy/aylien/ay.fin"
+                    }
+                },
+                {
+                    "id": "ay.fin.intrates",
+                    "label": "Interest Rates",
+                    "score": 0.8,
+                    "links": {
+                        "parents": [
+                            "https://api.aylien.com/api/v1/classify/taxonomy/aylien/ay.fin"
+                        ],
+                        "self": "https://api.aylien.com/api/v1/classify/taxonomy/aylien/ay.fin.intrates"
+                    }
+                },
+                {
+                    "id": "ay.gov.ecoissue",
+                    "label": "Economic Issues",
+                    "score": 0.8,
+                    "links": {
+                        "parents": [
+                            "https://api.aylien.com/api/v1/classify/taxonomy/aylien/ay.pol.issues"
+                        ],
+                        "self": "https://api.aylien.com/api/v1/classify/taxonomy/aylien/ay.gov.ecoissue"
+                    }
+                },
+                {
+                    "id": "ay.pol",
+                    "label": "Politics and Government",
+                    "score": 0.8,
+                    "links": {
+                        "self": "https://api.aylien.com/api/v1/classify/taxonomy/aylien/ay.pol"
+                    }
+                },
+                {
+                    "id": "ay.pol.govpol",
+                    "label": "Government Policy",
+                    "score": 0.8,
+                    "links": {
+                        "parents": [
+                            "https://api.aylien.com/api/v1/classify/taxonomy/aylien/ay.pol"
+                        ],
+                        "self": "https://api.aylien.com/api/v1/classify/taxonomy/aylien/ay.pol.govpol"
+                    }
+                },
+                {
+                    "id": "ay.pol.issues",
+                    "label": "Political Issues",
+                    "score": 0.8,
+                    "links": {
+                        "parents": [
+                            "https://api.aylien.com/api/v1/classify/taxonomy/aylien/ay.pol.politics"
+                        ],
+                        "self": "https://api.aylien.com/api/v1/classify/taxonomy/aylien/ay.pol.issues"
+                    }
+                },
+                {
+                    "id": "ay.pol.politics",
+                    "label": "Politics",
+                    "score": 0.8,
+                    "links": {
+                        "parents": [
+                            "https://api.aylien.com/api/v1/classify/taxonomy/aylien/ay.pol"
+                        ],
+                        "self": "https://api.aylien.com/api/v1/classify/taxonomy/aylien/ay.pol.politics"
+                    }
+                }
+            ],
+            "characters_count": 4452,
+            "clusters": [
+                610592487
+            ],
+            "entities": [
+                {
+                    "id": "Q53536",
+                    "links": {
+                        "wikipedia": "https://en.wikipedia.org/wiki/Federal_Reserve",
+                        "wikidata": "https://www.wikidata.org/wiki/Q53536"
+                    },
+                    "types": [
+                        "Organization",
+                        "Financial_institution",
+                        "Bank",
+                        "Government_agency",
+                        "Business"
+                    ],
+**                    "overall_sentiment": {
+                        "polarity": "neutral",
+                        "confidence": 0.78
+                    },**
